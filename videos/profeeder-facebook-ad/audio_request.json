@@ -1,45 +1,53 @@
 {
-  "provider": "auto",
-  "speed": 1,
   "lines": [
     {
       "id": "01",
-      "text": "Banners aren't won on show day. They're won at chore time."
+      "sfx": [
+        "impact-soft"
+      ]
     },
     {
       "id": "02",
-      "text": "Scribbled feed notes. Guessed weights. A wormer date that slipped."
+      "sfx": [
+        "whoosh-soft"
+      ]
     },
     {
       "id": "03",
-      "text": "Meet ProFeeder — the whole barn, in your pocket."
+      "sfx": [
+        "riser",
+        "pop-soft"
+      ]
     },
     {
       "id": "04",
-      "text": "Track every pound of gain — and see exactly where every pig stands, days out from the show."
+      "sfx": [
+        "tick-count",
+        "chime-soft"
+      ]
     },
     {
       "id": "05",
-      "text": "Blend custom rations on the fly. And health schedules? Never slip again."
+      "sfx": [
+        "pop-soft",
+        "check-tick"
+      ]
     },
     {
       "id": "06",
-      "text": "Every show — counted down, dialed in."
-    },
-    {
-      "id": "07",
-      "text": "Start free."
+      "sfx": [
+        "tick-count"
+      ]
     },
     {
       "id": "08",
-      "text": "Get ProFeeder — and win more banners."
+      "sfx": [
+        "riser",
+        "impact-soft"
+      ]
     }
   ],
   "bgm": {
-    "mode": "retrieve",
-    "query": "confident, warm, country-tinged acoustic with a driving beat — builds to the CTA",
-    "blob": "ProFeeder turns everyday chore time into show-ring wins — the whole barn in one app.",
-    "arc": "PAS with feature-benefit progression (hook → pain → product intro → feature run → price relief → CTA)"
-  },
-  "voice": "am_michael"
+    "mode": "none"
+  }
 }

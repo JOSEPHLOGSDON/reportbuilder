@@ -1,1 +1,18 @@
 · tts: kokoro · voice am_michael · 8 line(s)
+  voice 01: assets/voice/01.wav (3.669s, 0 words)
+  voice 02: assets/voice/02.wav (4.032s, 0 words)
+  voice 03: assets/voice/03.wav (2.987s, 0 words)
+  voice 04: assets/voice/04.wav (5.931s, 0 words)
+  voice 05: assets/voice/05.wav (4.971s, 0 words)
+  voice 06: assets/voice/06.wav (2.475s, 0 words)
+  voice 07: assets/voice/07.wav (1.109s, 0 words)
+  voice 08: assets/voice/08.wav (2.411s, 0 words)
+· bgm: disabled
+✓ audio engine → /home/user/reportbuilder/videos/profeeder-facebook-ad/audio_engine_meta.json
+  heygen: no  ·  ran: tts,bgm
+  voices: 8  ·  bgm: none  ·  sfx: 0
+  total voice duration: 27.585s
+
+anomalies (non-fatal):
+  - bgm: retrieve requires a HeyGen credential — skipped (no generate fallback for an explicit retrieve)
+✓ audio generate: 8 voice + no bgm → /home/user/reportbuilder/videos/profeeder-facebook-ad/audio_meta.json

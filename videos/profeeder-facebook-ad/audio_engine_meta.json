@@ -1,5 +1,5 @@
 {
-  "tts_provider": "heygen",
+  "tts_provider": "kokoro",
   "voice_id": "am_michael",
   "bgm": null,
   "bgm_pending": false,
@@ -10,7 +10,75 @@
   "bgm_target_duration_s": null,
   "bgm_seed_duration_s": null,
   "bgm_loop_count": null,
-  "voices": [],
-  "sfx": [],
-  "total_duration_s": 0
+  "voices": [
+    {
+      "id": "01",
+      "path": "assets/voice/01.wav",
+      "duration_s": 3.669,
+      "words": []
+    },
+    {
+      "id": "02",
+      "path": "assets/voice/02.wav",
+      "duration_s": 4.032,
+      "words": []
+    },
+    {
+      "id": "03",
+      "path": "assets/voice/03.wav",
+      "duration_s": 2.987,
+      "words": []
+    },
+    {
+      "id": "04",
+      "path": "assets/voice/04.wav",
+      "duration_s": 5.931,
+      "words": []
+    },
+    {
+      "id": "05",
+      "path": "assets/voice/05.wav",
+      "duration_s": 4.971,
+      "words": []
+    },
+    {
+      "id": "06",
+      "path": "assets/voice/06.wav",
+      "duration_s": 2.475,
+      "words": []
+    },
+    {
+      "id": "07",
+      "path": "assets/voice/07.wav",
+      "duration_s": 1.109,
+      "words": []
+    },
+    {
+      "id": "08",
+      "path": "assets/voice/08.wav",
+      "duration_s": 2.411,
+      "words": []
+    }
+  ],
+  "sfx": [
+    {
+      "id": "03",
+      "name": "riser",
+      "file": "assets/sfx/riser.mp3",
+      "source": "local",
+      "offset_s": 0,
+      "duration_s": 10.03,
+      "volume": 0.35
+    },
+    {
+      "id": "08",
+      "name": "riser",
+      "file": "assets/sfx/riser.mp3",
+      "source": "local",
+      "offset_s": 0,
+      "duration_s": 10.03,
+      "volume": 0.35
+    }
+  ],
+  "total_duration_s": 27.585
 }

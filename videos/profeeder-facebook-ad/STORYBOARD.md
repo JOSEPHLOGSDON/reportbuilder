@@ -22,7 +22,7 @@ music: confident, warm, country-tinged acoustic with a driving beat — builds t
 - voiceover: "Banners aren't won on show day. They're won at chore time."
 - duration: 3.669s
 - transition_in: cut
-- status: outline
+- status: animated
 - src: compositions/frames/01-hook.html
 - type: hook
 - persuasion: Pattern interrupt — reframes where winning actually happens
@@ -47,7 +47,7 @@ Scene 3 (2.2–3.5s): on "chore time," the signature move — the slot hard-cuts
 - voiceover: "Scribbled feed notes. Guessed weights. A wormer date that slipped."
 - duration: 4.032s
 - transition_in: crossfade
-- status: outline
+- status: animated
 - src: compositions/frames/02-pain.html
 - type: pain_point
 - persuasion: Pain validation — names the exact daily failures
@@ -72,7 +72,7 @@ Scene 3 (2.6–4.0s): on "a wormer date that slipped," the final pain line repla
 - voiceover: "Meet ProFeeder — the whole barn, in your pocket."
 - duration: 2.987s
 - transition_in: zoom-through
-- status: outline
+- status: animated
 - src: compositions/frames/03-intro.html
 - type: product_intro
 - persuasion: Friction reduction — one app replaces the mess
@@ -98,7 +98,7 @@ Scene 3 (2.8–4.0s): on "in your pocket," a small gold italic tagline "the whol
 - voiceover: "Track every pound of gain — and see exactly where every pig stands, days out from the show."
 - duration: 5.931s
 - transition_in: push-slide LEFT
-- status: outline
+- status: animated
 - src: compositions/frames/04-weights.html
 - type: feature_showcase
 - persuasion: Show-don't-tell proof — live numbers doing the math for you
@@ -124,7 +124,7 @@ Scene 3 (3.4–5.0s): on "days out from the show," a navy chip "SHOW IN 21 DAYS"
 - voiceover: "Blend custom rations on the fly. And health schedules? Never slip again."
 - duration: 4.971s
 - transition_in: push-slide LEFT
-- status: outline
+- status: animated
 - src: compositions/frames/05-rations-health.html
 - type: feature_showcase
 - persuasion: Feature-to-benefit translation — capability stated as a promise kept
@@ -150,7 +150,7 @@ Scene 3 (3.6–4.5s): both cards settle level and HOLD; a single traveling gold 
 - voiceover: "Every show — counted down, dialed in."
 - duration: 2.475s
 - transition_in: push-slide LEFT
-- status: outline
+- status: animated
 - src: compositions/frames/06-showday.html
 - type: benefit_highlight
 - persuasion: Future pacing — the viewer sees their show season under control
@@ -176,7 +176,7 @@ Scene 3 (2.4–3.5s): on "dialed in," line 3 "Buyer confirmed" lands and ALL thr
 - voiceover: "Start free."
 - duration: 1.109s
 - transition_in: crossfade
-- status: outline
+- status: animated
 - src: compositions/frames/07-price.html
 - type: benefit_highlight
 - persuasion: Risk reversal — zero cost to try
@@ -201,7 +201,7 @@ Scene 3 (1.4–2.5s): a small qualifier line "$0 to start · Pro from $9/mo" tra
 - voiceover: "Get ProFeeder — and win more banners."
 - duration: 2.411s
 - transition_in: zoom-through
-- status: outline
+- status: animated
 - src: compositions/frames/08-cta.html
 - type: cta
 - persuasion: Status seeking — the banner is the identity payoff

@@ -3,43 +3,45 @@
   <head>
     <meta charset="UTF-8" />
     <title>03-intro — Meet ProFeeder</title>
+    <!-- head is source-file metadata only; runtime clones <template> contents -->
   </head>
   <body>
     <template>
       <style>
         @font-face {
-  font-family: 'Instrument Serif';
-  font-style: italic;
-  font-weight: 400;
-  font-display: swap;
-  src: url(assets/fonts/InstrumentSerif-italic-0.woff2) format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-@font-face {
-  font-family: 'Instrument Serif';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url(assets/fonts/InstrumentSerif-1.woff2) format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-@font-face {
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 400 800;
-  font-display: swap;
-  src: url(assets/fonts/Inter-2.woff2) format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-@font-face {
-  font-family: 'JetBrains Mono';
-  font-style: normal;
-  font-weight: 400 700;
-  font-display: swap;
-  src: url(assets/fonts/JetBrainsMono-3.woff2) format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
+          font-family: "Instrument Serif";
+          font-style: italic;
+          font-weight: 400;
+          font-display: swap;
+          src: url(assets/fonts/InstrumentSerif-italic-0.woff2) format("woff2");
+          unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+        }
+        @font-face {
+          font-family: "Instrument Serif";
+          font-style: normal;
+          font-weight: 400;
+          font-display: swap;
+          src: url(assets/fonts/InstrumentSerif-1.woff2) format("woff2");
+          unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+        }
+        @font-face {
+          font-family: "Inter";
+          font-style: normal;
+          font-weight: 400 800;
+          font-display: swap;
+          src: url(assets/fonts/Inter-2.woff2) format("woff2");
+          unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+        }
+        @font-face {
+          font-family: "JetBrains Mono";
+          font-style: normal;
+          font-weight: 400 700;
+          font-display: swap;
+          src: url(assets/fonts/JetBrainsMono-3.woff2) format("woff2");
+          unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+        }
 
+        /* Root styled by #root (never a class on the composition root) */
         #root {
           position: absolute;
           inset: 0;
@@ -81,7 +83,7 @@
         #i03-haze {
           position: absolute;
           left: 460px;
-          top: 100px;
+          top: 90px;
           width: 760px;
           height: 760px;
           border-radius: 50%;
@@ -97,7 +99,7 @@
         #i03-disc {
           position: absolute;
           left: 550px;
-          top: 190px;
+          top: 180px;
           width: 580px;
           height: 580px;
           border-radius: 50%;
@@ -106,13 +108,18 @@
           will-change: transform, opacity;
         }
 
-        /* ---------- phone mockup (depth layer 2) ---------- */
+        /* ---------- phone mockup (depth layer 2) ----------
+           Shell 342x638 → screen 314x610. The real screenshot is 720x1464
+           (aspect 0.4918); at 314px wide it lays out 638.6px tall, so the
+           screen shows it top-aligned (header + Lucy card fully readable)
+           and the excess clips at the shell bottom. ~58% canvas height,
+           center-right, bottom at y=818 — inside the 896px keep-out. */
         #i03-phone {
           position: absolute;
-          left: 645px;
-          top: 190px;
-          width: 340px;
-          height: 600px;
+          left: 644px;
+          top: 180px;
+          width: 342px;
+          height: 638px;
           will-change: transform, opacity;
         }
         .i03-shell {
@@ -120,108 +127,22 @@
           inset: 0;
           background: #16263c;
           border: 1px solid rgba(250, 246, 236, 0.4);
-          border-radius: 26px;
-          padding: 12px;
+          border-radius: 30px;
+          padding: 14px;
+          box-sizing: border-box;
         }
         .i03-screen {
           position: relative;
           width: 100%;
           height: 100%;
-          background: #faf6ec;
-          border-radius: 16px;
-          overflow: hidden;
-          padding: 24px 22px;
-        }
-        .i03-speaker {
-          position: absolute;
-          top: 13px;
-          left: 50%;
-          margin-left: -32px;
-          width: 64px;
-          height: 5px;
           background: #0d1b2e;
-          border-radius: 3px;
-          z-index: 2;
+          border-radius: 18px;
+          overflow: hidden; /* clips the tall screenshot at the shell bottom */
         }
-
-        /* --- Feeding Time UI --- */
-        .i03-ui-label {
-          font-family: "Inter", sans-serif;
-          font-size: 11px;
-          font-weight: 600;
-          letter-spacing: 0.18em;
-          text-transform: uppercase;
-          color: #0d1b2e;
-          opacity: 0.6;
-          margin-top: 10px;
-        }
-        .i03-ui-title {
-          font-family: "Instrument Serif", serif;
-          font-weight: 400;
-          font-size: 36px;
-          line-height: 1.1;
-          color: #0d1b2e;
-          margin-top: 4px;
-          padding-bottom: 14px;
-          border-bottom: 1px solid #0d1b2e;
-        }
-        .i03-row {
-          display: flex;
-          align-items: center;
-          gap: 12px;
-          padding: 17px 0;
-          border-bottom: 1px solid rgba(13, 27, 46, 0.18);
-          will-change: opacity;
-        }
-        .i03-check {
-          flex: 0 0 auto;
-          width: 32px;
-          height: 32px;
-        }
-        .i03-check .i03-ring {
-          fill: none;
-          stroke: rgba(13, 27, 46, 0.45);
-          stroke-width: 1.5;
-        }
-        .i03-check .i03-fill {
-          fill: #e8b64c;
-          opacity: 0;
-        }
-        .i03-check .i03-tick {
-          fill: none;
-          stroke: #b07f24;
-          stroke-width: 3.5;
-          stroke-linecap: round;
-          stroke-linejoin: round;
-        }
-        .i03-row-main {
-          flex: 1 1 auto;
-          min-width: 0;
-        }
-        .i03-row-pen {
-          font-family: "Inter", sans-serif;
-          font-size: 17px;
-          font-weight: 600;
-          color: #0d1b2e;
-          line-height: 1.25;
-        }
-        .i03-row-sub {
-          font-family: "Inter", sans-serif;
-          font-size: 12px;
-          font-weight: 400;
-          color: #0d1b2e;
-          opacity: 0.55;
-          margin-top: 2px;
-        }
-        .i03-chip {
-          flex: 0 0 auto;
-          font-family: "JetBrains Mono", monospace;
-          font-size: 12px;
-          font-weight: 600;
-          letter-spacing: 0.04em;
-          color: #0d1b2e;
-          border: 1px solid rgba(13, 27, 46, 0.45);
-          padding: 5px 9px;
+        .i03-screen img {
+          display: block;
+          width: 100%; /* full-bleed; height follows the 720x1464 aspect */
+          height: auto; /* never distorted; top-aligned by normal flow */
         }
 
         /* ---------- wordmark + tagline (depth layer 3, upper-left) ---------- */
@@ -280,62 +201,16 @@
           <div id="i03-haze"></div>
           <div id="i03-disc"></div>
 
-          <!-- phone mockup: recreated Feeding Time checklist -->
+          <!-- phone: authored navy shell, screen = the REAL Feeding Time screenshot -->
           <div id="i03-phone">
             <div id="i03-phone-jit" style="position: absolute; inset: 0; will-change: transform">
               <div class="i03-shell">
-                <div class="i03-speaker"></div>
                 <div class="i03-screen">
-                  <div class="i03-ui-label">AM Feeding · Today</div>
-                  <div class="i03-ui-title">Feeding Time</div>
-
-                  <div class="i03-row" id="i03-row1">
-                    <svg class="i03-check" viewBox="0 0 32 32">
-                      <circle class="i03-ring" cx="16" cy="16" r="14.5"></circle>
-                      <circle class="i03-fill" id="i03-fill1" cx="16" cy="16" r="14.5"></circle>
-                      <path class="i03-tick" id="i03-tick1" d="M9.5 16.5 L14 21 L23 11"></path>
-                    </svg>
-                    <div class="i03-row-main">
-                      <div class="i03-row-pen">Pen 1 · Barrows</div>
-                      <div class="i03-row-sub">2 head</div>
-                    </div>
-                    <div class="i03-chip">5.5 lb</div>
-                  </div>
-
-                  <div class="i03-row" id="i03-row2">
-                    <svg class="i03-check" viewBox="0 0 32 32">
-                      <circle class="i03-ring" cx="16" cy="16" r="14.5"></circle>
-                      <circle class="i03-fill" id="i03-fill2" cx="16" cy="16" r="14.5"></circle>
-                      <path class="i03-tick" id="i03-tick2" d="M9.5 16.5 L14 21 L23 11"></path>
-                    </svg>
-                    <div class="i03-row-main">
-                      <div class="i03-row-pen">Pen 3 · Gilts</div>
-                      <div class="i03-row-sub">3 head</div>
-                    </div>
-                    <div class="i03-chip">6.0 lb</div>
-                  </div>
-
-                  <div class="i03-row">
-                    <svg class="i03-check" viewBox="0 0 32 32">
-                      <circle class="i03-ring" cx="16" cy="16" r="14.5"></circle>
-                    </svg>
-                    <div class="i03-row-main">
-                      <div class="i03-row-pen">Pen 4 · Duroc</div>
-                      <div class="i03-row-sub">1 head</div>
-                    </div>
-                    <div class="i03-chip">6.5 lb</div>
-                  </div>
-
-                  <div class="i03-row" style="border-bottom: none">
-                    <svg class="i03-check" viewBox="0 0 32 32">
-                      <circle class="i03-ring" cx="16" cy="16" r="14.5"></circle>
-                    </svg>
-                    <div class="i03-row-main">
-                      <div class="i03-row-pen">Sow barn</div>
-                      <div class="i03-row-sub">4 head</div>
-                    </div>
-                    <div class="i03-chip">12 lb</div>
-                  </div>
+                  <img
+                    id="i03-screenshot"
+                    src="assets/screen-feeding-time.png"
+                    alt=""
+                  />
                 </div>
               </div>
             </div>
@@ -354,91 +229,77 @@
       <script src="assets/vendor/gsap.min.js"></script>
       <script>
         window.__timelines = window.__timelines || {};
-
-        // Measure the two check ticks so the stroke-draw matches real geometry.
-        ["i03-tick1", "i03-tick2"].forEach(function (id) {
-          var p = document.getElementById(id);
-          var len = p.getTotalLength();
-          p.style.strokeDasharray = String(len);
-          p.style.strokeDashoffset = String(len);
-        });
-
         var tl = gsap.timeline({ paused: true });
 
-        /* ============ Scene 1 (0.0–1.5) — phone rises, gold disc resolves ============ */
+        // Storyboard scene windows are written on a ~4.0s scale; this frame
+        // runs 2.987s → compress ×0.747: Scene 1 ≈ 0–1.12, Scene 2 ≈ 1.12–2.09,
+        // Scene 3 ≈ 2.09–2.987.
+
+        /* ============ Scene 1 (0.0–1.12) — phone rises, gold disc resolves ============ */
 
         // Gold haze breathes in first — atmosphere before structure.
         tl.fromTo(
           "#i03-haze",
           { opacity: 0 },
-          { opacity: 1, duration: 0.9, ease: "power2.out" },
-          0.05
+          { opacity: 1, duration: 0.75, ease: "power2.out" },
+          0.04
         );
 
-        // Accent disc scales up behind the phone (scale-swap-transition, restrained
-        // incoming form: grow + fade in, smooth settle, no overshoot).
+        // Accent disc scales up behind the phone (scale-swap-transition,
+        // restrained incoming form: grow + fade in, smooth settle, no overshoot).
         tl.fromTo(
           "#i03-disc",
           { scale: 0.55, opacity: 0 },
-          { scale: 1, opacity: 1, duration: 0.7, ease: "power3.out" },
-          0.08
+          { scale: 1, opacity: 1, duration: 0.62, ease: "power3.out" },
+          0.06
         );
 
         // Phone slides up from the lower edge and settles (spring-pop-entrance,
         // smooth long-tail power3.out — no overshoot). Visible well before t=0.5s.
         tl.fromTo(
           "#i03-phone",
-          { y: 560, opacity: 0 },
-          { y: 0, opacity: 1, duration: 0.85, ease: "power3.out" },
-          0.1
+          { y: 620, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.78, ease: "power3.out" },
+          0.08
         );
 
-        /* ============ Scene 2 (1.5–2.8 → compressed) — wordmark + row ticks ============ */
+        /* ============ Scene 2 (1.12–2.09) — wordmark reveals per word ============ */
 
-        // Wordmark reveals per token (dynamic-content-sequencing: staggered,
-        // index-derived reveal of the lockup's tokens; .ag lands in gold).
+        // dynamic-content-sequencing: staggered, index-derived token reveal of
+        // the lockup ("Pro" / "Feeder" / ".ag" — the .ag lands in gold).
         ["#i03-w1", "#i03-w2", "#i03-w3"].forEach(function (sel, i) {
           tl.fromTo(
             sel,
             { y: 42, opacity: 0 },
-            { y: 0, opacity: 1, duration: 0.55, ease: "power3.out" },
-            1.12 + i * 0.12
+            { y: 0, opacity: 1, duration: 0.5, ease: "power3.out" },
+            1.12 + i * 0.11
           );
         });
 
-        // Two checklist rows tick complete: gold fill blooms, check draws
-        // (svg-path-draw: strokeDashoffset len -> 0, power2.out — pens don't bounce).
-        tl.to("#i03-fill1", { opacity: 1, duration: 0.2, ease: "power1.out" }, 1.5);
-        tl.to("#i03-tick1", { strokeDashoffset: 0, duration: 0.35, ease: "power2.out" }, 1.55);
-        tl.to("#i03-row1", { opacity: 0.62, duration: 0.3, ease: "power1.out" }, 1.7);
-
-        tl.to("#i03-fill2", { opacity: 1, duration: 0.2, ease: "power1.out" }, 1.9);
-        tl.to("#i03-tick2", { strokeDashoffset: 0, duration: 0.35, ease: "power2.out" }, 1.95);
-        tl.to("#i03-row2", { opacity: 0.62, duration: 0.3, ease: "power1.out" }, 2.1);
-
-        /* ============ Scene 3 (2.35–end) — tagline lands, everything holds ============ */
+        /* ============ Scene 3 (2.09–2.987) — tagline lands, everything holds ============ */
 
         tl.fromTo(
           "#i03-tagline",
           { y: 22, opacity: 0 },
-          { y: 0, opacity: 1, duration: 0.45, ease: "power3.out" },
-          2.35
+          { y: 0, opacity: 1, duration: 0.42, ease: "power3.out" },
+          2.09
         );
 
-        // Subtle jitter on the phone while it holds (sine-wave-loop, low amplitude,
-        // finite single cycle — sin(0)=0 and sin(2π)=0, so no jump in or out).
+        // Subtle jitter on the phone while it holds (sine-wave-loop, low
+        // amplitude, finite single cycle — sin(0)=0 and sin(2π)=0, so there is
+        // no jump into or out of the settled state).
         var jit = { p: 0 };
         tl.to(
           jit,
           {
             p: Math.PI * 2,
-            duration: 0.5,
+            duration: 0.55,
             ease: "none",
             onUpdate: function () {
               gsap.set("#i03-phone-jit", { y: Math.sin(jit.p) * 2 });
             },
           },
-          2.45
+          2.35
         );
 
         window.__timelines["03-intro"] = tl;

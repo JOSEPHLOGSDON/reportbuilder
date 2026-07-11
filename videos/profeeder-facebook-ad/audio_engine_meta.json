@@ -20,7 +20,7 @@
     {
       "id": "02",
       "path": "assets/voice/02.wav",
-      "duration_s": 4.032,
+      "duration_s": 4.096,
       "words": []
     },
     {
@@ -80,5 +80,5 @@
       "volume": 0.35
     }
   ],
-  "total_duration_s": 27.585
+  "total_duration_s": 27.649
 }

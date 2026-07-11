@@ -1,5 +1,5 @@
 <template>
-  <div id="root" data-composition-id="02-pain" data-start="0" data-duration="4.432" data-width="1080" data-height="1080">
+  <div id="root" data-composition-id="02-pain" data-start="0" data-duration="4.496" data-width="1080" data-height="1080">
     <style>
       @font-face {
   font-family: 'Instrument Serif';
@@ -173,12 +173,12 @@
       </defs>
     </svg>
 
-    <div id="p2-bg" class="clip" data-start="0" data-duration="4.032" data-track-index="0">
+    <div id="p2-bg" class="clip" data-start="0" data-duration="4.096" data-track-index="0">
       <div class="p2-sun-bloom"></div>
       <div class="p2-ember-bloom"></div>
     </div>
 
-    <div id="p2-stage" class="clip" data-start="0" data-duration="4.032" data-track-index="1">
+    <div id="p2-stage" class="clip" data-start="0" data-duration="4.096" data-track-index="1">
       <!-- Scene 1: pain line 1, per-word chunk reveal + gold scribble strike -->
       <div class="p2-line" id="p2-line1" data-layout-allow-overlap>
         <div>
@@ -213,7 +213,7 @@
       <!-- Scene 3: final pain line, "that slipped." in ember, slipping down -->
       <div class="p2-line" id="p2-line3" data-layout-allow-overlap>
         <div class="p2-stack">
-          <span>A wormer date</span>
+          <span>A dewormer date</span>
           <span class="p2-slip" id="p2-slip">that slipped.</span>
         </div>
       </div>
@@ -292,7 +292,7 @@
       tl.to(b2, { v: 10, duration: 0.3, ease: "power3.in", onUpdate: w2 }, 2.42);
 
       /* =========================================================
-         Scene 3 (2.6–4.0s) — "A wormer date / that slipped." lands and HOLDS
+         Scene 3 (2.6–4.0s) — "A dewormer date / that slipped." lands and HOLDS
          ========================================================= */
       tl.fromTo(
         "#p2-line3",

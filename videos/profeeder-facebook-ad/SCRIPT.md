@@ -17,7 +17,7 @@
 **Time:** 3.5 – 7.5s
 **Delivery:** Clipped, each pain its own breath. A little tired — this is the viewer's life.
 
-    Scribbled feed notes. Guessed weights. A wormer date that slipped.
+    Scribbled feed notes. Guessed weights. A dewormer date that slipped.
 
 ## Line 3 — Meet ProFeeder (Frame 3)
 

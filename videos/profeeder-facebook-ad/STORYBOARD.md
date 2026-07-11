@@ -33,19 +33,21 @@ music: confident, warm, country-tinged acoustic with a driving beat — builds t
 narrativeRole: Stops the scroll with an insider truth every show family already feels — the daily grind decides the banner. Sets up chore time as the battleground ProFeeder owns.
 keyMessage: The daily work decides the win.
 
-- blueprint: kinetic-type-beats (Reproduce — sub-shape A, fixed-line token swap)
+- blueprint: kinetic-type-beats (Adapt — sub-shape B, multi-beat statement build / escalation)
 - sfx: impact-soft
 
-Scene 1 (0.0–1.4s): solid navy ink field. As the VO opens, "Banners aren't won" arrives dead-center via per-word staggered reveal (`dynamic-content-sequencing`) in cream display serif, smooth long-tail settle — Centered, headline ~55% of frame width, upper-two-thirds. Nothing else on canvas.
-Scene 2 (1.4–2.2s): on "on show day," the phrase completes — "on show day." lands as the line's variable slot, a drawn gold underline sweeps left→right beneath it (`css-marker-patterns`). Camera locked.
-Scene 3 (2.2–3.5s): on "chore time," the signature move — the slot hard-cuts in place (`discrete-text-sequence`): "on show day." swaps to "at chore time." set in gold italic display serif, slightly larger; the underline snaps to the new width. Line holds dead still to the end.
+Adapt: keep the beats-replace-each-other engine and the spring-pop payoff signature; escalate energy — each beat is a full-screen slam with its own entrance and hard background flips, built for a muted Facebook scroll-stop.
+Scene 1 (0.0–0.9s): the VO opens on "Banners" — the single oversized word BANNERS slams in dead-center on a percussive beat (`kinetic-beat-slam`), cream display serif filling ~85% of frame width on navy ink, arriving with a motion-blur fly-in that resolves sharp (`motion-blur-streak`); a gold particle burst kicks off behind it (`css-marker-patterns` burst). Camera locked.
+Scene 2 (0.9–1.7s): on "aren't won on show day," a hard bg-invert flip — navy flips to GOLD field, type inverts to ink (`discrete-text-sequence` whole-state swap): "aren't won" slams in big, then "on show day." hard-cuts beneath it at half scale, both landing on their spoken beats (`kinetic-beat-slam`), each with a distinct entrance (bottom-up masked slide, letter-spacing collapse).
+Scene 3 (1.7–2.6s): on "They're won," flip BACK to navy — the prior beat zooms past the camera and blurs off (`motion-blur-streak` exit into the seam, velocity-matched); "They're won" flies in sharp and huge in cream.
+Scene 4 (2.6–3.669s): on "at chore time," the payoff — "at chore time." SPRING-POPS in below in gold italic display serif at hero scale (`spring-pop-entrance`, the sanctioned playful overshoot — this is the one bell-hit of the video); gold motes drift outward once (`css-marker-patterns` burst, finite) and the full lockup holds dead still to the end.
 
 
 ## Frame 2 — The guesswork
 
-- scene: Three short pain lines land solo on cream canvas — "Scribbled feed notes." / "Guessed weights." / "A wormer date you missed."
-- voiceover: "Scribbled feed notes. Guessed weights. A wormer date that slipped."
-- duration: 4.032s
+- scene: Three short pain lines land solo on cream canvas — "Scribbled feed notes." / "Guessed weights." / "A dewormer date you missed."
+- voiceover: "Scribbled feed notes. Guessed weights. A dewormer date that slipped."
+- duration: 4.096s
 - transition_in: crossfade
 - status: animated
 - src: compositions/frames/02-pain.html
@@ -63,7 +65,7 @@ keyMessage: Guesswork is quietly costing you.
 
 Scene 1 (0.0–1.3s): cream canvas, bare. "Scribbled feed notes." reveals centered in navy ink display serif via chunk reveal (`dynamic-content-sequencing`) — Centered, ~50% width, upper-two-thirds; a rough gold scribble strikes through "Scribbled" (`css-marker-patterns`).
 Scene 2 (1.3–2.6s): on "Guessed weights," the prior line blurs off as the next flies in with a light motion-blur entrance (`motion-blur-streak` + `discrete-text-sequence`), landing solo center; a gold hand-drawn circle rings "Guessed" (`css-marker-patterns`). Velocity-matched seam.
-Scene 3 (2.6–4.0s): on "a wormer date that slipped," the final pain line replaces it the same way and HOLDS — the last two words "that slipped." tinted ember and dropping a few pixels on a long-tail settle, like the date itself slipping. Still to the end.
+Scene 3 (2.6–4.0s): on "a dewormer date that slipped," the final pain line replaces it the same way and HOLDS — the last two words "that slipped." tinted ember and dropping a few pixels on a long-tail settle, like the date itself slipping. Still to the end.
 
 
 ## Frame 3 — Meet ProFeeder
@@ -124,7 +126,7 @@ Scene 3 (3.6–5.0s): on "days out from the show," a navy chip "25 DAYS TO SHOW"
 
 ## Frame 5 — Rations & health
 
-- scene: Two-up feature cards assemble — "Custom rations, blended on the fly" with feed-mix UI chips; "Vaccines & wormers that never slip" with reminder rows checking off
+- scene: Two-up feature cards assemble — "Custom rations, blended on the fly" with feed-mix UI chips; "Vaccines & dewormers that never slip" with reminder rows checking off
 - voiceover: "Blend custom rations on the fly. And health schedules? Never slip again."
 - duration: 4.971s
 - transition_in: push-slide LEFT
@@ -146,7 +148,7 @@ keyMessage: Rations and health protocols, handled.
 
 Adapt: keep the staggered assemble-into-slot signature; left slot is a REAL phone (screen = `assets/screen-ration-nutrition.png`, positioned so INGREDIENTS + the purple BLENDED NUTRITION summary read clearly), right slot an authored health card — each reveals ON its spoken cue.
 Scene 1 (0.0–2.0s): cream canvas. On "blend custom rations on the fly," the phone fades + slides into the left slot (`center-outward-expansion`, direct-into-slot form) — split-screen two-up developing left→right, phone ~46% width, upper-two-thirds; a small gold callout "13.9% protein · blended live" fades in above it (`discrete-text-sequence`).
-Scene 2 (2.0–3.6s): on "health schedules," the authored HEALTH card assembles into the right slot the same way (brand system: navy on cream); two reminder rows ("Matrix — due today", "Wormer — done") appear, and on "never slip again" their checkmarks draw on in gold (`svg-path-draw`) with the done-row dimming by position.
+Scene 2 (2.0–3.6s): on "health schedules," the authored HEALTH card assembles into the right slot the same way (brand system: navy on cream); two reminder rows ("Matrix — due today", "Dedewormer — done") appear, and on "never slip again" their checkmarks draw on in gold (`svg-path-draw`) with the done-row dimming by position.
 Scene 3 (3.6–4.5s): both settle level and HOLD; a single traveling gold glow sweeps once across the pair (`ambient-glow-bloom` traveling form) and dies out. Still to the end.
 
 
@@ -180,7 +182,7 @@ Scene 3 (2.4–3.5s): on "dialed in," line 3 "Buyer confirmed" lands and ALL thr
 
 - scene: Calm title card on cream — "Start free." large serif; "$0 to start · Pro from $9/mo" small beneath
 - voiceover: "Start free."
-- duration: 1.109s
+- duration: 4.109s
 - transition_in: crossfade
 - status: animated
 - src: compositions/frames/07-price.html

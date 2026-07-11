@@ -95,10 +95,10 @@
           justify-content: flex-start;
         }
         #p7-title {
-          margin-top: 342px; /* optical center of the top-83% safe area */
+          margin-top: 306px; /* optical center of the top-83% safe area */
           font-family: "Instrument Serif", serif;
           font-weight: 400;
-          font-size: 150px;
+          font-size: 216px;
           line-height: 1;
           letter-spacing: -0.018em;
           color: #0d1b2e;
@@ -107,10 +107,10 @@
           will-change: transform, opacity;
         }
         #p7-qual {
-          margin-top: 52px;
+          margin-top: 60px;
           font-family: "JetBrains Mono", monospace;
           font-weight: 400;
-          font-size: 26px;
+          font-size: 38px;
           letter-spacing: 0.04em;
           color: #0d1b2e;
           text-align: center;
@@ -132,7 +132,7 @@
         <div
           class="clip p7-ground"
           data-start="0"
-          data-duration="1.109"
+          data-duration="4.109"
           data-track-index="0"
         >
           <div class="p7-sun-bloom"></div>
@@ -143,7 +143,7 @@
         <div
           class="clip p7-stage"
           data-start="0"
-          data-duration="1.109"
+          data-duration="4.109"
           data-track-index="1"
         >
           <div id="p7-title">Start free.</div>
@@ -167,8 +167,8 @@
         tl.fromTo(
           "#p7-title",
           { opacity: 0, scale: 0.95 },
-          { opacity: 1, scale: 1, duration: 0.46, ease: "power2.out" },
-          0.16
+          { opacity: 1, scale: 1, duration: 0.6, ease: "power2.out" },
+          0.2
         );
 
         // Scene 3 (~0.62s): qualifier slides up from below center and crossfades in
@@ -176,8 +176,8 @@
         tl.fromTo(
           "#p7-qual",
           { opacity: 0, y: 26 },
-          { opacity: 1, y: 0, duration: 0.36, ease: "power3.out" },
-          0.62
+          { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" },
+          0.95
         );
 
         // ~0.98s → end: dead-still hold. No second phase, no drift, no exit.

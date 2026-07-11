@@ -1,6 +1,6 @@
 # SCRIPT — profeeder-facebook-ad
 
-**Voice:** HeyGen voice id `328564c23e9f48e8a16cf7ab86a16478` (user-chosen) — PREFERRED once api.heygen.com is reachable (add it to the environment's network egress allowlist; the API key is saved in ~/.heygen). Regenerate with: `node <SKILL_DIR>/scripts/audio.mjs --script ./SCRIPT.md --storyboard ./STORYBOARD.md --hyperframes . --out ./audio_meta.json --voice 328564c23e9f48e8a16cf7ab86a16478`, then sync-durations, patch frame clip durations, assemble, render.
+**Voice:** HeyGen voice id `f1133ae9ec184da5ab0dbfe01f94e852` (user-chosen, supersedes `328564c23e9f48e8a16cf7ab86a16478`) — PREFERRED once api.heygen.com is reachable (add it to the environment's network egress allowlist; the API key is saved in ~/.heygen). Regenerate with: `node <SKILL_DIR>/scripts/audio.mjs --script ./SCRIPT.md --storyboard ./STORYBOARD.md --hyperframes . --out ./audio_meta.json --voice f1133ae9ec184da5ab0dbfe01f94e852`, then sync-durations, patch frame clip durations, assemble, render. BGM: retrieve from HeyGen library per STORYBOARD.md music note (also requires the HeyGen credential + network).
 **Offline fallback:** Kokoro am_onyx (current render) or user's pick from the six sampled voices.
 **Voice direction:** Confident, warm, plainspoken — a show-barn dad who knows what he's talking about. No announcer gloss. Steady pace, lands the last line with quiet pride.
 

@@ -1,0 +1,391 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- Frame 6 — Show day, dialed in. Sub-composition: everything lives inside <template>. -->
+  </head>
+  <body>
+    <template>
+      <style>
+        @import url("https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;600&family=JetBrains+Mono:wght@400;500&display=swap");
+
+        /* Root styled via #root (never a class on the composition-id element). */
+        #root {
+          position: absolute;
+          inset: 0;
+          width: 1080px;
+          height: 1080px;
+          overflow: hidden;
+          container-type: size;
+        }
+
+        /* ---- Ground: paper + sun bloom + ember counter-bloom (full-bleed clip, not the root) ---- */
+        .showday-ground {
+          position: absolute;
+          inset: 0;
+          background: #faf6ec;
+          overflow: hidden;
+        }
+        .showday-bloom {
+          position: absolute;
+          left: -8%;
+          top: -14%;
+          width: 78%;
+          height: 78%;
+          background: radial-gradient(
+            circle at 50% 50%,
+            rgba(232, 182, 76, 0.85) 0%,
+            #f3d8a0 34%,
+            rgba(238, 202, 126, 0.5) 58%,
+            rgba(250, 246, 236, 0) 76%
+          );
+          will-change: transform;
+        }
+        .showday-ember {
+          position: absolute;
+          right: -12%;
+          bottom: -16%;
+          width: 56%;
+          height: 56%;
+          background: radial-gradient(
+            circle at 50% 50%,
+            rgba(217, 164, 65, 0.2) 0%,
+            rgba(217, 164, 65, 0.08) 48%,
+            rgba(250, 246, 236, 0) 72%
+          );
+        }
+
+        /* ---- Show-countdown card (recreated mockup, brand system) ---- */
+        .showday-stage {
+          position: absolute;
+          inset: 0;
+          font-family: "Inter", sans-serif;
+          color: #0d1b2e;
+        }
+        #showday-card {
+          position: absolute;
+          left: 227px; /* card ~58% width, centered */
+          top: 208px; /* upper two-thirds; card bottom ≈ 664px, well above the 896px keep-out */
+          width: 626px;
+          background: #faf6ec;
+          border: 1px solid #0d1b2e;
+          padding: 34px 38px 10px;
+          will-change: transform;
+        }
+        .showday-header {
+          display: flex;
+          align-items: baseline;
+          justify-content: space-between;
+          gap: 24px;
+          padding-bottom: 24px;
+          border-bottom: 1px solid #0d1b2e;
+        }
+        #showday-title {
+          font-family: "Inter", sans-serif;
+          font-weight: 600;
+          font-size: 21px;
+          letter-spacing: 0.18em;
+          text-transform: uppercase;
+          color: #0d1b2e;
+          padding-top: 14px;
+        }
+        .showday-count-wrap {
+          display: flex;
+          align-items: baseline;
+          gap: 12px;
+          /* fixed width so digit changes never reflow the header */
+          width: 232px;
+          justify-content: flex-end;
+          flex: none;
+        }
+        #showday-count {
+          font-family: "JetBrains Mono", monospace;
+          font-weight: 500;
+          font-size: 66px;
+          letter-spacing: 0.02em;
+          line-height: 1;
+          color: #0d1b2e;
+          transform-origin: 100% 100%;
+          will-change: transform;
+        }
+        .showday-count-unit {
+          font-family: "JetBrains Mono", monospace;
+          font-weight: 400;
+          font-size: 20px;
+          letter-spacing: 0.1em;
+          color: #0d1b2e;
+        }
+
+        /* ---- Checklist rows (ledger-row grammar: marker + serif line + soft hairline) ---- */
+        .showday-row {
+          display: flex;
+          align-items: center;
+          gap: 26px;
+          height: 96px;
+          position: relative;
+        }
+        .showday-rule {
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          width: 100%;
+          height: 1px;
+          background: rgba(13, 27, 46, 0.19);
+          transform-origin: 0 50%;
+        }
+        .showday-row:last-child .showday-rule {
+          display: none;
+        }
+        .showday-marker {
+          width: 44px;
+          height: 44px;
+          background: #e8b64c;
+          flex: none;
+          display: grid;
+          place-items: center;
+          transform-origin: 50% 50%;
+          will-change: transform;
+        }
+        .showday-marker svg {
+          width: 26px;
+          height: 26px;
+          display: block;
+        }
+        .showday-marker path {
+          fill: none;
+          stroke: #0d1b2e;
+          stroke-width: 2.6;
+          stroke-linecap: square;
+          stroke-linejoin: miter;
+        }
+        .showday-line {
+          font-family: "Instrument Serif", serif;
+          font-weight: 400;
+          font-size: 39px;
+          line-height: 1.1;
+          letter-spacing: -0.005em;
+          color: #0d1b2e;
+        }
+        .showday-line em {
+          font-style: normal;
+        }
+
+        /* pagenum — the one persistent chrome, kept above the caption keep-out */
+        .showday-pagenum {
+          position: absolute;
+          right: 44px;
+          top: 846px;
+          font-family: "JetBrains Mono", monospace;
+          font-size: 13px;
+          letter-spacing: 0.08em;
+          color: rgba(13, 27, 46, 0.75);
+        }
+      </style>
+
+      <div id="root" data-composition-id="06-showday" data-width="1080" data-height="1080">
+        <!-- Full-bleed ground on its own clip (never on #root) -->
+        <div
+          class="clip showday-ground"
+          id="showday-ground"
+          data-start="0"
+          data-duration="2.475"
+          data-track-index="0"
+        >
+          <div class="showday-bloom" id="showday-bloom"></div>
+          <div class="showday-ember"></div>
+        </div>
+
+        <!-- Card stage -->
+        <div
+          class="clip showday-stage"
+          id="showday-stage"
+          data-start="0"
+          data-duration="2.475"
+          data-track-index="1"
+        >
+          <div id="showday-card">
+            <div class="showday-header">
+              <div id="showday-title">Indiana&nbsp;State&nbsp;Fair</div>
+              <div class="showday-count-wrap" id="showday-count-wrap">
+                <span id="showday-count">24</span>
+                <span class="showday-count-unit">DAYS</span>
+              </div>
+            </div>
+
+            <div class="showday-row" id="showday-row1">
+              <div class="showday-marker" id="showday-marker1">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path id="showday-check1" d="M 5 12.5 L 10 17.5 L 19 7" />
+                </svg>
+              </div>
+              <div class="showday-line" id="showday-line1">Entries submitted</div>
+              <div class="showday-rule" id="showday-rule1"></div>
+            </div>
+
+            <div class="showday-row" id="showday-row2">
+              <div class="showday-marker" id="showday-marker2">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path id="showday-check2" d="M 5 12.5 L 10 17.5 L 19 7" />
+                </svg>
+              </div>
+              <div class="showday-line" id="showday-line2">Target weight — on track</div>
+              <div class="showday-rule" id="showday-rule2"></div>
+            </div>
+
+            <div class="showday-row" id="showday-row3">
+              <div class="showday-marker" id="showday-marker3">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path id="showday-check3" d="M 5 12.5 L 10 17.5 L 19 7" />
+                </svg>
+              </div>
+              <div class="showday-line" id="showday-line3">Buyer confirmed</div>
+              <div class="showday-rule" id="showday-rule3"></div>
+            </div>
+          </div>
+
+          <div class="showday-pagenum">06</div>
+        </div>
+      </div>
+
+      <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+      <script>
+        window.__timelines = window.__timelines || {};
+
+        (function () {
+          // grid-card-assemble — Benefits vertical-list, BUILD mode.
+          // STORYBOARD scenes compressed to the fixed 2.475s duration:
+          //   Scene 1 (header + countdown) ≈ 0.00–0.85  — "every show"
+          //   Scene 2 (rows 1 & 2, ~1/beat) ≈ 0.85–1.75 — "counted down"
+          //   Scene 3 (row 3 + gold flash + hold) ≈ 1.75–2.475 — "dialed in"
+
+          // svg-path-draw setup: measure real geometry, prime dash pattern.
+          var checks = ["showday-check1", "showday-check2", "showday-check3"].map(function (id) {
+            var p = document.getElementById(id);
+            var len = p.getTotalLength();
+            p.style.strokeDasharray = String(len);
+            p.style.strokeDashoffset = String(len);
+            return p;
+          });
+
+          var tl = gsap.timeline({ paused: true });
+
+          // ---- Scene 1: card + header assemble; countdown 24 → 21 with shrinking beat ----
+          tl.fromTo(
+            "#showday-card",
+            { opacity: 0, y: 26 },
+            { opacity: 1, y: 0, duration: 0.55, ease: "power3.out" },
+            0.05
+          );
+          // Header label mask-wipes in
+          tl.fromTo(
+            "#showday-title",
+            { clipPath: "inset(0 100% 0 0)", opacity: 0 },
+            { clipPath: "inset(0 0% 0 0)", opacity: 1, duration: 0.45, ease: "power2.out" },
+            0.18
+          );
+          // counting-dynamic-scale (inverted for a countdown): value 24 → 21 while the
+          // numeral shrinks from oversized into rest — the "shrinking beat".
+          var count = { v: 24 };
+          var countEl = document.getElementById("showday-count");
+          tl.fromTo(
+            "#showday-count-wrap",
+            { opacity: 0 },
+            { opacity: 1, duration: 0.25, ease: "none" },
+            0.22
+          );
+          tl.to(
+            count,
+            {
+              v: 21,
+              duration: 0.62,
+              ease: "power3.out",
+              onUpdate: function () {
+                countEl.textContent = String(Math.round(count.v));
+              },
+            },
+            0.25
+          );
+          tl.fromTo(
+            "#showday-count",
+            { scale: 1.24 },
+            { scale: 1, duration: 0.62, ease: "power3.out" },
+            0.25
+          );
+
+          // ---- Scenes 2–3: checklist rows arrive, one per beat ----
+          // Per row: spring-pop-entrance marker (smooth power3 settle, no overshoot),
+          // svg-path-draw check, clip-path mask-wipe text, hairline rule grows in.
+          var ROW_AT = [0.85, 1.3, 1.75];
+          for (var i = 0; i < 3; i++) {
+            var at = ROW_AT[i];
+            var n = i + 1;
+            // marker spring-pop (fromTo — correct at t=0 under seek)
+            tl.fromTo(
+              "#showday-marker" + n,
+              { scale: 0, opacity: 0 },
+              { scale: 1, opacity: 1, duration: 0.34, ease: "power3.out" },
+              at
+            );
+            // check draws on, overlapping the marker's settle
+            tl.to(
+              checks[i],
+              { strokeDashoffset: 0, duration: 0.28, ease: "power2.out" },
+              at + 0.12
+            );
+            // text mask-wipe
+            tl.fromTo(
+              "#showday-line" + n,
+              { clipPath: "inset(0 100% 0 0)", opacity: 0 },
+              { clipPath: "inset(0 0% 0 0)", opacity: 1, duration: 0.38, ease: "power2.out" },
+              at + 0.08
+            );
+            // soft hairline rule wipes across beneath the row
+            tl.fromTo(
+              "#showday-rule" + n,
+              { scaleX: 0 },
+              { scaleX: 1, duration: 0.4, ease: "power2.out" },
+              at + 0.1
+            );
+          }
+
+          // ---- Scene 3 close: all three checks flash gold once together ----
+          // asr-keyword-glow envelope adapted shadow-free (frame.md bans text-shadow):
+          // attack → sustain → release built from explicit sequential tweens (no yoyo).
+          var FLASH_AT = 2.16;
+          var ATTACK = 0.09;
+          var SUSTAIN = 0.06;
+          var RELEASE = 0.16;
+          for (var j = 1; j <= 3; j++) {
+            var m = "#showday-marker" + j;
+            var c = "#showday-check" + j;
+            // attack: marker brightens toward pure sun-gold + scales up; check stroke warms
+            tl.to(m, { scale: 1.14, backgroundColor: "#f2c766", duration: ATTACK, ease: "power2.out" }, FLASH_AT);
+            tl.to(c, { stroke: "#8a5f13", duration: ATTACK, ease: "power2.out" }, FLASH_AT);
+            // release: settle back to rest after the sustain
+            tl.to(m, { scale: 1, backgroundColor: "#e8b64c", duration: RELEASE, ease: "power2.inOut" }, FLASH_AT + ATTACK + SUSTAIN);
+            tl.to(c, { stroke: "#0d1b2e", duration: RELEASE, ease: "power2.inOut" }, FLASH_AT + ATTACK + SUSTAIN);
+          }
+
+          // Macro life under the whole shot: the sun bloom breathes very slightly
+          // (single finite tween, transform-only).
+          tl.fromTo(
+            "#showday-bloom",
+            { scale: 1 },
+            { scale: 1.05, duration: 2.475, ease: "sine.inOut" },
+            0
+          );
+
+          // pagenum chrome fades in quietly with the card
+          tl.fromTo(
+            ".showday-pagenum",
+            { opacity: 0 },
+            { opacity: 1, duration: 0.4, ease: "none" },
+            0.3
+          );
+
+          window.__timelines["06-showday"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

@@ -1,0 +1,529 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Frame 04 — Know every pig</title>
+    <!-- head is source-file metadata only; runtime clones <template> contents -->
+  </head>
+  <body>
+    <template>
+      <style>
+        @import url("https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;600&family=JetBrains+Mono:wght@400;500&display=swap");
+
+        /* Root styled by #root (never a class on the composition root) */
+        #root {
+          position: absolute;
+          inset: 0;
+          width: 1080px;
+          height: 1080px;
+          overflow: hidden;
+          container-type: size;
+          font-family: "Inter", sans-serif;
+          color: #0d1b2e;
+        }
+
+        /* Full-bleed ground lives on a clip layer, never on #root */
+        .f04-scene {
+          position: absolute;
+          inset: 0;
+          background: #faf6ec;
+          overflow: hidden; /* camera pull would otherwise leak edges */
+        }
+
+        /* Static ember counter-bloom, bottom-left (subordinate, CSS-only) */
+        .f04-ember {
+          position: absolute;
+          left: -22%;
+          bottom: -24%;
+          width: 58%;
+          height: 58%;
+          background: radial-gradient(
+            circle at 50% 50%,
+            rgba(217, 164, 68, 0.18) 0%,
+            rgba(217, 164, 68, 0.08) 45%,
+            rgba(217, 164, 68, 0) 72%
+          );
+          pointer-events: none;
+        }
+
+        /* Camera wraps ALL content; transform written by GSAP onUpdate */
+        .f04-cam {
+          position: absolute;
+          inset: 0;
+          transform-origin: 50% 50%;
+          will-change: transform;
+        }
+
+        /* Sun bloom — the frame's one primary bloom; doubles as the
+           ambient-glow-bloom layer behind the hero card (Scene 3 swell) */
+        .f04-bloom {
+          position: absolute;
+          left: 12%;
+          top: 2%;
+          width: 76%;
+          height: 76%;
+          background: radial-gradient(
+            circle at 50% 46%,
+            rgba(232, 182, 76, 0.72) 0%,
+            rgba(243, 216, 160, 0.5) 34%,
+            rgba(238, 202, 126, 0.22) 58%,
+            rgba(250, 246, 236, 0) 76%
+          );
+          transform-origin: 50% 50%;
+          pointer-events: none;
+          will-change: transform, opacity;
+        }
+
+        /* ── chrome ─────────────────────────────────────────────── */
+        .f04-toplabel {
+          position: absolute;
+          left: 64px;
+          top: 58px;
+          font-family: "Inter", sans-serif;
+          font-size: 13px;
+          font-weight: 600;
+          letter-spacing: 0.32em;
+          text-transform: uppercase;
+          color: #0d1b2e;
+          padding-bottom: 12px;
+          border-bottom: 1px solid rgba(13, 27, 46, 0.2);
+        }
+        .f04-pagenum {
+          position: absolute;
+          right: 64px;
+          top: 846px;
+          font-family: "JetBrains Mono", monospace;
+          font-size: 13px;
+          letter-spacing: 0.08em;
+          color: rgba(13, 27, 46, 0.75);
+        }
+
+        /* ── pig detail card (recreated HTML mockup) ─────────────── */
+        .f04-card {
+          position: absolute;
+          left: 224px;
+          top: 148px;
+          width: 632px;
+          background: #faf6ec;
+          border: 1px solid #0d1b2e;
+          padding: 38px 44px 34px;
+          transform-origin: 50% 50%;
+          will-change: transform;
+          z-index: 2;
+        }
+        .f04-card-head {
+          display: flex;
+          align-items: baseline;
+          justify-content: space-between;
+          padding-bottom: 18px;
+          border-bottom: 1px solid rgba(13, 27, 46, 0.2);
+        }
+        .f04-card-kicker {
+          font-family: "Inter", sans-serif;
+          font-size: 13px;
+          font-weight: 600;
+          letter-spacing: 0.18em;
+          text-transform: uppercase;
+          color: #0d1b2e;
+        }
+        .f04-name {
+          font-family: "Instrument Serif", serif;
+          font-weight: 400;
+          font-size: 62px;
+          line-height: 1;
+          letter-spacing: -0.005em;
+          color: #0d1b2e;
+        }
+
+        .f04-body {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 30px 0 26px;
+        }
+        .f04-weight-col {
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+        }
+        .f04-weight-label {
+          font-family: "Inter", sans-serif;
+          font-size: 13px;
+          font-weight: 600;
+          letter-spacing: 0.18em;
+          text-transform: uppercase;
+          color: #0d1b2e;
+        }
+        .f04-weight-row {
+          display: flex;
+          align-items: baseline;
+          gap: 12px;
+          /* fixed width so digit-count changes never shift layout */
+          width: 300px;
+          height: 122px;
+        }
+        .f04-weight {
+          font-family: "JetBrains Mono", monospace;
+          font-variant-numeric: tabular-nums;
+          font-weight: 500;
+          font-size: 64px; /* tweened up by GSAP */
+          line-height: 1;
+          letter-spacing: -0.01em;
+          color: #0d1b2e;
+        }
+        .f04-lbs {
+          font-family: "JetBrains Mono", monospace;
+          font-size: 22px;
+          letter-spacing: 0.08em;
+          color: #0d1b2e;
+        }
+
+        .f04-ring-wrap {
+          position: relative;
+          width: 208px;
+          height: 208px;
+          flex: 0 0 auto;
+        }
+        .f04-ring-svg {
+          width: 208px;
+          height: 208px;
+          display: block;
+        }
+        .f04-ring-track {
+          fill: none;
+          stroke: rgba(13, 27, 46, 0.1);
+          stroke-width: 11;
+        }
+        .f04-ring-fill {
+          fill: none;
+          stroke: #e8b64c;
+          stroke-width: 11;
+          /* start at 12 o'clock; only strokeDashoffset is GSAP-animated,
+             so this CSS transform never conflicts */
+          transform: rotate(-90deg);
+          transform-origin: 50% 50%;
+        }
+        .f04-ring-center {
+          position: absolute;
+          inset: 0;
+          display: grid;
+          place-items: center;
+          text-align: center;
+        }
+        .f04-ring-center span {
+          font-family: "Inter", sans-serif;
+          font-size: 13px;
+          font-weight: 600;
+          letter-spacing: 0.18em;
+          text-transform: uppercase;
+          color: #0d1b2e;
+          line-height: 1.6;
+        }
+        .f04-badge {
+          position: absolute;
+          left: 50%;
+          bottom: -16px;
+          margin-left: -74px; /* center via margin, not translateX (GSAP scales it) */
+          width: 148px;
+          padding: 9px 0;
+          background: #e8b64c;
+          color: #0d1b2e;
+          font-family: "Inter", sans-serif;
+          font-size: 13px;
+          font-weight: 600;
+          letter-spacing: 0.18em;
+          text-transform: uppercase;
+          text-align: center;
+          transform-origin: 50% 50%;
+          will-change: transform;
+        }
+
+        /* rate-of-gain chip row */
+        .f04-rate {
+          display: flex;
+          align-items: center;
+          gap: 26px;
+          padding-top: 24px;
+          border-top: 1px solid rgba(13, 27, 46, 0.2);
+          will-change: transform;
+        }
+        .f04-rate-label {
+          font-family: "Inter", sans-serif;
+          font-size: 13px;
+          font-weight: 600;
+          letter-spacing: 0.18em;
+          text-transform: uppercase;
+          color: #0d1b2e;
+          flex: 0 0 auto;
+        }
+        .f04-rate-value {
+          font-family: "JetBrains Mono", monospace;
+          font-variant-numeric: tabular-nums;
+          font-size: 30px;
+          font-weight: 500;
+          color: #0d1b2e;
+          flex: 0 0 auto;
+        }
+        .f04-rate-value em {
+          font-style: normal;
+          font-size: 16px;
+          letter-spacing: 0.06em;
+        }
+        .f04-rate-track {
+          flex: 1 1 auto;
+          height: 12px;
+          background: rgba(13, 27, 46, 0.1);
+          overflow: hidden;
+        }
+        .f04-rate-fill {
+          width: 100%; /* required — scaleX of an unsized fill stays 0px */
+          height: 100%;
+          background: #e8b64c;
+          transform: scaleX(0);
+          transform-origin: left center;
+          will-change: transform;
+        }
+
+        /* days-to-show chip (Scene 3) */
+        .f04-chip {
+          position: absolute;
+          left: 50%;
+          top: 748px;
+          margin-left: -177px; /* center via margin; GSAP owns transform */
+          width: 354px;
+          padding: 20px 0;
+          background: #0d1b2e;
+          text-align: center;
+          transform-origin: 50% 50%;
+          will-change: transform;
+          z-index: 2;
+        }
+        .f04-chip-text {
+          display: inline-block;
+          min-width: 268px; /* fixed width so typing never jitters the chip */
+          text-align: left;
+          font-family: "JetBrains Mono", monospace;
+          font-size: 24px;
+          font-weight: 500;
+          letter-spacing: 0.14em;
+          color: #faf6ec;
+          white-space: nowrap;
+        }
+      </style>
+
+      <div
+        id="root"
+        data-composition-id="04-weights"
+        data-width="1080"
+        data-height="1080"
+        data-duration="5.931"
+      >
+        <div
+          class="f04-scene clip"
+          data-start="0"
+          data-duration="5.931"
+          data-track-index="0"
+        >
+          <div class="f04-ember"></div>
+
+          <div class="f04-cam" id="f04-cam">
+            <div class="f04-bloom" id="f04-bloom"></div>
+
+            <div class="f04-toplabel">Know every pig</div>
+            <div class="f04-pagenum">04 · PROFEEDER</div>
+
+            <!-- Recreated pig detail card -->
+            <div class="f04-card" id="f04-card">
+              <div class="f04-card-head">
+                <div class="f04-name">Bessie</div>
+                <div class="f04-card-kicker">Pig record</div>
+              </div>
+
+              <div class="f04-body">
+                <div class="f04-weight-col">
+                  <div class="f04-weight-label">Current weight</div>
+                  <div class="f04-weight-row">
+                    <span class="f04-weight" id="f04-weight">0</span>
+                    <span class="f04-lbs" id="f04-lbs">LBS</span>
+                  </div>
+                </div>
+
+                <div class="f04-ring-wrap">
+                  <svg class="f04-ring-svg" viewBox="0 0 208 208">
+                    <circle class="f04-ring-track" cx="104" cy="104" r="88"></circle>
+                    <circle class="f04-ring-fill" id="f04-ring" cx="104" cy="104" r="88"></circle>
+                  </svg>
+                  <div class="f04-ring-center">
+                    <span>Target<br />weight</span>
+                  </div>
+                  <div class="f04-badge" id="f04-badge">On target</div>
+                </div>
+              </div>
+
+              <div class="f04-rate" id="f04-rate">
+                <div class="f04-rate-label">Rate of gain</div>
+                <div class="f04-rate-value">+1.52 <em>/DAY</em></div>
+                <div class="f04-rate-track">
+                  <div class="f04-rate-fill" id="f04-rate-fill"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- days-to-show chip -->
+            <div class="f04-chip" id="f04-chip">
+              <span class="f04-chip-text" id="f04-chip-text"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+      <script>
+        window.__timelines = window.__timelines || {};
+        const tl = gsap.timeline({ paused: true });
+
+        const DUR = 5.931;
+
+        /* ── Scene 1 (0.0–1.6s): card rises, weight counts to 262, ring sweeps ── */
+
+        // sun bloom establishes early (frame never reads flat)
+        tl.fromTo(
+          "#f04-bloom",
+          { opacity: 0, scale: 0.94 },
+          { opacity: 0.55, scale: 1, duration: 1.0, ease: "power2.out" },
+          0
+        );
+
+        // spring-pop-entrance (smooth power3 settle, small y rise)
+        tl.fromTo(
+          "#f04-card",
+          { scale: 0, opacity: 0, y: 52 },
+          { scale: 1, opacity: 1, y: 0, duration: 0.65, ease: "power3.out" },
+          0.05
+        );
+
+        // counting-dynamic-scale: value + font-size in ONE tween (shared ease)
+        const weightEl = document.getElementById("f04-weight");
+        const wState = { v: 0, fs: 64 };
+        tl.to(
+          wState,
+          {
+            v: 262,
+            fs: 116,
+            duration: 1.35,
+            ease: "power3.out",
+            onUpdate: () => {
+              weightEl.textContent = String(Math.round(wState.v));
+              weightEl.style.fontSize = wState.fs + "px";
+            },
+          },
+          0.35
+        );
+
+        // stat-bars-and-fills, ring form: measured stroke draw on the SAME ease
+        const ring = document.getElementById("f04-ring");
+        const LEN = ring.getTotalLength();
+        ring.style.strokeDasharray = LEN;
+        ring.style.strokeDashoffset = LEN;
+        tl.to(
+          ring,
+          { strokeDashoffset: LEN * (1 - 0.87), duration: 1.35, ease: "power3.out" },
+          0.35
+        );
+
+        // LBS suffix rises AFTER the count lands (its own beat)
+        tl.fromTo(
+          "#f04-lbs",
+          { opacity: 0, y: 14 },
+          { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" },
+          1.55
+        );
+
+        /* ── Scene 2 (1.6–3.4s): rate chip slides in, bar fills, badge pops ── */
+
+        tl.fromTo(
+          "#f04-rate",
+          { opacity: 0, x: -46 },
+          { opacity: 1, x: 0, duration: 0.55, ease: "power3.out" },
+          1.7
+        );
+        tl.fromTo(
+          "#f04-rate-fill",
+          { scaleX: 0 },
+          { scaleX: 0.76, duration: 0.9, ease: "power2.out" },
+          1.95
+        );
+
+        // gold "on target" badge — the sanctioned accent pop (smooth settle)
+        tl.fromTo(
+          "#f04-badge",
+          { scale: 0, opacity: 0 },
+          { scale: 1, opacity: 1, duration: 0.55, ease: "power3.out" },
+          2.45
+        );
+
+        /* ── Scene 3 (3.4–5.0s): SHOW IN 21 DAYS chip reveals, glow blooms ── */
+
+        tl.fromTo(
+          "#f04-chip",
+          { opacity: 0, y: 26, scale: 0.94 },
+          { opacity: 1, y: 0, scale: 1, duration: 0.55, ease: "power3.out" },
+          3.5
+        );
+
+        // discrete-text-sequence (smooth character slice) — deterministic
+        const chipTextEl = document.getElementById("f04-chip-text");
+        const CHIP_TEXT = "SHOW IN 21 DAYS";
+        const tState = { n: 0 };
+        tl.to(
+          tState,
+          {
+            n: CHIP_TEXT.length,
+            duration: 0.8,
+            ease: "power1.inOut",
+            onUpdate: () => {
+              chipTextEl.textContent = CHIP_TEXT.substring(0, Math.floor(tState.n));
+            },
+          },
+          3.6
+        );
+
+        // ambient-glow-bloom: the sun bloom swells softly behind the card
+        tl.to(
+          "#f04-bloom",
+          { opacity: 0.85, scale: 1.05, duration: 1.1, ease: "power2.out" },
+          3.55
+        );
+
+        /* ── multi-phase-camera: gentle push-in that peaks, then eases to a stop ── */
+
+        const cam = document.getElementById("f04-cam");
+        const phase = { s: 1 };
+        // push runs under Scene 2 and peaks
+        tl.to(phase, { s: 1.07, duration: 1.8, ease: "power2.inOut" }, 1.6);
+        // eases to a stop — card HOLDS still for the tail
+        tl.to(phase, { s: 1.05, duration: 1.2, ease: "power2.out" }, 3.5);
+
+        // continuous micro-drift (Lissajous, deterministic) + phase scale
+        const drift = { p: 0 };
+        tl.to(
+          drift,
+          {
+            p: Math.PI * 2 * 1.4,
+            duration: DUR,
+            ease: "none",
+            onUpdate: () => {
+              const dx = Math.sin(drift.p) * 4;
+              const dy = Math.sin(drift.p * 1.3) * 2.5;
+              cam.style.transform =
+                "scale(" + phase.s + ") translate(" + dx + "px, " + dy + "px)";
+            },
+          },
+          0
+        );
+
+        window.__timelines["04-weights"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

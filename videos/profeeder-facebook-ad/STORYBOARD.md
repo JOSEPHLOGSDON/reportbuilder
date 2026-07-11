@@ -98,7 +98,7 @@ Scene 3 (2.8–4.0s): on "in your pocket," a small gold italic tagline "the whol
 
 ## Frame 4 — Know every pig
 
-- scene: Pig detail card UI — weight 262 lbs, rate-of-gain +1.52/day counts up, "on target for show weight" badge pops; days-to-show chip
+- scene: Real Lucy profile screen (weight/ADG/days-on-feed stat cards) advancing to the Pace-vs-Target gauge screen inside the phone
 - voiceover: "Track every pound of gain — and see exactly where every pig stands, days out from the show."
 - duration: 5.525s
 - transition_in: zoom-through
@@ -113,15 +113,15 @@ Scene 3 (2.8–4.0s): on "in your pocket," a small gold italic tagline "the whol
 narrativeRole: The hero feature — rate-of-gain math toward target show weight is the core magic. The count-up dramatizes certainty replacing guesswork.
 keyMessage: You always know where every pig stands.
 
-- blueprint: device-surface-showcase (Adapt — floating-window push-scroll feel on a real phone screen)
-- focal: assets/screen-pig-details-adg.png
-- roles: screen-pig-details-adg = focal cutout (REAL Pig Details screenshot mounted in an authored phone shell — the hero of the beat)
+- blueprint: device-surface-showcase (Adapt — screen-cycling: pig profile → pace gauge)
+- focal: assets/screen-pig-profile.png
+- roles: screen-pig-profile = focal cutout (REAL Lucy profile screenshot, first screen in the shell); screen-pig-details-adg = supporting (REAL pace-gauge screenshot, second screen)
 - sfx: tick-count, chime-soft
 
-Adapt: keep the surface-as-hero signature with a camera that pushes IN on a target region; the real screenshot replaces the recreated card. The screenshot is TALL — the phone screen shows its top (target card) first, then the screen content scrolls up inside the shell to reveal the Pace-vs-Target gauge (screen-cycling per `3d-page-scroll`; clip at the shell, `data-layout-allow-overflow` on the scrolling layer).
-Scene 1 (0.0–1.8s): cream canvas. On "track every pound of gain," the phone (screen = `assets/screen-pig-details-adg.png`, top-aligned: the purple "McLean county fair — Target: 265 lbs" card visible) rises centered (`spring-pop-entrance`, smooth) — Centered, phone ~62% of frame height, upper-two-thirds; a gold callout chip "ADG needed · 1.44 lbs/day" fades in beside it pointing at the stat (`discrete-text-sequence`).
-Scene 2 (1.8–3.6s): on "exactly where every pig stands," the screen content scrolls up inside the shell (`3d-page-scroll`) landing the "Pace vs Target ADG" gauge centered; a gentle camera push-in runs toward the gauge (`multi-phase-camera` + `coordinate-target-zoom`) and peaks; a gold "on target" accent underlines the gauge's green zone (`css-marker-patterns`).
-Scene 3 (3.6–5.0s): on "days out from the show," a navy chip "25 DAYS TO SHOW" reveals beside the phone (`discrete-text-sequence`, echoing the screen's own copy); glow blooms softly behind the phone (`ambient-glow-bloom`); camera eases to a stop; HOLD still.
+Adapt: keep the surface-as-hero signature and the screen-cycling engine — the phone's screen ADVANCES through a real flow (profile stats → pace gauge), with the camera pushing in continually.
+Scene 1 (0.0–2.2s): cream canvas. On "track every pound of gain," the phone rises centered (`spring-pop-entrance`, smooth) showing `assets/screen-pig-profile.png` positioned so Lucy's header and the four stat cards (Current Weight 253 lbs, ADG, Days on Feed) read clearly — Centered, phone ~62% of frame height, upper-two-thirds; a gold callout chip "+1.74 lbs/day" fades in beside it (`discrete-text-sequence`); the continual camera push begins.
+Scene 2 (2.2–3.8s): on "exactly where every pig stands," the SCREEN ADVANCES — the profile screen pushes up and out as `assets/screen-pig-details-adg.png` (positioned at the "Pace vs Target ADG" gauge region) pushes in from below inside the clipped shell (screen-cycling, velocity-matched internal seam per `3d-page-scroll`); the camera keeps closing toward the gauge (`multi-phase-camera` + `coordinate-target-zoom`); a gold accent underlines the gauge's green zone (`css-marker-patterns`).
+Scene 3 (3.8–5.2s): on "days out from the show," a navy chip "25 DAYS TO SHOW" reveals beside the phone (`discrete-text-sequence`); glow blooms softly (`ambient-glow-bloom`); camera eases to a stop; HOLD still.
 
 
 ## Frame 5 — Rations & health
@@ -154,7 +154,7 @@ Scene 3 (3.6–4.5s): both settle level and HOLD; a single traveling gold glow s
 
 ## Frame 6 — Show day, dialed in
 
-- scene: Show countdown UI — "Indiana State Fair — 21 days" counts down; checklist rows (entries, target weight, buyer) tick complete
+- scene: Real Shows screen in a phone (McLean county fair — 19 days) beside the Teams & Collaboration card
 - voiceover: "Every show — counted down, dialed in."
 - duration: 2.944s
 - transition_in: push-slide LEFT
@@ -169,13 +169,15 @@ Scene 3 (3.6–4.5s): both settle level and HOLD; a single traveling gold glow s
 narrativeRole: Pays off the hook — chore-time discipline arriving at show day fully prepared. Echoes the site's own line verbatim.
 keyMessage: Nothing sneaks up on you.
 
-- blueprint: grid-card-assemble (Adapt — Benefits vertical-list, BUILD mode)
+- blueprint: grid-card-assemble (Adapt — two-up: real Shows phone + real Teams card)
+- focal: assets/screen-shows.png
+- roles: screen-shows = focal cutout (REAL Shows screenshot in an authored phone shell, left slot); card-teams = supporting (REAL "Teams & Collaboration" feature-card image, right slot)
 - sfx: tick-count
 
-Adapt: keep the ~1 item/sec accumulating-list signature with marker-pop + check-draw entries; the list is a show-countdown card (header + 3 checklist lines) instead of abstract benefit lines.
-Scene 1 (0.0–1.2s): cream canvas. On "every show," a show card header assembles centered — "INDIANA STATE FAIR" in Inter caps with a mono countdown "21 DAYS" beside it counting down from 24 (`counting-dynamic-scale`, shrinking beat) — Centered, card ~58% width, upper-two-thirds.
-Scene 2 (1.2–2.4s): on "counted down," checklist line 1 "Entries submitted" enters: gold marker spring-pops, check draws on (`spring-pop-entrance` + `svg-path-draw`), text mask-wipes in; line 2 "Target weight — on track" follows the same way (~1/sec cadence).
-Scene 3 (2.4–3.5s): on "dialed in," line 3 "Buyer confirmed" lands and ALL three checks flash gold once together (`asr-keyword-glow` envelope); card HOLDS dead still.
+Adapt: keep the staggered assemble-into-slot signature; left slot is a REAL phone (screen = `assets/screen-shows.png`, positioned so "Upcoming Shows (2)" and both show cards with their "19 days" / "35 days" pills read clearly), right slot is the REAL Teams & Collaboration card image — each reveals ON its spoken cue.
+Scene 1 (0.0–1.5s): cream canvas. On "every show," the Shows phone fades + slides into the left slot (`center-outward-expansion`, direct-into-slot form) — split-screen two-up, phone ~46% width, upper-two-thirds; a gold callout chip "19 DAYS OUT" pops beside the McLean row (`spring-pop-entrance` accent).
+Scene 2 (1.5–2.4s): on "counted down," the Teams & Collaboration card (`assets/card-teams.png` as an <img> card with a hairline border) assembles into the right slot the same way — the whole show team stays synced.
+Scene 3 (2.4–2.944s): on "dialed in," both settle level and HOLD; one traveling gold glow sweeps across the pair (`ambient-glow-bloom` traveling form) and dies out.
 
 
 ## Frame 7 — Start free

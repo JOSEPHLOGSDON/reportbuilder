@@ -1,0 +1,462 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Frame 05 — Rations &amp; health</title>
+  </head>
+  <body>
+    <template>
+      <style>
+        @import url("https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;600&family=JetBrains+Mono:wght@400&display=swap");
+
+        /* Root: styled via #root (never a class on the composition root) */
+        #root {
+          position: relative;
+          width: 1080px;
+          height: 1080px;
+          overflow: hidden;
+          container-type: size;
+          font-family: "Inter", sans-serif;
+          color: #0d1b2e;
+        }
+
+        /* ── Ground (full-bleed clip; never paint the root itself) ── */
+        .rh5-bg {
+          position: absolute;
+          inset: 0;
+          background: #faf6ec;
+        }
+        .rh5-sun-bloom {
+          position: absolute;
+          left: -8%;
+          top: 6%;
+          width: 72%;
+          height: 72%;
+          background: radial-gradient(
+            circle at 50% 50%,
+            rgba(232, 182, 76, 0.55) 0%,
+            rgba(243, 216, 160, 0.42) 34%,
+            rgba(238, 202, 126, 0.2) 58%,
+            rgba(250, 246, 236, 0) 74%
+          );
+          pointer-events: none;
+        }
+        .rh5-ember-bloom {
+          position: absolute;
+          right: -14%;
+          bottom: -16%;
+          width: 56%;
+          height: 56%;
+          background: radial-gradient(
+            circle at 50% 50%,
+            rgba(217, 164, 65, 0.18) 0%,
+            rgba(217, 164, 65, 0.08) 46%,
+            rgba(250, 246, 236, 0) 70%
+          );
+          pointer-events: none;
+        }
+
+        /* ── Content layer ── */
+        .rh5-content {
+          position: absolute;
+          inset: 0;
+        }
+
+        .rh5-header {
+          position: absolute;
+          left: 72px;
+          right: 72px;
+          top: 96px;
+        }
+        .rh5-kicker {
+          font-family: "Inter", sans-serif;
+          font-size: 13px;
+          font-weight: 600;
+          letter-spacing: 0.32em;
+          text-transform: uppercase;
+          color: #0d1b2e;
+          opacity: 0;
+        }
+        .rh5-headline {
+          margin-top: 18px;
+          font-family: "Instrument Serif", serif;
+          font-weight: 400;
+          font-size: 62px;
+          line-height: 1.02;
+          letter-spacing: -0.005em;
+          color: #0d1b2e;
+          opacity: 0;
+        }
+        .rh5-headline em {
+          font-style: italic;
+        }
+
+        /* ── Two-up card row ── */
+        .rh5-row {
+          position: absolute;
+          left: 72px;
+          top: 316px;
+          width: 936px;
+          height: 452px;
+        }
+        .rh5-card {
+          position: absolute;
+          top: 0;
+          width: 448px;
+          height: 452px;
+          background: #faf6ec;
+          border: 1px solid #0d1b2e;
+          padding: 34px 36px;
+          box-sizing: border-box;
+          opacity: 0;
+          will-change: transform, opacity;
+        }
+        .rh5-card-feed {
+          left: 0;
+        }
+        .rh5-card-health {
+          right: 0;
+        }
+        .rh5-card-label {
+          font-size: 13px;
+          font-weight: 600;
+          letter-spacing: 0.18em;
+          text-transform: uppercase;
+          color: #0d1b2e;
+        }
+        .rh5-card-title {
+          margin-top: 12px;
+          padding-bottom: 22px;
+          font-family: "Instrument Serif", serif;
+          font-weight: 400;
+          font-size: 42px;
+          line-height: 1.08;
+          letter-spacing: -0.005em;
+          border-bottom: 1px solid rgba(13, 27, 46, 0.2);
+        }
+
+        /* feed-mix chips */
+        .rh5-chips {
+          margin-top: 30px;
+          display: flex;
+          flex-wrap: wrap;
+          gap: 12px;
+        }
+        .rh5-chip {
+          display: inline-block;
+          padding: 12px 18px;
+          background: rgba(232, 182, 76, 0.55);
+          font-size: 13px;
+          font-weight: 600;
+          letter-spacing: 0.18em;
+          text-transform: uppercase;
+          color: #0d1b2e;
+          opacity: 0;
+          will-change: transform, opacity;
+        }
+
+        /* gold blend bar */
+        .rh5-blend {
+          margin-top: 44px;
+        }
+        .rh5-blend-head {
+          display: flex;
+          justify-content: space-between;
+          align-items: baseline;
+        }
+        .rh5-blend-label {
+          font-size: 13px;
+          font-weight: 600;
+          letter-spacing: 0.18em;
+          text-transform: uppercase;
+        }
+        .rh5-blend-mono {
+          font-family: "JetBrains Mono", monospace;
+          font-size: 15px;
+          letter-spacing: 0.04em;
+          opacity: 0;
+        }
+        .rh5-blend-track {
+          margin-top: 14px;
+          width: 100%;
+          height: 14px;
+          background: rgba(13, 27, 46, 0.12);
+          overflow: hidden;
+        }
+        /* width:100% is required — a zero-width fill scaled by X stays invisible */
+        .rh5-blend-fill {
+          width: 100%;
+          height: 100%;
+          background: #e8b64c;
+          transform: scaleX(0);
+          transform-origin: left center;
+          will-change: transform;
+        }
+
+        /* reminder rows */
+        .rh5-rows {
+          margin-top: 22px;
+        }
+        .rh5-reminder {
+          display: flex;
+          align-items: center;
+          gap: 16px;
+          padding: 24px 0;
+          border-bottom: 1px solid rgba(13, 27, 46, 0.2);
+          opacity: 0;
+          will-change: transform, opacity;
+        }
+        .rh5-check {
+          width: 30px;
+          height: 30px;
+          flex: 0 0 30px;
+        }
+        .rh5-check path {
+          fill: none;
+          stroke: #e8b64c;
+          stroke-width: 3.5;
+          stroke-linecap: round;
+          stroke-linejoin: round;
+        }
+        .rh5-reminder-name {
+          font-family: "Instrument Serif", serif;
+          font-size: 30px;
+          line-height: 1.1;
+        }
+        .rh5-reminder-when {
+          margin-left: auto;
+          font-family: "JetBrains Mono", monospace;
+          font-size: 15px;
+          letter-spacing: 0.04em;
+        }
+
+        /* traveling gold sweep — clipped to the card-pair surface */
+        .rh5-sweep-clip {
+          position: absolute;
+          left: 72px;
+          top: 316px;
+          width: 936px;
+          height: 452px;
+          overflow: hidden;
+          pointer-events: none;
+        }
+        .rh5-sweep {
+          position: absolute;
+          top: -20px;
+          bottom: -20px;
+          left: 0;
+          width: 260px;
+          background: linear-gradient(
+            105deg,
+            rgba(232, 182, 76, 0) 0%,
+            rgba(232, 182, 76, 0.3) 50%,
+            rgba(232, 182, 76, 0) 100%
+          );
+          opacity: 0;
+          will-change: transform, opacity;
+        }
+
+        /* pagenum chrome (kept above the caption keep-out band) */
+        .rh5-pagenum {
+          position: absolute;
+          right: 72px;
+          top: 840px;
+          font-family: "JetBrains Mono", monospace;
+          font-size: 13px;
+          letter-spacing: 0.08em;
+          color: rgba(13, 27, 46, 0.75);
+          opacity: 0;
+        }
+      </style>
+
+      <div
+        id="root"
+        data-composition-id="05-rations-health"
+        data-width="1080"
+        data-height="1080"
+      >
+        <!-- ground -->
+        <div class="rh5-bg clip" data-start="0" data-duration="4.971" data-track-index="0">
+          <div class="rh5-sun-bloom"></div>
+          <div class="rh5-ember-bloom"></div>
+        </div>
+
+        <!-- content -->
+        <div class="rh5-content clip" data-start="0" data-duration="4.971" data-track-index="1">
+          <div class="rh5-header">
+            <div class="rh5-kicker" id="rh5-kicker">Feed + Health</div>
+            <div class="rh5-headline" id="rh5-headline">Rations &amp; health, <em>handled.</em></div>
+          </div>
+
+          <div class="rh5-row">
+            <!-- LEFT — Custom rations -->
+            <div class="rh5-card rh5-card-feed" id="rh5-card-feed">
+              <div class="rh5-card-label">Feed mix</div>
+              <div class="rh5-card-title">Custom rations</div>
+              <div class="rh5-chips">
+                <span class="rh5-chip">Corn</span>
+                <span class="rh5-chip">Supplement</span>
+                <span class="rh5-chip">Show feed</span>
+              </div>
+              <div class="rh5-blend">
+                <div class="rh5-blend-head">
+                  <span class="rh5-blend-label">Blend</span>
+                  <span class="rh5-blend-mono" id="rh5-blend-mono">3-WAY MIX</span>
+                </div>
+                <div class="rh5-blend-track">
+                  <div class="rh5-blend-fill" id="rh5-blend-fill"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- RIGHT — Health schedule -->
+            <div class="rh5-card rh5-card-health" id="rh5-card-health">
+              <div class="rh5-card-label">Reminders</div>
+              <div class="rh5-card-title">Health schedule</div>
+              <div class="rh5-rows">
+                <div class="rh5-reminder" id="rh5-rem-1">
+                  <svg class="rh5-check" viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg">
+                    <path id="rh5-check-1" d="M5 16 L12 23 L25 7" />
+                  </svg>
+                  <span class="rh5-reminder-name">Ivomec</span>
+                  <span class="rh5-reminder-when">DUE SAT</span>
+                </div>
+                <div class="rh5-reminder" id="rh5-rem-2">
+                  <svg class="rh5-check" viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg">
+                    <path id="rh5-check-2" d="M5 16 L12 23 L25 7" />
+                  </svg>
+                  <span class="rh5-reminder-name">Vaccine</span>
+                  <span class="rh5-reminder-when">DONE</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- one-pass traveling gold sweep over the assembled pair -->
+          <div class="rh5-sweep-clip">
+            <div class="rh5-sweep" id="rh5-sweep"></div>
+          </div>
+
+          <div class="rh5-pagenum" id="rh5-pagenum">05</div>
+        </div>
+      </div>
+
+      <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+      <script>
+        window.__timelines = window.__timelines || {};
+        const tl = gsap.timeline({ paused: true });
+
+        /* ── measure check paths (svg-path-draw: dasharray = getTotalLength) ── */
+        const checks = ["rh5-check-1", "rh5-check-2"].map((id) => {
+          const p = document.getElementById(id);
+          const len = p.getTotalLength();
+          p.style.strokeDasharray = String(len);
+          p.style.strokeDashoffset = String(len);
+          return p;
+        });
+
+        /* ══ Scene 1 (0.0–2.0s) — "blend custom rations on the fly" ══ */
+
+        // establishing header (short copy, arrives first so the hero reads by 0.5s)
+        tl.fromTo(
+          "#rh5-kicker",
+          { opacity: 0, y: 10 },
+          { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" },
+          0.05,
+        );
+        tl.fromTo(
+          "#rh5-headline",
+          { opacity: 0, y: 16 },
+          { opacity: 1, y: 0, duration: 0.55, ease: "power2.out" },
+          0.15,
+        );
+        tl.fromTo(
+          "#rh5-pagenum",
+          { opacity: 0 },
+          { opacity: 1, duration: 0.4, ease: "power1.out" },
+          0.4,
+        );
+
+        // RATIONS card fades + slides a short path directly into its left slot
+        // (center-outward-expansion, direct-into-slot form; lands slightly tilted, settles in Scene 3)
+        tl.fromTo(
+          "#rh5-card-feed",
+          { opacity: 0, x: -64, scale: 0.96, rotation: -1.4 },
+          { opacity: 1, x: 0, scale: 1, rotation: -0.5, duration: 0.9, ease: "power3.out" },
+          0.25,
+        );
+
+        // three feed-mix chips stagger in (gsap-effects stagger; 0.04–0.08s band widened per beat pacing)
+        tl.fromTo(
+          "#rh5-card-feed .rh5-chip",
+          { opacity: 0, y: 14, scale: 0.94 },
+          { opacity: 1, y: 0, scale: 1, duration: 0.45, ease: "power2.out", stagger: 0.14 },
+          0.85,
+        );
+
+        // gold blend bar fills (stat-bars-and-fills: scaleX from left origin, never width)
+        tl.fromTo(
+          "#rh5-blend-fill",
+          { scaleX: 0 },
+          { scaleX: 0.72, duration: 0.9, ease: "power2.out" },
+          1.2,
+        );
+        tl.fromTo(
+          "#rh5-blend-mono",
+          { opacity: 0 },
+          { opacity: 1, duration: 0.4, ease: "power1.out" },
+          1.35,
+        );
+
+        /* ══ Scene 2 (2.0–3.6s) — "health schedules … never slip again" ══ */
+
+        // HEALTH card assembles into the right slot the same way (mirrored)
+        tl.fromTo(
+          "#rh5-card-health",
+          { opacity: 0, x: 64, scale: 0.96, rotation: 1.4 },
+          { opacity: 1, x: 0, scale: 1, rotation: 0.5, duration: 0.85, ease: "power3.out" },
+          2.0,
+        );
+
+        // reminder rows appear
+        tl.fromTo(
+          "#rh5-rem-1",
+          { opacity: 0, y: 12 },
+          { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" },
+          2.5,
+        );
+        tl.fromTo(
+          "#rh5-rem-2",
+          { opacity: 0, y: 12 },
+          { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" },
+          2.68,
+        );
+
+        // on "never slip again": checkmarks draw on in gold (svg-path-draw)
+        tl.to(checks[0], { strokeDashoffset: 0, duration: 0.4, ease: "power2.out" }, 3.0);
+        tl.to(checks[1], { strokeDashoffset: 0, duration: 0.35, ease: "power2.out" }, 3.25);
+
+        // done-row dims by position (dim-by-position de-emphasis)
+        tl.to("#rh5-rem-2", { opacity: 0.55, duration: 0.35, ease: "power1.inOut" }, 3.45);
+
+        /* ══ Scene 3 (3.6–4.97s) — settle level + one traveling gold sweep, then still ══ */
+
+        // both cards settle level
+        tl.to("#rh5-card-feed", { rotation: 0, duration: 0.5, ease: "power2.inOut" }, 3.6);
+        tl.to("#rh5-card-health", { rotation: 0, duration: 0.5, ease: "power2.inOut" }, 3.6);
+
+        // one-pass traveling glow sweep across the pair (ambient-glow-bloom, traveling form):
+        // enters fully off the left edge, exits fully off the right, constant glide, dies out
+        tl.fromTo(
+          "#rh5-sweep",
+          { x: -300, opacity: 0 },
+          { x: 1000, opacity: 0.3, duration: 0.85, ease: "none" },
+          3.7,
+        );
+        tl.to("#rh5-sweep", { opacity: 0, duration: 0.25, ease: "power1.in" }, 4.45);
+
+        window.__timelines["05-rations-health"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

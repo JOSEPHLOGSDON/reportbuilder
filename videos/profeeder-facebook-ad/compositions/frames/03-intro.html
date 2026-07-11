@@ -1,0 +1,417 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>03-intro — Meet ProFeeder</title>
+  </head>
+  <body>
+    <template>
+      <style>
+        @import url("https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;600&family=JetBrains+Mono:wght@400;600&display=swap");
+
+        #root {
+          position: absolute;
+          inset: 0;
+          width: 1080px;
+          height: 1080px;
+          overflow: hidden;
+          font-family: "Inter", sans-serif;
+        }
+
+        /* ---------- ground: navy ink field (full-bleed clip, never on #root) ---------- */
+        .i03-bg {
+          position: absolute;
+          inset: 0;
+          background: #0d1b2e;
+        }
+        /* subordinate ember counter-bloom, lower-left */
+        .i03-ember {
+          position: absolute;
+          left: -260px;
+          bottom: -220px;
+          width: 720px;
+          height: 720px;
+          border-radius: 50%;
+          background: radial-gradient(
+            circle,
+            rgba(217, 164, 65, 0.16) 0%,
+            rgba(217, 164, 65, 0.07) 45%,
+            rgba(217, 164, 65, 0) 70%
+          );
+        }
+
+        /* ---------- stage ---------- */
+        .i03-stage {
+          position: absolute;
+          inset: 0;
+        }
+
+        /* soft gold haze behind the disc (depth layer 0) */
+        #i03-haze {
+          position: absolute;
+          left: 460px;
+          top: 100px;
+          width: 760px;
+          height: 760px;
+          border-radius: 50%;
+          background: radial-gradient(
+            circle,
+            rgba(232, 182, 76, 0.28) 0%,
+            rgba(238, 202, 126, 0.12) 48%,
+            rgba(238, 202, 126, 0) 72%
+          );
+        }
+
+        /* gold accent disc behind the phone (depth layer 1) */
+        #i03-disc {
+          position: absolute;
+          left: 550px;
+          top: 190px;
+          width: 580px;
+          height: 580px;
+          border-radius: 50%;
+          background: radial-gradient(circle at 38% 32%, #f3d8a0 0%, #e8b64c 55%, #d9a441 100%);
+          transform-origin: 50% 50%;
+          will-change: transform, opacity;
+        }
+
+        /* ---------- phone mockup (depth layer 2) ---------- */
+        #i03-phone {
+          position: absolute;
+          left: 645px;
+          top: 190px;
+          width: 340px;
+          height: 600px;
+          will-change: transform, opacity;
+        }
+        .i03-shell {
+          position: absolute;
+          inset: 0;
+          background: #16263c;
+          border: 1px solid rgba(250, 246, 236, 0.4);
+          border-radius: 26px;
+          padding: 12px;
+        }
+        .i03-screen {
+          position: relative;
+          width: 100%;
+          height: 100%;
+          background: #faf6ec;
+          border-radius: 16px;
+          overflow: hidden;
+          padding: 24px 22px;
+        }
+        .i03-speaker {
+          position: absolute;
+          top: 13px;
+          left: 50%;
+          margin-left: -32px;
+          width: 64px;
+          height: 5px;
+          background: #0d1b2e;
+          border-radius: 3px;
+          z-index: 2;
+        }
+
+        /* --- Feeding Time UI --- */
+        .i03-ui-label {
+          font-family: "Inter", sans-serif;
+          font-size: 11px;
+          font-weight: 600;
+          letter-spacing: 0.18em;
+          text-transform: uppercase;
+          color: #0d1b2e;
+          opacity: 0.6;
+          margin-top: 10px;
+        }
+        .i03-ui-title {
+          font-family: "Instrument Serif", serif;
+          font-weight: 400;
+          font-size: 36px;
+          line-height: 1.1;
+          color: #0d1b2e;
+          margin-top: 4px;
+          padding-bottom: 14px;
+          border-bottom: 1px solid #0d1b2e;
+        }
+        .i03-row {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          padding: 17px 0;
+          border-bottom: 1px solid rgba(13, 27, 46, 0.18);
+          will-change: opacity;
+        }
+        .i03-check {
+          flex: 0 0 auto;
+          width: 32px;
+          height: 32px;
+        }
+        .i03-check .i03-ring {
+          fill: none;
+          stroke: rgba(13, 27, 46, 0.45);
+          stroke-width: 1.5;
+        }
+        .i03-check .i03-fill {
+          fill: #e8b64c;
+          opacity: 0;
+        }
+        .i03-check .i03-tick {
+          fill: none;
+          stroke: #b07f24;
+          stroke-width: 3.5;
+          stroke-linecap: round;
+          stroke-linejoin: round;
+        }
+        .i03-row-main {
+          flex: 1 1 auto;
+          min-width: 0;
+        }
+        .i03-row-pen {
+          font-family: "Inter", sans-serif;
+          font-size: 17px;
+          font-weight: 600;
+          color: #0d1b2e;
+          line-height: 1.25;
+        }
+        .i03-row-sub {
+          font-family: "Inter", sans-serif;
+          font-size: 12px;
+          font-weight: 400;
+          color: #0d1b2e;
+          opacity: 0.55;
+          margin-top: 2px;
+        }
+        .i03-chip {
+          flex: 0 0 auto;
+          font-family: "JetBrains Mono", monospace;
+          font-size: 12px;
+          font-weight: 600;
+          letter-spacing: 0.04em;
+          color: #0d1b2e;
+          border: 1px solid rgba(13, 27, 46, 0.45);
+          padding: 5px 9px;
+        }
+
+        /* ---------- wordmark + tagline (depth layer 3, upper-left) ---------- */
+        .i03-lockup {
+          position: absolute;
+          left: 72px;
+          top: 148px;
+          width: 560px;
+        }
+        .i03-wordmark {
+          font-family: "Instrument Serif", serif;
+          font-weight: 400;
+          font-size: 94px;
+          line-height: 1;
+          letter-spacing: -0.005em;
+          color: #faf6ec;
+          white-space: nowrap;
+        }
+        .i03-token {
+          display: inline-block;
+          will-change: transform, opacity;
+        }
+        .i03-token-gold {
+          color: #e8b64c;
+        }
+        #i03-tagline {
+          font-family: "Instrument Serif", serif;
+          font-style: italic;
+          font-weight: 400;
+          font-size: 36px;
+          line-height: 1.2;
+          color: #e8b64c;
+          margin-top: 26px;
+          will-change: transform, opacity;
+        }
+      </style>
+
+      <div id="root" data-composition-id="03-intro" data-width="1080" data-height="1080" data-duration="2.987">
+        <!-- ground -->
+        <div
+          class="clip i03-bg"
+          data-start="0"
+          data-duration="2.987"
+          data-track-index="0"
+        >
+          <div class="i03-ember"></div>
+        </div>
+
+        <!-- stage -->
+        <div
+          class="clip i03-stage"
+          data-start="0"
+          data-duration="2.987"
+          data-track-index="1"
+        >
+          <div id="i03-haze"></div>
+          <div id="i03-disc"></div>
+
+          <!-- phone mockup: recreated Feeding Time checklist -->
+          <div id="i03-phone">
+            <div id="i03-phone-jit" style="position: absolute; inset: 0; will-change: transform">
+              <div class="i03-shell">
+                <div class="i03-speaker"></div>
+                <div class="i03-screen">
+                  <div class="i03-ui-label">AM Feeding · Today</div>
+                  <div class="i03-ui-title">Feeding Time</div>
+
+                  <div class="i03-row" id="i03-row1">
+                    <svg class="i03-check" viewBox="0 0 32 32">
+                      <circle class="i03-ring" cx="16" cy="16" r="14.5"></circle>
+                      <circle class="i03-fill" id="i03-fill1" cx="16" cy="16" r="14.5"></circle>
+                      <path class="i03-tick" id="i03-tick1" d="M9.5 16.5 L14 21 L23 11"></path>
+                    </svg>
+                    <div class="i03-row-main">
+                      <div class="i03-row-pen">Pen 1 · Barrows</div>
+                      <div class="i03-row-sub">2 head</div>
+                    </div>
+                    <div class="i03-chip">5.5 lb</div>
+                  </div>
+
+                  <div class="i03-row" id="i03-row2">
+                    <svg class="i03-check" viewBox="0 0 32 32">
+                      <circle class="i03-ring" cx="16" cy="16" r="14.5"></circle>
+                      <circle class="i03-fill" id="i03-fill2" cx="16" cy="16" r="14.5"></circle>
+                      <path class="i03-tick" id="i03-tick2" d="M9.5 16.5 L14 21 L23 11"></path>
+                    </svg>
+                    <div class="i03-row-main">
+                      <div class="i03-row-pen">Pen 3 · Gilts</div>
+                      <div class="i03-row-sub">3 head</div>
+                    </div>
+                    <div class="i03-chip">6.0 lb</div>
+                  </div>
+
+                  <div class="i03-row">
+                    <svg class="i03-check" viewBox="0 0 32 32">
+                      <circle class="i03-ring" cx="16" cy="16" r="14.5"></circle>
+                    </svg>
+                    <div class="i03-row-main">
+                      <div class="i03-row-pen">Pen 4 · Duroc</div>
+                      <div class="i03-row-sub">1 head</div>
+                    </div>
+                    <div class="i03-chip">6.5 lb</div>
+                  </div>
+
+                  <div class="i03-row" style="border-bottom: none">
+                    <svg class="i03-check" viewBox="0 0 32 32">
+                      <circle class="i03-ring" cx="16" cy="16" r="14.5"></circle>
+                    </svg>
+                    <div class="i03-row-main">
+                      <div class="i03-row-pen">Sow barn</div>
+                      <div class="i03-row-sub">4 head</div>
+                    </div>
+                    <div class="i03-chip">12 lb</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- wordmark lockup -->
+          <div class="i03-lockup">
+            <div class="i03-wordmark">
+              <span class="i03-token" id="i03-w1">Pro</span><span class="i03-token" id="i03-w2">Feeder</span><span class="i03-token i03-token-gold" id="i03-w3">.ag</span>
+            </div>
+            <div id="i03-tagline">the whole barn, in your pocket.</div>
+          </div>
+        </div>
+      </div>
+
+      <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+      <script>
+        window.__timelines = window.__timelines || {};
+
+        // Measure the two check ticks so the stroke-draw matches real geometry.
+        ["i03-tick1", "i03-tick2"].forEach(function (id) {
+          var p = document.getElementById(id);
+          var len = p.getTotalLength();
+          p.style.strokeDasharray = String(len);
+          p.style.strokeDashoffset = String(len);
+        });
+
+        var tl = gsap.timeline({ paused: true });
+
+        /* ============ Scene 1 (0.0–1.5) — phone rises, gold disc resolves ============ */
+
+        // Gold haze breathes in first — atmosphere before structure.
+        tl.fromTo(
+          "#i03-haze",
+          { opacity: 0 },
+          { opacity: 1, duration: 0.9, ease: "power2.out" },
+          0.05
+        );
+
+        // Accent disc scales up behind the phone (scale-swap-transition, restrained
+        // incoming form: grow + fade in, smooth settle, no overshoot).
+        tl.fromTo(
+          "#i03-disc",
+          { scale: 0.55, opacity: 0 },
+          { scale: 1, opacity: 1, duration: 0.7, ease: "power3.out" },
+          0.08
+        );
+
+        // Phone slides up from the lower edge and settles (spring-pop-entrance,
+        // smooth long-tail power3.out — no overshoot). Visible well before t=0.5s.
+        tl.fromTo(
+          "#i03-phone",
+          { y: 560, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.85, ease: "power3.out" },
+          0.1
+        );
+
+        /* ============ Scene 2 (1.5–2.8 → compressed) — wordmark + row ticks ============ */
+
+        // Wordmark reveals per token (dynamic-content-sequencing: staggered,
+        // index-derived reveal of the lockup's tokens; .ag lands in gold).
+        ["#i03-w1", "#i03-w2", "#i03-w3"].forEach(function (sel, i) {
+          tl.fromTo(
+            sel,
+            { y: 42, opacity: 0 },
+            { y: 0, opacity: 1, duration: 0.55, ease: "power3.out" },
+            1.12 + i * 0.12
+          );
+        });
+
+        // Two checklist rows tick complete: gold fill blooms, check draws
+        // (svg-path-draw: strokeDashoffset len -> 0, power2.out — pens don't bounce).
+        tl.to("#i03-fill1", { opacity: 1, duration: 0.2, ease: "power1.out" }, 1.5);
+        tl.to("#i03-tick1", { strokeDashoffset: 0, duration: 0.35, ease: "power2.out" }, 1.55);
+        tl.to("#i03-row1", { opacity: 0.62, duration: 0.3, ease: "power1.out" }, 1.7);
+
+        tl.to("#i03-fill2", { opacity: 1, duration: 0.2, ease: "power1.out" }, 1.9);
+        tl.to("#i03-tick2", { strokeDashoffset: 0, duration: 0.35, ease: "power2.out" }, 1.95);
+        tl.to("#i03-row2", { opacity: 0.62, duration: 0.3, ease: "power1.out" }, 2.1);
+
+        /* ============ Scene 3 (2.35–end) — tagline lands, everything holds ============ */
+
+        tl.fromTo(
+          "#i03-tagline",
+          { y: 22, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.45, ease: "power3.out" },
+          2.35
+        );
+
+        // Subtle jitter on the phone while it holds (sine-wave-loop, low amplitude,
+        // finite single cycle — sin(0)=0 and sin(2π)=0, so no jump in or out).
+        var jit = { p: 0 };
+        tl.to(
+          jit,
+          {
+            p: Math.PI * 2,
+            duration: 0.5,
+            ease: "none",
+            onUpdate: function () {
+              gsap.set("#i03-phone-jit", { y: Math.sin(jit.p) * 2 });
+            },
+          },
+          2.45
+        );
+
+        window.__timelines["03-intro"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

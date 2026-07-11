@@ -1,0 +1,281 @@
+<template>
+  <div id="root" data-composition-id="02-pain" data-start="0" data-duration="4.032">
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap");
+
+      #root {
+        position: relative;
+        width: 1080px;
+        height: 1080px;
+        overflow: hidden;
+        container-type: size;
+      }
+
+      /* ---- full-bleed ground (clip layer, never on #root) ---- */
+      #p2-bg {
+        position: absolute;
+        inset: 0;
+        background: #faf6ec;
+      }
+      #p2-bg .p2-sun-bloom {
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          circle at 32% 28%,
+          rgba(232, 182, 76, 0.30) 0%,
+          rgba(243, 216, 160, 0.20) 28%,
+          rgba(238, 202, 126, 0.10) 48%,
+          rgba(250, 246, 236, 0) 66%
+        );
+      }
+      #p2-bg .p2-ember-bloom {
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          circle at 86% 88%,
+          rgba(217, 164, 65, 0.16) 0%,
+          rgba(217, 164, 65, 0.07) 22%,
+          rgba(250, 246, 236, 0) 42%
+        );
+      }
+
+      /* ---- content stage: centered in the top-83% keep-out region ---- */
+      #p2-stage {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 184px; /* caption keep-out: content centers at y ~ 448 */
+        overflow: hidden;
+      }
+
+      .p2-line {
+        position: absolute;
+        inset: 0;
+        display: grid;
+        place-items: center;
+        text-align: center;
+        font-family: "Instrument Serif", serif;
+        font-weight: 400;
+        font-size: 92px;
+        line-height: 1.06;
+        letter-spacing: -0.005em;
+        color: #0d1b2e;
+        white-space: nowrap;
+        will-change: transform, opacity, filter;
+      }
+      #p2-line1 {
+        filter: url(#p2-f1);
+      }
+      #p2-line2 {
+        filter: url(#p2-f2);
+      }
+      #p2-line3 {
+        filter: url(#p2-f3);
+      }
+
+      .p2-word {
+        display: inline-block;
+        will-change: transform, opacity;
+      }
+
+      /* scribble strike-through host on "Scribbled" */
+      .p2-strike-wrap {
+        position: relative;
+        display: inline-block;
+      }
+      .p2-strike-svg {
+        position: absolute;
+        left: -3%;
+        width: 106%;
+        top: 50%;
+        height: 30px;
+        margin-top: -15px;
+        overflow: visible;
+        pointer-events: none;
+      }
+
+      /* hand-drawn circle host on "Guessed" */
+      .p2-circle-wrap {
+        position: relative;
+        display: inline-block;
+      }
+      .p2-circle-ring {
+        position: absolute;
+        left: -16%;
+        top: -32%;
+        width: 132%;
+        height: 164%;
+        border: 4px solid #e8b64c;
+        border-radius: 50%;
+        pointer-events: none;
+        will-change: transform;
+      }
+
+      /* line 3: two stacked lines, the slip in ember italic */
+      #p2-line3 .p2-stack {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.04em;
+      }
+      .p2-slip {
+        display: inline-block;
+        font-style: italic;
+        color: #d9a441;
+        will-change: transform;
+      }
+    </style>
+
+    <!-- directional motion-blur filters (one per line, X-axis smear) -->
+    <svg width="0" height="0" aria-hidden="true" style="position: absolute">
+      <defs>
+        <filter id="p2-f1" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur id="p2-blur1" in="SourceGraphic" stdDeviation="0 0" />
+        </filter>
+        <filter id="p2-f2" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur id="p2-blur2" in="SourceGraphic" stdDeviation="12 0" />
+        </filter>
+        <filter id="p2-f3" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur id="p2-blur3" in="SourceGraphic" stdDeviation="12 0" />
+        </filter>
+      </defs>
+    </svg>
+
+    <div id="p2-bg" class="clip" data-start="0" data-duration="4.032" data-track-index="0">
+      <div class="p2-sun-bloom"></div>
+      <div class="p2-ember-bloom"></div>
+    </div>
+
+    <div id="p2-stage" class="clip" data-start="0" data-duration="4.032" data-track-index="1">
+      <!-- Scene 1: pain line 1, per-word chunk reveal + gold scribble strike -->
+      <div class="p2-line" id="p2-line1">
+        <div>
+          <span class="p2-word p2-strike-wrap"
+            ><span>Scribbled</span>
+            <svg class="p2-strike-svg" viewBox="0 0 500 24" preserveAspectRatio="none">
+              <path
+                id="p2-strike-path"
+                d="M0,12 Q31,2 62,12 Q93,22 125,12 Q156,2 187,12 Q218,22 250,12 Q281,2 312,12 Q343,22 375,12 Q406,2 437,12 Q468,22 500,12"
+                fill="none"
+                stroke="#e8b64c"
+                stroke-width="7"
+                stroke-linecap="round"
+              /></svg
+          ></span>
+          <span class="p2-word">feed</span>
+          <span class="p2-word">notes.</span>
+        </div>
+      </div>
+
+      <!-- Scene 2: pain line 2, motion-blur fly-in + gold hand-drawn circle -->
+      <div class="p2-line" id="p2-line2">
+        <div>
+          <span class="p2-circle-wrap"
+            ><span>Guessed</span>
+            <span class="p2-circle-ring" id="p2-ring"></span
+          ></span>
+          <span>weights.</span>
+        </div>
+      </div>
+
+      <!-- Scene 3: final pain line, "that slipped." in ember, slipping down -->
+      <div class="p2-line" id="p2-line3">
+        <div class="p2-stack">
+          <span>A wormer date</span>
+          <span class="p2-slip" id="p2-slip">that slipped.</span>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+
+      /* ------- blur proxies (tween a plain object, write the SVG attr) ------- */
+      const blur1 = document.getElementById("p2-blur1");
+      const blur2 = document.getElementById("p2-blur2");
+      const blur3 = document.getElementById("p2-blur3");
+      const b1 = { v: 0 };
+      const b2 = { v: 12 };
+      const b3 = { v: 12 };
+      const w1 = () => blur1.setAttribute("stdDeviation", b1.v + " 0");
+      const w2 = () => blur2.setAttribute("stdDeviation", b2.v + " 0");
+      const w3 = () => blur3.setAttribute("stdDeviation", b3.v + " 0");
+      w1();
+      w2();
+      w3();
+
+      /* ------- build-time pre-sets (deterministic; fromTo alone leaves
+                 un-started elements visible at rest before their window) ------- */
+      gsap.set("#p2-line1 .p2-word", { opacity: 0, y: 26 });
+      gsap.set("#p2-line2", { opacity: 0, x: 240 });
+      gsap.set("#p2-line3", { opacity: 0, x: 240 });
+      gsap.set("#p2-ring", { scale: 0, rotation: -4, transformOrigin: "50% 50%" });
+
+      /* scribble strike: seed dash state at init */
+      const strike = document.getElementById("p2-strike-path");
+      const strikeLen = strike.getTotalLength();
+      gsap.set(strike, { strokeDasharray: strikeLen, strokeDashoffset: strikeLen });
+
+      /* =========================================================
+         Scene 1 (0.0–1.3s) — "Scribbled feed notes." chunk reveal
+         ========================================================= */
+      tl.fromTo(
+        "#p2-line1 .p2-word",
+        { opacity: 0, y: 26 },
+        { opacity: 1, y: 0, duration: 0.55, ease: "power3.out", stagger: 0.1 },
+        0.05,
+      );
+      /* gold scribble strikes through "Scribbled" */
+      tl.to(strike, { strokeDashoffset: 0, duration: 0.55, ease: "power1.inOut" }, 0.6);
+
+      /* ---- seam 1 (velocity-matched, leftward, motion-blur) ----
+         exit: creep then RIP left, blur peaks at the cut, fade dies mid-travel */
+      tl.to("#p2-line1", { x: -240, duration: 0.3, ease: "power4.in" }, 1.28);
+      tl.to("#p2-line1", { opacity: 0, duration: 0.2, ease: "none" }, 1.36);
+      tl.to(b1, { v: 10, duration: 0.3, ease: "power3.in", onUpdate: w1 }, 1.28);
+
+      /* =========================================================
+         Scene 2 (1.3–2.6s) — "Guessed weights." flies in, gold ring
+         ========================================================= */
+      tl.fromTo(
+        "#p2-line2",
+        { x: 240, opacity: 0.25 },
+        { x: 0, opacity: 1, duration: 0.45, ease: "power4.out" },
+        1.5,
+      );
+      tl.fromTo(b2, { v: 12 }, { v: 0, duration: 0.45, ease: "power4.out", onUpdate: w2 }, 1.5);
+      /* hand-drawn gold circle rings "Guessed" — sanctioned small-accent pop */
+      tl.fromTo(
+        "#p2-ring",
+        { scale: 0, rotation: -4 },
+        { scale: 1, rotation: -4, duration: 0.55, ease: "back.out(1.7)" },
+        2.02,
+      );
+
+      /* ---- seam 2 (same direction, same mechanics) ---- */
+      tl.to("#p2-line2", { x: -240, duration: 0.3, ease: "power4.in" }, 2.42);
+      tl.to("#p2-line2", { opacity: 0, duration: 0.2, ease: "none" }, 2.5);
+      tl.to(b2, { v: 10, duration: 0.3, ease: "power3.in", onUpdate: w2 }, 2.42);
+
+      /* =========================================================
+         Scene 3 (2.6–4.0s) — "A wormer date / that slipped." lands and HOLDS
+         ========================================================= */
+      tl.fromTo(
+        "#p2-line3",
+        { x: 240, opacity: 0.3 },
+        { x: 0, opacity: 1, duration: 0.5, ease: "power4.out" },
+        2.64,
+      );
+      tl.fromTo(b3, { v: 12 }, { v: 0, duration: 0.5, ease: "power4.out", onUpdate: w3 }, 2.64);
+
+      /* the date itself slips: ember words drop a few px on a long-tail settle */
+      tl.to("#p2-slip", { y: 15, rotation: -1.2, duration: 0.7, ease: "power3.out" }, 3.3);
+      /* still to the end — no exit (non-final frame) */
+
+      window.__timelines["02-pain"] = tl;
+    </script>
+  </div>
+</template>

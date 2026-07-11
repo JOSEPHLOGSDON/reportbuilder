@@ -308,8 +308,8 @@
         }
       </style>
 
-      <div data-hf-id="hf-1at2" id="root" data-composition-id="05-rations-health" data-width="1080" data-height="1080" data-duration="5.471">
-        <div data-hf-id="hf-xg7d" class="f05-scene clip" data-start="0" data-duration="4.971" data-track-index="0">
+      <div data-hf-id="hf-1at2" id="root" data-composition-id="05-rations-health" data-width="1080" data-height="1080" data-duration="5.279">
+        <div data-hf-id="hf-xg7d" class="f05-scene clip" data-start="0" data-duration="4.779" data-track-index="0">
           <div data-hf-id="hf-4rkl" class="f05-ember"></div>
 
           <div data-hf-id="hf-8epc" class="f05-cam" id="f05-cam">
@@ -370,7 +370,7 @@
         window.__timelines = window.__timelines || {};
         const tl = gsap.timeline({ paused: true });
 
-        const DUR = 4.971;
+        const DUR = 4.779;
 
         /* ── Scene 1 (0.0–2.0s): "blend custom rations on the fly" —
                phone assembles into the LEFT slot (center-outward-expansion,
@@ -522,7 +522,7 @@
         const phase = { s: 1 };
         // Continual push onto the ration screenshot so it reads clearly.
         tl.to(phase, { s: 1.1, duration: 2.0, ease: "power1.inOut" }, 1.4);
-        tl.to(phase, { s: 1.24, duration: 1.35, ease: "power1.out" }, 3.4);
+        tl.to(phase, { s: 1.32, duration: 1.3, ease: "power1.out" }, 3.4);
         // page chrome retires as the camera closes in (keeps the keep-out clean)
         tl.to("#f05-pagenum", { opacity: 0, duration: 0.4, ease: "power1.out" }, 2.6);
 

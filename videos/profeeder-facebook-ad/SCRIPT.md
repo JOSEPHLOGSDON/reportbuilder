@@ -1,6 +1,6 @@
 # SCRIPT — profeeder-facebook-ad
 
-**Voice:** Marcia (HeyGen) / fallback am_michael (Kokoro)
+**Voice:** am_onyx (Kokoro) — deep, rugged
 **Voice direction:** Confident, warm, plainspoken — a show-barn dad who knows what he's talking about. No announcer gloss. Steady pace, lands the last line with quiet pride.
 
 ---

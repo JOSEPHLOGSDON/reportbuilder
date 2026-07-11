@@ -9,22 +9,6 @@
     <template>
       <style>
         @font-face {
-          font-family: 'Instrument Serif';
-          font-style: italic;
-          font-weight: 400;
-          font-display: swap;
-          src: url(assets/fonts/InstrumentSerif-italic-0.woff2) format('woff2');
-          unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-        }
-        @font-face {
-          font-family: 'Instrument Serif';
-          font-style: normal;
-          font-weight: 400;
-          font-display: swap;
-          src: url(assets/fonts/InstrumentSerif-1.woff2) format('woff2');
-          unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-        }
-        @font-face {
           font-family: 'Inter';
           font-style: normal;
           font-weight: 400 800;
@@ -114,7 +98,7 @@
           pointer-events: none;
         }
 
-        /* ---------- phone: authored shell, screen IS the real screenshot ---------- */
+        /* ---------- phone: authored shell, screens ARE the real screenshots ---------- */
         #f04-phone {
           position: absolute;
           left: 342px;
@@ -137,7 +121,7 @@
           height: 100%;
           background: #ffffff;
           border-radius: 20px;
-          overflow: hidden; /* clip at the shell — the screen content scrolls past */
+          overflow: hidden; /* clip at the shell — screens cycle past this window */
         }
         /* authored status strip above the app content (shell chrome, not screenshot) */
         .f04-status {
@@ -197,7 +181,7 @@
           display: block;
         }
 
-        /* clipped viewport the screenshot scrolls inside */
+        /* clipped viewport the screen cycle runs inside (370 x 622) */
         .f04-viewport {
           position: absolute;
           top: 44px;
@@ -206,25 +190,49 @@
           bottom: 0;
           overflow: hidden;
         }
-        /* the moving layer — img is taller than the viewport by design */
-        #f04-scroll {
+        /* screen-cycling stack: two full-viewport slots stacked vertically.
+           Advancing = one translateY of the whole stack (3d-page-scroll
+           mechanics) so the outgoing and incoming screens share one
+           velocity — the seam is velocity-matched by construction. */
+        #f04-cycle {
           position: absolute;
           top: 0;
           left: 0;
           width: 370px;
+          height: 1244px; /* 2 x 622 */
           will-change: transform;
         }
-        #f04-scroll img {
+        .f04-slot {
+          position: absolute;
+          left: 0;
+          width: 370px;
+          height: 622px;
+          overflow: hidden; /* each screenshot is taller than its slot */
+        }
+        #f04-slot-profile { top: 0; }
+        #f04-slot-adg { top: 622px; }
+        /* both PNGs are 720x1464 -> 370x752 at display width */
+        .f04-slot img {
+          position: absolute;
+          left: 0;
           display: block;
           width: 370px;
           height: 752px;
         }
-        /* gold "on target" underline beneath the gauge's green zone — rides the
-           scroll layer so it stays glued to the gauge (css-marker-patterns) */
+        /* profile: top-aligned so Lucy's header + all four stat cards read
+           (cards end at display y~497, inside the 622px slot) */
+        #f04-shot-profile { top: 0; }
+        /* details: shifted up so the "Pace vs Target ADG" gauge region
+           (~52-66% down the image, display y ~391-497) sits centered in
+           the slot: gauge-region center 444 - slot center 311 = 133 */
+        #f04-shot-adg { top: -133px; }
+        /* gold "on target" underline beneath the gauge's green zone — lives
+           in the adg slot so it stays glued to the gauge (css-marker-patterns
+           highlight sweep; green zone = display x 152..297, bar bottom y 281) */
         #f04-underline {
           position: absolute;
           left: 152px;
-          top: 414px;
+          top: 288px;
           width: 145px;
           height: 5px;
           background: #e8b64c;
@@ -233,11 +241,13 @@
           will-change: transform;
         }
 
-        /* ---------- gold callout chip (scene 1, left of phone) ---------- */
+        /* ---------- gold callout chip (scene 1, left of phone) ----------
+           Points at the on-screen "ADG (3 weights) 1.74 lbs" stat card
+           (world y ~616-694); retires with the screen advance. */
         #f04-callout {
           position: absolute;
           left: 110px;
-          top: 384px;
+          top: 600px;
           width: 214px;
           background: #e8b64c;
           padding: 14px 18px;
@@ -261,75 +271,84 @@
           margin-top: 5px;
           white-space: nowrap;
         }
-        /* hairline connector pointing at the ADG stat on screen */
+        /* hairline connector pointing at the ADG stat card on screen */
         #f04-connector {
           position: absolute;
           left: 324px;
-          top: 418px;
-          width: 30px;
+          top: 638px;
+          width: 36px;
           height: 1px;
           background: rgba(13, 27, 46, 0.6);
           transform-origin: left center;
           will-change: transform, opacity;
         }
 
-        /* ---------- navy days-to-show chip (scene 3, right of phone) ---------- */
+        /* ---------- navy days-to-show chip (scene 3, left of phone) ----------
+           Placed inside the final camera window (world x 198..882, y 268..952
+           at peak scale 1.58 + inner y -70) so it stays fully in frame. */
         #f04-days {
           position: absolute;
-          left: 766px;
-          top: 452px;
-          width: 198px;
+          left: 210px;
+          top: 620px;
+          width: 126px;
           background: #0d1b2e;
-          padding: 16px 20px 18px;
+          padding: 16px 16px 15px;
           will-change: transform, opacity;
         }
         .f04-days-num {
           font-family: "JetBrains Mono", monospace;
-          font-size: 46px;
+          font-size: 44px;
           font-weight: 700;
           line-height: 1;
           color: #e8b64c;
         }
         .f04-days-label {
           font-family: "Inter", sans-serif;
-          font-size: 12px;
+          font-size: 11px;
           font-weight: 600;
-          letter-spacing: 0.18em;
+          letter-spacing: 0.14em;
           text-transform: uppercase;
+          line-height: 1.45;
           color: #faf6ec;
           margin-top: 8px;
         }
       </style>
 
-      <div data-hf-id="hf-l5bq" id="root" data-composition-id="04-weights" data-width="1080" data-height="1080" data-duration="5.925">
+      <!-- root duration = clip 5.525 + 0.5 sibling convention -->
+      <div id="root" data-composition-id="04-weights" data-width="1080" data-height="1080" data-duration="5.925">
         <!-- ground -->
-        <div data-hf-id="hf-wwk2" class="clip f04-bg" data-start="0" data-duration="5.525" data-track-index="0">
-          <div data-hf-id="hf-e00o" class="f04-ember"></div>
+        <div class="clip f04-bg" data-start="0" data-duration="5.525" data-track-index="0">
+          <div class="f04-ember"></div>
         </div>
 
         <!-- stage under the virtual camera -->
-        <div data-hf-id="hf-z6ci" class="clip f04-stage" data-start="0" data-duration="5.525" data-track-index="1">
-          <div data-hf-id="hf-gyrt" id="f04-cam-outer">
-            <div data-hf-id="hf-bn2w" id="f04-cam-inner">
+        <div class="clip f04-stage" data-start="0" data-duration="5.525" data-track-index="1">
+          <div id="f04-cam-outer">
+            <div id="f04-cam-inner">
               <!-- sun bloom (depth layer, behind the phone) -->
-              <div data-hf-id="hf-23sr" id="f04-bloom"></div>
+              <div id="f04-bloom"></div>
 
-              <!-- phone: real Pig Details screenshot inside an authored shell -->
-              <div data-hf-id="hf-2iiy" id="f04-phone">
-                <div data-hf-id="hf-654n" class="f04-shell">
-                  <div data-hf-id="hf-fv0n" class="f04-screen">
-                    <div data-hf-id="hf-mc3d" class="f04-status">
-                      <span data-hf-id="hf-x0ci" class="f04-status-time">9:41</span>
-                      <span data-hf-id="hf-ghjd" class="f04-status-right">
-                        <span data-hf-id="hf-mgy5" class="f04-sig"><i data-hf-id="hf-wt6k"></i><i data-hf-id="hf-zeb8"></i><i data-hf-id="hf-y7e5"></i><i data-hf-id="hf-ylp6"></i></span>
-                        <span data-hf-id="hf-6tmd" class="f04-batt"><i data-hf-id="hf-0l8b"></i></span>
+              <!-- phone: TWO real screens cycling inside the authored shell -->
+              <div id="f04-phone">
+                <div class="f04-shell">
+                  <div class="f04-screen">
+                    <div class="f04-status">
+                      <span class="f04-status-time">9:41</span>
+                      <span class="f04-status-right">
+                        <span class="f04-sig"><i></i><i></i><i></i><i></i></span>
+                        <span class="f04-batt"><i></i></span>
                       </span>
                     </div>
-                    <div data-hf-id="hf-tpj1" class="f04-viewport">
-                      <!-- scrolling layer: deliberately taller than the viewport -->
-                      <div data-hf-id="hf-5og0" id="f04-scroll" data-layout-allow-overflow="">
-                        <img data-hf-id="hf-0dxl" id="f04-screenshot" src="assets/screen-pig-details-adg.png" alt="">
-                        <div data-hf-id="hf-ew7y" id="f04-underline"></div>
+                    <div class="f04-viewport">
+                      <!-- screen-cycling stack: deliberately taller than the viewport -->
+                      <div id="f04-cycle" data-layout-allow-overflow="">
+                        <div class="f04-slot" id="f04-slot-profile" data-layout-allow-overflow="">
+                          <img id="f04-shot-profile" src="assets/screen-pig-profile.png" alt="">
+                        </div>
+                        <div class="f04-slot" id="f04-slot-adg" data-layout-allow-overflow="">
+                          <img id="f04-shot-adg" src="assets/screen-pig-details-adg.png" alt="">
+                          <div id="f04-underline"></div>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -337,16 +356,16 @@
               </div>
 
               <!-- gold callout chip + hairline connector (scene 1) -->
-              <div data-hf-id="hf-hehe" id="f04-callout">
-                <div data-hf-id="hf-578n" class="f04-callout-label">ADG needed</div>
-                <div data-hf-id="hf-dh4g" class="f04-callout-value">1.44 lbs/day</div>
+              <div id="f04-callout">
+                <div class="f04-callout-label">Avg daily gain</div>
+                <div class="f04-callout-value">+1.74 lbs/day</div>
               </div>
-              <div data-hf-id="hf-yc0z" id="f04-connector"></div>
+              <div id="f04-connector"></div>
 
               <!-- navy days-to-show chip (scene 3) -->
-              <div data-hf-id="hf-a95b" id="f04-days">
-                <div data-hf-id="hf-yk7c" class="f04-days-num">25</div>
-                <div data-hf-id="hf-3tb6" class="f04-days-label">Days to show</div>
+              <div id="f04-days">
+                <div class="f04-days-num">25</div>
+                <div class="f04-days-label">Days to show</div>
               </div>
             </div>
           </div>
@@ -359,10 +378,13 @@
 
         var tl = gsap.timeline({ paused: true });
 
-        /* ============ Scene 1 (0.0–1.8) — "track every pound of gain" ============
-           Phone rises centered and settles (spring-pop-entrance, smooth power3
-           long-tail — no overshoot); sun bloom suffuses in behind it; the gold
-           ADG callout chip fades in beside the on-screen stat. */
+        /* ============ Scene 1 (0.0–2.2) — "track every pound of gain" ============
+           Phone rises centered showing the REAL Lucy profile screen (header +
+           four stat cards, top-aligned) and settles (spring-pop-entrance,
+           smooth power3 long-tail — no overshoot); sun bloom suffuses in
+           behind it; the gold "+1.74 lbs/day" callout chip fades in beside the
+           on-screen ADG stat (discrete-text-sequence slide-up crossfade). The
+           continual camera push begins underneath. */
 
         // Bloom breathes in first — atmosphere before structure.
         tl.fromTo(
@@ -380,89 +402,98 @@
           0.1
         );
 
-        // Gold callout chip lands beside the phone (discrete-text-sequence
-        // slide-up crossfade entrance), then its hairline connector draws
-        // toward the ADG stat on screen.
+        // Continual camera push, phase A — a gentle drift-in while the profile
+        // screen is read (multi-phase-camera, steady-push pattern).
+        tl.to(
+          "#f04-cam-outer",
+          { scale: 1.07, duration: 1.9, ease: "power1.inOut" },
+          0.15
+        );
+
+        // Gold callout chip lands beside the phone, then its hairline
+        // connector draws toward the ADG stat card on screen.
         tl.fromTo(
           "#f04-callout",
           { y: 26, opacity: 0 },
           { y: 0, opacity: 1, duration: 0.55, ease: "power3.out" },
-          1.05
+          1.1
         );
         tl.fromTo(
           "#f04-connector",
           { scaleX: 0, opacity: 1 },
           { scaleX: 1, opacity: 1, duration: 0.35, ease: "power2.out" },
-          1.35
+          1.4
         );
 
-        /* ============ Scene 2 (1.8–3.6) — "exactly where every pig stands" ============
-           The screen content scrolls up inside the clipped shell (3d-page-scroll
-           mechanics: translateY within the shell window, power3.out landing) so
-           the Pace-vs-Target gauge lands centered in the cutout; concurrently the
-           camera pushes in toward it (multi-phase-camera push, coordinate-target
-           form: outer scales, inner counter-translates; gauge sits at frame
-           center by layout so the counter-shift is a small vertical trim) and a
-           gold accent underlines the gauge's green zone. */
+        /* ============ Scene 2 (2.2–3.8) — "exactly where every pig stands" ============
+           The SCREEN ADVANCES: the profile screen pushes up and out as the
+           real Pace-vs-Target gauge screen pushes in from below inside the
+           clipped shell — one translateY on the shared stack (3d-page-scroll
+           mechanics), so the internal seam is velocity-matched. The camera
+           keeps closing on the gauge (multi-phase-camera phase B +
+           coordinate-target-zoom: outer scales, inner counter-translates,
+           shared duration AND ease); a gold accent underlines the gauge's
+           green "on target" zone (css-marker-patterns highlight sweep). */
 
-        // Connector points at content that is about to scroll away — retire it
-        // as the scroll begins (internal swap, not a frame exit).
-        tl.to("#f04-connector", { opacity: 0, duration: 0.3, ease: "power1.out" }, 1.82);
-
-        // Screen scroll: gauge region (display y≈406 in the 622px viewport)
-        // lands at the viewport's vertical center. Single tween, power3.out.
+        // The scene-1 annotation retires WITH the advance (same upward
+        // velocity direction as the outgoing screen — an internal swap per
+        // the cut catalog, not a frame exit).
         tl.to(
-          "#f04-scroll",
-          { y: -95, duration: 1.35, ease: "power3.out" },
-          1.85
+          "#f04-callout",
+          { y: -44, opacity: 0, duration: 0.45, ease: "power2.in" },
+          2.25
+        );
+        tl.to("#f04-connector", { opacity: 0, duration: 0.3, ease: "power1.out" }, 2.25);
+
+        // Screen advance: stack moves exactly one viewport height (622px),
+        // landing the gauge region centered in the shell cutout.
+        tl.to(
+          "#f04-cycle",
+          { y: -622, duration: 1.25, ease: "power3.inOut" },
+          2.25
         );
 
-        // Camera push — scale + counter-translate share duration AND ease.
-        // Peak keeps the phone bottom above the caption keep-out (y < 896).
-        // Continual push: starts gently at t=0.15 and keeps closing on the
-        // gauge until the final hold, so the screenshot reads clearly.
+        // Camera push, phase B — closes to 1.58 by the hold; the inner
+        // counter-translate (same window, same ease) trims the framing down
+        // so the phone bottom maps to y≈891 < 896 (caption keep-out) at peak.
         tl.to(
           "#f04-cam-outer",
-          { scale: 1.07, duration: 1.75, ease: "power1.inOut" },
-          0.15
-        );
-        tl.to(
-          "#f04-cam-outer",
-          { scale: 1.58, duration: 3.5, ease: "power1.inOut" },
-          1.9
+          { scale: 1.58, duration: 3.15, ease: "power1.inOut" },
+          2.05
         );
         tl.to(
           "#f04-cam-inner",
-          { y: -70, duration: 3.5, ease: "power1.inOut" },
-          1.9
+          { y: -70, duration: 3.15, ease: "power1.inOut" },
+          2.05
         );
 
-        // Gold "on target" underline sweeps beneath the gauge's green zone
-        // once the scroll has landed (css-marker-patterns, highlight sweep).
+        // Gold underline sweeps beneath the gauge's green zone once the
+        // advance has landed.
         tl.fromTo(
           "#f04-underline",
           { scaleX: 0 },
           { scaleX: 1, duration: 0.5, ease: "power2.out" },
-          3.2
+          3.55
         );
 
-        /* ============ Scene 3 (3.6–5.0) — "days out from the show" ============
-           Navy 25-days chip reveals beside the phone (echoing the screen's own
-           copy); the bloom swells softly behind the phone (ambient-glow-bloom,
-           bloom-and-hold — no breathe loop); camera has eased to a stop. HOLD. */
+        /* ============ Scene 3 (3.8–5.2) — "days out from the show" ============
+           Navy 25-days chip reveals beside the phone (echoing the gauge
+           screen's own "25 days from last weight to show"); the bloom swells
+           softly once (ambient-glow-bloom, hero-bloom form — no breathe
+           loop); the camera eases to a stop at 5.2. HOLD still. */
 
         tl.fromTo(
           "#f04-days",
           { y: 26, opacity: 0 },
           { y: 0, opacity: 1, duration: 0.55, ease: "power3.out" },
-          3.75
+          3.85
         );
 
         // Soft glow bloom behind the phone — one swell, then still to the end.
         tl.to(
           "#f04-bloom",
           { opacity: 1, scale: 1.07, duration: 0.9, ease: "power2.out" },
-          3.95
+          4.1
         );
 
         window.__timelines["04-weights"] = tl;

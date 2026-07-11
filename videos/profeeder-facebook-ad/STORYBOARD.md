@@ -20,7 +20,7 @@ music: confident, warm, country-tinged acoustic with a driving beat — builds t
 
 - scene: Bold serif type on dark navy — "Banners aren't won on show day." with "show day" swapping to "at chore time." in gold
 - voiceover: "Banners aren't won on show day. They're won at chore time."
-- duration: 3.563s
+- duration: 3.669s
 - transition_in: cut
 - status: animated
 - src: compositions/frames/01-hook.html
@@ -47,7 +47,7 @@ Scene 4 (2.6–3.669s): on "at chore time," the payoff — "at chore time." SPRI
 
 - scene: Three short pain lines land solo on cream canvas — "Scribbled feed notes." / "Guessed weights." / "A dewormer date you missed."
 - voiceover: "Scribbled feed notes. Guessed weights. A dewormer date that slipped."
-- duration: 4.053s
+- duration: 4.096s
 - transition_in: crossfade
 - status: animated
 - src: compositions/frames/02-pain.html
@@ -72,7 +72,7 @@ Scene 3 (2.6–4.0s): on "a dewormer date that slipped," the final pain line rep
 
 - scene: Phone mockup rises center on dark navy; "Feeding Time" checklist UI on screen; wordmark "ProFeeder" locks in above with gold italic accent
 - voiceover: "Meet ProFeeder — the whole barn, in your pocket."
-- duration: 3.264s
+- duration: 2.987s
 - transition_in: zoom-through
 - status: animated
 - src: compositions/frames/03-intro.html
@@ -100,7 +100,7 @@ Scene 3 (2.8–4.0s): on "in your pocket," a small gold italic tagline "the whol
 
 - scene: Real Lucy profile screen (weight/ADG/days-on-feed stat cards) advancing to the Pace-vs-Target gauge screen inside the phone
 - voiceover: "Track every pound of gain — and see exactly where every pig stands, days out from the show."
-- duration: 5.525s
+- duration: 5.931s
 - transition_in: zoom-through
 - status: animated
 - src: compositions/frames/04-weights.html
@@ -128,7 +128,7 @@ Scene 3 (3.8–5.2s): on "days out from the show," a navy chip "25 DAYS TO SHOW"
 
 - scene: Two-up feature cards assemble — "Custom rations, blended on the fly" with feed-mix UI chips; "Vaccines & dewormers that never slip" with reminder rows checking off
 - voiceover: "Blend custom rations on the fly. And health schedules? Never slip again."
-- duration: 4.779s
+- duration: 4.971s
 - transition_in: zoom-through
 - status: animated
 - src: compositions/frames/05-rations-health.html
@@ -156,7 +156,7 @@ Scene 3 (3.6–4.5s): both settle level and HOLD; a single traveling gold glow s
 
 - scene: Real Shows screen in a phone (McLean county fair — 19 days) beside the Teams & Collaboration card
 - voiceover: "Every show — counted down, dialed in."
-- duration: 2.944s
+- duration: 2.475s
 - transition_in: push-slide LEFT
 - status: animated
 - src: compositions/frames/06-showday.html
@@ -184,7 +184,7 @@ Scene 3 (2.4–2.944s): on "dialed in," both settle level and HOLD; one travelin
 
 - scene: Calm title card on cream — "Start free." large serif; "$0 to start · Basic $5/mo · Pro $9/mo" small beneath
 - voiceover: "Start free."
-- duration: 4.045s
+- duration: 4.109s
 - transition_in: crossfade
 - status: animated
 - src: compositions/frames/07-price.html
@@ -209,7 +209,7 @@ Scene 3 (1.4–2.5s): a small qualifier line "$0 to start · Basic $5/mo · Pro 
 
 - scene: Dark navy close — "Get ProFeeder." locks up, gold italic "Win more banners." lands beneath; App Store / Google Play badges + profeeder.ag
 - voiceover: "Get ProFeeder — and win more banners."
-- duration: 2.752s
+- duration: 2.411s
 - transition_in: zoom-through
 - status: animated
 - src: compositions/frames/08-cta.html

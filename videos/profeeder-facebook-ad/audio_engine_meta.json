@@ -1,6 +1,6 @@
 {
   "tts_provider": "kokoro",
-  "voice_id": "am_onyx",
+  "voice_id": "am_michael",
   "bgm": null,
   "bgm_pending": false,
   "bgm_provider": null,
@@ -14,49 +14,49 @@
     {
       "id": "01",
       "path": "assets/voice/01.wav",
-      "duration_s": 3.563,
+      "duration_s": 3.669,
       "words": []
     },
     {
       "id": "02",
       "path": "assets/voice/02.wav",
-      "duration_s": 4.053,
+      "duration_s": 4.096,
       "words": []
     },
     {
       "id": "03",
       "path": "assets/voice/03.wav",
-      "duration_s": 3.264,
+      "duration_s": 2.987,
       "words": []
     },
     {
       "id": "04",
       "path": "assets/voice/04.wav",
-      "duration_s": 5.525,
+      "duration_s": 5.931,
       "words": []
     },
     {
       "id": "05",
       "path": "assets/voice/05.wav",
-      "duration_s": 4.779,
+      "duration_s": 4.971,
       "words": []
     },
     {
       "id": "06",
       "path": "assets/voice/06.wav",
-      "duration_s": 2.944,
+      "duration_s": 2.475,
       "words": []
     },
     {
       "id": "07",
       "path": "assets/voice/07.wav",
-      "duration_s": 1.045,
+      "duration_s": 1.109,
       "words": []
     },
     {
       "id": "08",
       "path": "assets/voice/08.wav",
-      "duration_s": 2.752,
+      "duration_s": 2.411,
       "words": []
     }
   ],
@@ -80,5 +80,5 @@
       "volume": 0.35
     }
   ],
-  "total_duration_s": 27.925
+  "total_duration_s": 27.649
 }

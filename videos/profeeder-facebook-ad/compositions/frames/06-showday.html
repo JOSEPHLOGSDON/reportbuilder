@@ -225,8 +225,8 @@
         }
       </style>
 
-      <div id="root" data-composition-id="06-showday" data-width="1080" data-height="1080" data-duration="3.444">
-        <div class="showday-scene clip" data-start="0" data-duration="2.944" data-track-index="0">
+      <div id="root" data-composition-id="06-showday" data-width="1080" data-height="1080" data-duration="2.975">
+        <div class="showday-scene clip" data-start="0" data-duration="2.475" data-track-index="0">
           <div class="showday-ember"></div>
 
           <div class="showday-cam" id="showday-cam">
@@ -331,10 +331,10 @@
             y: 0,
             rotation: 0,
             scale: 1,
-            duration: 0.55,
+            duration: 0.5,
             ease: "power3.out",
           },
-          1.5
+          1.2
         );
 
         /* ── Scene 3 (2.4–2.944s): on "dialed in" — both settle level and
@@ -346,14 +346,14 @@
         tl.fromTo(
           "#showday-sweep",
           { x: -260, opacity: 0 },
-          { x: 1000, opacity: 0.22, duration: 0.55, ease: "none" },
-          2.3
+          { x: 1000, opacity: 0.22, duration: 0.45, ease: "none" },
+          1.85
         );
         // trailing fade so the band dies out exactly as it clears the edge
         tl.to(
           "#showday-sweep",
-          { opacity: 0, duration: 0.14, ease: "power1.in" },
-          2.8
+          { opacity: 0, duration: 0.12, ease: "power1.in" },
+          2.28
         );
 
         /* ── one gentle camera push under Scenes 2–3, easing to a stop so
@@ -361,9 +361,9 @@
 
         const cam = document.getElementById("showday-cam");
         const phase = { s: 1 };
-        tl.to(phase, { s: 1.08, duration: 1.5, ease: "power1.inOut" }, 1.2);
+        tl.to(phase, { s: 1.08, duration: 1.15, ease: "power1.inOut" }, 1.1);
         // page chrome retires as the camera closes in (keeps the keep-out clean)
-        tl.to("#showday-pagenum", { opacity: 0, duration: 0.35, ease: "power1.out" }, 2.35);
+        tl.to("#showday-pagenum", { opacity: 0, duration: 0.3, ease: "power1.out" }, 1.9);
 
         // continuous deterministic micro-drift (Lissajous) + phase scale
         const drift = { p: 0 };

@@ -9,39 +9,39 @@
     <template>
       <style>
         @font-face {
-  font-family: 'Instrument Serif';
-  font-style: italic;
-  font-weight: 400;
-  font-display: swap;
-  src: url(assets/fonts/InstrumentSerif-italic-0.woff2) format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-@font-face {
-  font-family: 'Instrument Serif';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url(assets/fonts/InstrumentSerif-1.woff2) format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-@font-face {
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 400 800;
-  font-display: swap;
-  src: url(assets/fonts/Inter-2.woff2) format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-@font-face {
-  font-family: 'JetBrains Mono';
-  font-style: normal;
-  font-weight: 400 700;
-  font-display: swap;
-  src: url(assets/fonts/JetBrainsMono-3.woff2) format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
+          font-family: 'Instrument Serif';
+          font-style: italic;
+          font-weight: 400;
+          font-display: swap;
+          src: url(assets/fonts/InstrumentSerif-italic-0.woff2) format('woff2');
+          unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+        }
+        @font-face {
+          font-family: 'Instrument Serif';
+          font-style: normal;
+          font-weight: 400;
+          font-display: swap;
+          src: url(assets/fonts/InstrumentSerif-1.woff2) format('woff2');
+          unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+        }
+        @font-face {
+          font-family: 'Inter';
+          font-style: normal;
+          font-weight: 400 800;
+          font-display: swap;
+          src: url(assets/fonts/Inter-2.woff2) format('woff2');
+          unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+        }
+        @font-face {
+          font-family: 'JetBrains Mono';
+          font-style: normal;
+          font-weight: 400 700;
+          font-display: swap;
+          src: url(assets/fonts/JetBrainsMono-3.woff2) format('woff2');
+          unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+        }
 
-        /* Root styled by #root (never a class on the composition root) */
+        /* Root styled via #root, never a class on the composition root */
         #root {
           position: absolute;
           inset: 0;
@@ -53,292 +53,251 @@
           color: #0d1b2e;
         }
 
-        /* Full-bleed ground lives on a clip layer, never on #root */
-        .f04-scene {
+        /* ---------- ground: cream field (full-bleed clip, never on #root) ---------- */
+        .f04-bg {
           position: absolute;
           inset: 0;
           background: #faf6ec;
-          overflow: hidden; /* camera pull would otherwise leak edges */
         }
-
-        /* Static ember counter-bloom, bottom-left (subordinate, CSS-only) */
+        /* subordinate ember counter-bloom, bottom-left (atmosphere only, bleeds) */
         .f04-ember {
           position: absolute;
-          left: -22%;
-          bottom: -24%;
-          width: 58%;
-          height: 58%;
+          left: -240px;
+          bottom: -260px;
+          width: 640px;
+          height: 640px;
+          border-radius: 50%;
           background: radial-gradient(
-            circle at 50% 50%,
-            rgba(217, 164, 68, 0.18) 0%,
-            rgba(217, 164, 68, 0.08) 45%,
-            rgba(217, 164, 68, 0) 72%
+            circle,
+            rgba(217, 164, 65, 0.16) 0%,
+            rgba(217, 164, 65, 0.07) 45%,
+            rgba(217, 164, 65, 0) 70%
           );
           pointer-events: none;
         }
 
-        /* Camera wraps ALL content; transform written by GSAP onUpdate */
-        .f04-cam {
+        /* ---------- stage + virtual camera ---------- */
+        .f04-stage {
+          position: absolute;
+          inset: 0;
+          overflow: hidden; /* camera scale must clip at the frame */
+        }
+        /* coordinate-target-zoom: OUTER scales, INNER counter-translates */
+        #f04-cam-outer {
           position: absolute;
           inset: 0;
           transform-origin: 50% 50%;
           will-change: transform;
         }
-
-        /* Sun bloom — the frame's one primary bloom; doubles as the
-           ambient-glow-bloom layer behind the hero card (Scene 3 swell) */
-        .f04-bloom {
+        #f04-cam-inner {
           position: absolute;
-          left: 12%;
-          top: 2%;
-          width: 76%;
-          height: 76%;
+          inset: 0;
+          will-change: transform;
+        }
+
+        /* sun-bloom behind the phone — the frame's one bloom; scene 3 swells it */
+        #f04-bloom {
+          position: absolute;
+          left: 150px;
+          top: 96px;
+          width: 780px;
+          height: 780px;
+          border-radius: 50%;
           background: radial-gradient(
-            circle at 50% 46%,
-            rgba(232, 182, 76, 0.72) 0%,
-            rgba(243, 216, 160, 0.5) 34%,
-            rgba(238, 202, 126, 0.22) 58%,
-            rgba(250, 246, 236, 0) 76%
+            circle,
+            rgba(232, 182, 76, 0.30) 0%,
+            rgba(243, 216, 160, 0.14) 46%,
+            rgba(238, 202, 126, 0) 72%
           );
           transform-origin: 50% 50%;
+          will-change: transform, opacity;
           pointer-events: none;
+        }
+
+        /* ---------- phone: authored shell, screen IS the real screenshot ---------- */
+        #f04-phone {
+          position: absolute;
+          left: 342px;
+          top: 140px;
+          width: 396px;
+          height: 692px;
           will-change: transform, opacity;
         }
-
-        /* ── chrome ─────────────────────────────────────────────── */
-        .f04-toplabel {
-          position: absolute;
-          left: 64px;
-          top: 58px;
-          font-family: "Inter", sans-serif;
-          font-size: 13px;
-          font-weight: 600;
-          letter-spacing: 0.32em;
-          text-transform: uppercase;
-          color: #0d1b2e;
-          padding-bottom: 12px;
-          border-bottom: 1px solid rgba(13, 27, 46, 0.2);
-        }
-        .f04-pagenum {
-          position: absolute;
-          right: 64px;
-          top: 846px;
-          font-family: "JetBrains Mono", monospace;
-          font-size: 13px;
-          letter-spacing: 0.08em;
-          color: rgba(13, 27, 46, 0.75);
-        }
-
-        /* ── pig detail card (recreated HTML mockup) ─────────────── */
-        .f04-card {
-          position: absolute;
-          left: 224px;
-          top: 148px;
-          width: 632px;
-          background: #faf6ec;
-          border: 1px solid #0d1b2e;
-          padding: 38px 44px 34px;
-          transform-origin: 50% 50%;
-          will-change: transform;
-          z-index: 2;
-        }
-        .f04-card-head {
-          display: flex;
-          align-items: baseline;
-          justify-content: space-between;
-          padding-bottom: 18px;
-          border-bottom: 1px solid rgba(13, 27, 46, 0.2);
-        }
-        .f04-card-kicker {
-          font-family: "Inter", sans-serif;
-          font-size: 13px;
-          font-weight: 600;
-          letter-spacing: 0.18em;
-          text-transform: uppercase;
-          color: #0d1b2e;
-        }
-        .f04-name {
-          font-family: "Instrument Serif", serif;
-          font-weight: 400;
-          font-size: 62px;
-          line-height: 1;
-          letter-spacing: -0.005em;
-          color: #0d1b2e;
-        }
-
-        .f04-body {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          padding: 30px 0 26px;
-        }
-        .f04-weight-col {
-          display: flex;
-          flex-direction: column;
-          gap: 22px;
-        }
-        .f04-weight-label {
-          font-family: "Inter", sans-serif;
-          font-size: 13px;
-          font-weight: 600;
-          letter-spacing: 0.18em;
-          text-transform: uppercase;
-          color: #0d1b2e;
-        }
-        .f04-weight-row {
-          display: flex;
-          align-items: flex-end;
-          gap: 12px;
-          /* fixed width so digit-count changes never shift layout */
-          width: 300px;
-          height: 128px;
-        }
-        .f04-weight {
-          font-family: "JetBrains Mono", monospace;
-          font-variant-numeric: tabular-nums;
-          font-weight: 500;
-          font-size: 64px; /* tweened up by GSAP */
-          line-height: 1;
-          letter-spacing: -0.01em;
-          color: #0d1b2e;
-        }
-        .f04-lbs {
-          font-family: "JetBrains Mono", monospace;
-          font-size: 22px;
-          letter-spacing: 0.08em;
-          color: #0d1b2e;
-        }
-
-        .f04-ring-wrap {
-          position: relative;
-          width: 208px;
-          height: 208px;
-          flex: 0 0 auto;
-        }
-        .f04-ring-svg {
-          width: 208px;
-          height: 208px;
-          display: block;
-        }
-        .f04-ring-track {
-          fill: none;
-          stroke: rgba(13, 27, 46, 0.1);
-          stroke-width: 11;
-        }
-        .f04-ring-fill {
-          fill: none;
-          stroke: #e8b64c;
-          stroke-width: 11;
-          /* start at 12 o'clock; only strokeDashoffset is GSAP-animated,
-             so this CSS transform never conflicts */
-          transform: rotate(-90deg);
-          transform-origin: 50% 50%;
-        }
-        .f04-ring-center {
+        .f04-shell {
           position: absolute;
           inset: 0;
-          display: grid;
-          place-items: center;
-          text-align: center;
+          background: #16263c;
+          border: 1px solid rgba(250, 246, 236, 0.4);
+          border-radius: 30px;
+          padding: 13px;
         }
-        .f04-ring-center span {
-          font-family: "Inter", sans-serif;
-          font-size: 13px;
-          font-weight: 600;
-          letter-spacing: 0.18em;
-          text-transform: uppercase;
-          color: #0d1b2e;
-          line-height: 1.6;
+        .f04-screen {
+          position: relative;
+          width: 100%;
+          height: 100%;
+          background: #ffffff;
+          border-radius: 20px;
+          overflow: hidden; /* clip at the shell — the screen content scrolls past */
         }
-        .f04-badge {
+        /* authored status strip above the app content (shell chrome, not screenshot) */
+        .f04-status {
           position: absolute;
-          left: 50%;
-          bottom: -16px;
-          margin-left: -74px; /* center via margin, not translateX (GSAP scales it) */
-          width: 148px;
-          padding: 9px 0;
-          background: #e8b64c;
-          color: #0d1b2e;
-          font-family: "Inter", sans-serif;
-          font-size: 13px;
-          font-weight: 600;
-          letter-spacing: 0.18em;
-          text-transform: uppercase;
-          text-align: center;
-          transform-origin: 50% 50%;
-          will-change: transform;
-        }
-
-        /* rate-of-gain chip row */
-        .f04-rate {
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 44px;
+          background: #ffffff;
+          z-index: 2;
           display: flex;
           align-items: center;
-          gap: 26px;
-          padding-top: 24px;
-          border-top: 1px solid rgba(13, 27, 46, 0.2);
-          will-change: transform;
+          justify-content: space-between;
+          padding: 0 22px;
         }
-        .f04-rate-label {
+        .f04-status-time {
           font-family: "Inter", sans-serif;
-          font-size: 13px;
+          font-size: 14px;
           font-weight: 600;
-          letter-spacing: 0.18em;
-          text-transform: uppercase;
           color: #0d1b2e;
-          flex: 0 0 auto;
         }
-        .f04-rate-value {
-          font-family: "JetBrains Mono", monospace;
-          font-variant-numeric: tabular-nums;
-          font-size: 30px;
-          font-weight: 500;
-          color: #0d1b2e;
-          flex: 0 0 auto;
+        .f04-status-right {
+          display: flex;
+          align-items: flex-end;
+          gap: 8px;
         }
-        .f04-rate-value em {
-          font-style: normal;
-          font-size: 16px;
-          letter-spacing: 0.06em;
+        .f04-sig {
+          display: flex;
+          align-items: flex-end;
+          gap: 2px;
         }
-        .f04-rate-track {
-          flex: 1 1 auto;
+        .f04-sig i {
+          display: block;
+          width: 3px;
+          background: #0d1b2e;
+          border-radius: 1px;
+        }
+        .f04-sig i:nth-child(1) { height: 4px; }
+        .f04-sig i:nth-child(2) { height: 7px; }
+        .f04-sig i:nth-child(3) { height: 10px; }
+        .f04-sig i:nth-child(4) { height: 13px; }
+        .f04-batt {
+          position: relative;
+          width: 24px;
           height: 12px;
-          background: rgba(13, 27, 46, 0.1);
+          border: 1.5px solid #0d1b2e;
+          border-radius: 3px;
+        }
+        .f04-batt i {
+          position: absolute;
+          left: 2px;
+          top: 2px;
+          bottom: 2px;
+          width: 14px;
+          background: #0d1b2e;
+          border-radius: 1px;
+          display: block;
+        }
+
+        /* clipped viewport the screenshot scrolls inside */
+        .f04-viewport {
+          position: absolute;
+          top: 44px;
+          left: 0;
+          right: 0;
+          bottom: 0;
           overflow: hidden;
         }
-        .f04-rate-fill {
-          width: 100%; /* required — scaleX of an unsized fill stays 0px */
-          height: 100%;
+        /* the moving layer — img is taller than the viewport by design */
+        #f04-scroll {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 370px;
+          will-change: transform;
+        }
+        #f04-scroll img {
+          display: block;
+          width: 370px;
+          height: 752px;
+        }
+        /* gold "on target" underline beneath the gauge's green zone — rides the
+           scroll layer so it stays glued to the gauge (css-marker-patterns) */
+        #f04-underline {
+          position: absolute;
+          left: 152px;
+          top: 414px;
+          width: 145px;
+          height: 5px;
           background: #e8b64c;
-          transform: scaleX(0);
+          border-radius: 3px;
           transform-origin: left center;
           will-change: transform;
         }
 
-        /* days-to-show chip (Scene 3) */
-        .f04-chip {
+        /* ---------- gold callout chip (scene 1, left of phone) ---------- */
+        #f04-callout {
           position: absolute;
-          left: 50%;
-          top: 748px;
-          margin-left: -177px; /* center via margin; GSAP owns transform */
-          width: 354px;
-          padding: 20px 0;
-          background: #0d1b2e;
-          text-align: center;
-          transform-origin: 50% 50%;
-          will-change: transform;
-          z-index: 2;
+          left: 110px;
+          top: 384px;
+          width: 214px;
+          background: #e8b64c;
+          padding: 14px 18px;
+          will-change: transform, opacity;
         }
-        .f04-chip-text {
-          display: inline-block;
-          min-width: 268px; /* fixed width so typing never jitters the chip */
-          text-align: left;
+        .f04-callout-label {
+          font-family: "Inter", sans-serif;
+          font-size: 12px;
+          font-weight: 600;
+          letter-spacing: 0.18em;
+          text-transform: uppercase;
+          color: #0d1b2e;
+          opacity: 0.75;
+        }
+        .f04-callout-value {
           font-family: "JetBrains Mono", monospace;
-          font-size: 24px;
-          font-weight: 500;
-          letter-spacing: 0.14em;
-          color: #faf6ec;
+          font-size: 22px;
+          font-weight: 700;
+          letter-spacing: 0.02em;
+          color: #0d1b2e;
+          margin-top: 5px;
           white-space: nowrap;
+        }
+        /* hairline connector pointing at the ADG stat on screen */
+        #f04-connector {
+          position: absolute;
+          left: 324px;
+          top: 418px;
+          width: 30px;
+          height: 1px;
+          background: rgba(13, 27, 46, 0.6);
+          transform-origin: left center;
+          will-change: transform, opacity;
+        }
+
+        /* ---------- navy days-to-show chip (scene 3, right of phone) ---------- */
+        #f04-days {
+          position: absolute;
+          left: 766px;
+          top: 452px;
+          width: 198px;
+          background: #0d1b2e;
+          padding: 16px 20px 18px;
+          will-change: transform, opacity;
+        }
+        .f04-days-num {
+          font-family: "JetBrains Mono", monospace;
+          font-size: 46px;
+          font-weight: 700;
+          line-height: 1;
+          color: #e8b64c;
+        }
+        .f04-days-label {
+          font-family: "Inter", sans-serif;
+          font-size: 12px;
+          font-weight: 600;
+          letter-spacing: 0.18em;
+          text-transform: uppercase;
+          color: #faf6ec;
+          margin-top: 8px;
         }
       </style>
 
@@ -349,60 +308,56 @@
         data-height="1080"
         data-duration="6.431"
       >
-        <div
-          class="f04-scene clip"
-          data-start="0"
-          data-duration="5.931"
-          data-track-index="0"
-        >
+        <!-- ground -->
+        <div class="clip f04-bg" data-start="0" data-duration="5.931" data-track-index="0">
           <div class="f04-ember"></div>
+        </div>
 
-          <div class="f04-cam" id="f04-cam">
-            <div class="f04-bloom" id="f04-bloom"></div>
+        <!-- stage under the virtual camera -->
+        <div class="clip f04-stage" data-start="0" data-duration="5.931" data-track-index="1">
+          <div id="f04-cam-outer">
+            <div id="f04-cam-inner">
+              <!-- sun bloom (depth layer, behind the phone) -->
+              <div id="f04-bloom"></div>
 
-            <div class="f04-toplabel">Know every pig</div>
-            <div class="f04-pagenum">04 · PROFEEDER</div>
-
-            <!-- Recreated pig detail card -->
-            <div class="f04-card" id="f04-card">
-              <div class="f04-card-head">
-                <div class="f04-name">Bessie</div>
-                <div class="f04-card-kicker">Pig record</div>
-              </div>
-
-              <div class="f04-body">
-                <div class="f04-weight-col">
-                  <div class="f04-weight-label">Current weight</div>
-                  <div class="f04-weight-row">
-                    <span class="f04-weight" id="f04-weight">0</span>
-                    <span class="f04-lbs" id="f04-lbs">LBS</span>
+              <!-- phone: real Pig Details screenshot inside an authored shell -->
+              <div id="f04-phone">
+                <div class="f04-shell">
+                  <div class="f04-screen">
+                    <div class="f04-status">
+                      <span class="f04-status-time">9:41</span>
+                      <span class="f04-status-right">
+                        <span class="f04-sig"><i></i><i></i><i></i><i></i></span>
+                        <span class="f04-batt"><i></i></span>
+                      </span>
+                    </div>
+                    <div class="f04-viewport">
+                      <!-- scrolling layer: deliberately taller than the viewport -->
+                      <div id="f04-scroll" data-layout-allow-overflow>
+                        <img
+                          id="f04-screenshot"
+                          src="assets/screen-pig-details-adg.png"
+                          alt=""
+                        />
+                        <div id="f04-underline"></div>
+                      </div>
+                    </div>
                   </div>
                 </div>
-
-                <div class="f04-ring-wrap">
-                  <svg class="f04-ring-svg" viewBox="0 0 208 208">
-                    <circle class="f04-ring-track" cx="104" cy="104" r="88"></circle>
-                    <circle class="f04-ring-fill" id="f04-ring" cx="104" cy="104" r="88"></circle>
-                  </svg>
-                  <div class="f04-ring-center">
-                    <span>Target<br />weight</span>
-                  </div>
-                  <div class="f04-badge" id="f04-badge">On target</div>
-                </div>
               </div>
 
-              <div class="f04-rate" id="f04-rate">
-                <div class="f04-rate-label">Rate of gain</div>
-                <div class="f04-rate-value">+1.52 <em>/DAY</em></div>
-                <div class="f04-rate-track">
-                  <div class="f04-rate-fill" id="f04-rate-fill"></div>
-                </div>
+              <!-- gold callout chip + hairline connector (scene 1) -->
+              <div id="f04-callout">
+                <div class="f04-callout-label">ADG needed</div>
+                <div class="f04-callout-value">1.44 lbs/day</div>
               </div>
-            </div>
+              <div id="f04-connector"></div>
 
-            <!-- days-to-show chip -->
-            <div class="f04-chip" id="f04-chip">
-              <span class="f04-chip-text" id="f04-chip-text"></span>
+              <!-- navy days-to-show chip (scene 3) -->
+              <div id="f04-days">
+                <div class="f04-days-num">25</div>
+                <div class="f04-days-label">Days to show</div>
+              </div>
             </div>
           </div>
         </div>
@@ -411,146 +366,106 @@
       <script src="assets/vendor/gsap.min.js"></script>
       <script>
         window.__timelines = window.__timelines || {};
-        const tl = gsap.timeline({ paused: true });
 
-        const DUR = 5.931;
+        var tl = gsap.timeline({ paused: true });
 
-        /* ── Scene 1 (0.0–1.6s): card rises, weight counts to 262, ring sweeps ── */
+        /* ============ Scene 1 (0.0–1.8) — "track every pound of gain" ============
+           Phone rises centered and settles (spring-pop-entrance, smooth power3
+           long-tail — no overshoot); sun bloom suffuses in behind it; the gold
+           ADG callout chip fades in beside the on-screen stat. */
 
-        // sun bloom establishes early (frame never reads flat)
+        // Bloom breathes in first — atmosphere before structure.
         tl.fromTo(
           "#f04-bloom",
-          { opacity: 0, scale: 0.94 },
-          { opacity: 0.55, scale: 1, duration: 1.0, ease: "power2.out" },
-          0
-        );
-
-        // spring-pop-entrance (smooth power3 settle, small y rise)
-        tl.fromTo(
-          "#f04-card",
-          { scale: 0, opacity: 0, y: 52 },
-          { scale: 1, opacity: 1, y: 0, duration: 0.65, ease: "power3.out" },
+          { opacity: 0, scale: 0.88 },
+          { opacity: 0.8, scale: 1, duration: 0.9, ease: "power2.out" },
           0.05
         );
 
-        // counting-dynamic-scale: value + font-size in ONE tween (shared ease)
-        const weightEl = document.getElementById("f04-weight");
-        const wState = { v: 0, fs: 64 };
+        // Phone rises from the lower edge; visible well before t=0.5s.
+        tl.fromTo(
+          "#f04-phone",
+          { y: 560, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.85, ease: "power3.out" },
+          0.1
+        );
+
+        // Gold callout chip lands beside the phone (discrete-text-sequence
+        // slide-up crossfade entrance), then its hairline connector draws
+        // toward the ADG stat on screen.
+        tl.fromTo(
+          "#f04-callout",
+          { y: 26, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.55, ease: "power3.out" },
+          1.05
+        );
+        tl.fromTo(
+          "#f04-connector",
+          { scaleX: 0, opacity: 1 },
+          { scaleX: 1, opacity: 1, duration: 0.35, ease: "power2.out" },
+          1.35
+        );
+
+        /* ============ Scene 2 (1.8–3.6) — "exactly where every pig stands" ============
+           The screen content scrolls up inside the clipped shell (3d-page-scroll
+           mechanics: translateY within the shell window, power3.out landing) so
+           the Pace-vs-Target gauge lands centered in the cutout; concurrently the
+           camera pushes in toward it (multi-phase-camera push, coordinate-target
+           form: outer scales, inner counter-translates; gauge sits at frame
+           center by layout so the counter-shift is a small vertical trim) and a
+           gold accent underlines the gauge's green zone. */
+
+        // Connector points at content that is about to scroll away — retire it
+        // as the scroll begins (internal swap, not a frame exit).
+        tl.to("#f04-connector", { opacity: 0, duration: 0.3, ease: "power1.out" }, 1.82);
+
+        // Screen scroll: gauge region (display y≈406 in the 622px viewport)
+        // lands at the viewport's vertical center. Single tween, power3.out.
         tl.to(
-          wState,
-          {
-            v: 262,
-            fs: 116,
-            duration: 1.35,
-            ease: "power3.out",
-            onUpdate: () => {
-              weightEl.textContent = String(Math.round(wState.v));
-              weightEl.style.fontSize = wState.fs + "px";
-            },
-          },
-          0.35
+          "#f04-scroll",
+          { y: -95, duration: 1.35, ease: "power3.out" },
+          1.85
         );
 
-        // stat-bars-and-fills, ring form: measured stroke draw on the SAME ease
-        const ring = document.getElementById("f04-ring");
-        const LEN = ring.getTotalLength();
-        ring.style.strokeDasharray = LEN;
-        ring.style.strokeDashoffset = LEN;
+        // Camera push — scale + counter-translate share duration AND ease.
+        // Peak keeps the phone bottom above the caption keep-out (y < 896).
         tl.to(
-          ring,
-          { strokeDashoffset: LEN * (1 - 0.87), duration: 1.35, ease: "power3.out" },
-          0.35
+          "#f04-cam-outer",
+          { scale: 1.18, duration: 1.6, ease: "power2.inOut" },
+          1.9
+        );
+        tl.to(
+          "#f04-cam-inner",
+          { y: -8, duration: 1.6, ease: "power2.inOut" },
+          1.9
         );
 
-        // LBS suffix rises AFTER the count lands (its own beat)
+        // Gold "on target" underline sweeps beneath the gauge's green zone
+        // once the scroll has landed (css-marker-patterns, highlight sweep).
         tl.fromTo(
-          "#f04-lbs",
-          { opacity: 0, y: 14 },
-          { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" },
-          1.55
-        );
-
-        /* ── Scene 2 (1.6–3.4s): rate chip slides in, bar fills, badge pops ── */
-
-        tl.fromTo(
-          "#f04-rate",
-          { opacity: 0, x: -46 },
-          { opacity: 1, x: 0, duration: 0.55, ease: "power3.out" },
-          1.7
-        );
-        tl.fromTo(
-          "#f04-rate-fill",
+          "#f04-underline",
           { scaleX: 0 },
-          { scaleX: 0.76, duration: 0.9, ease: "power2.out" },
-          1.95
+          { scaleX: 1, duration: 0.5, ease: "power2.out" },
+          3.2
         );
 
-        // gold "on target" badge — the sanctioned accent pop (smooth settle)
-        tl.fromTo(
-          "#f04-badge",
-          { scale: 0, opacity: 0 },
-          { scale: 1, opacity: 1, duration: 0.55, ease: "power3.out" },
-          2.45
-        );
-
-        /* ── Scene 3 (3.4–5.0s): SHOW IN 21 DAYS chip reveals, glow blooms ── */
+        /* ============ Scene 3 (3.6–5.0) — "days out from the show" ============
+           Navy 25-days chip reveals beside the phone (echoing the screen's own
+           copy); the bloom swells softly behind the phone (ambient-glow-bloom,
+           bloom-and-hold — no breathe loop); camera has eased to a stop. HOLD. */
 
         tl.fromTo(
-          "#f04-chip",
-          { opacity: 0, y: 26, scale: 0.94 },
-          { opacity: 1, y: 0, scale: 1, duration: 0.55, ease: "power3.out" },
-          3.5
+          "#f04-days",
+          { y: 26, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.55, ease: "power3.out" },
+          3.75
         );
 
-        // discrete-text-sequence (smooth character slice) — deterministic
-        const chipTextEl = document.getElementById("f04-chip-text");
-        const CHIP_TEXT = "SHOW IN 21 DAYS";
-        const tState = { n: 0 };
-        tl.to(
-          tState,
-          {
-            n: CHIP_TEXT.length,
-            duration: 0.8,
-            ease: "power1.inOut",
-            onUpdate: () => {
-              chipTextEl.textContent = CHIP_TEXT.substring(0, Math.floor(tState.n));
-            },
-          },
-          3.6
-        );
-
-        // ambient-glow-bloom: the sun bloom swells softly behind the card
+        // Soft glow bloom behind the phone — one swell, then still to the end.
         tl.to(
           "#f04-bloom",
-          { opacity: 0.85, scale: 1.05, duration: 1.1, ease: "power2.out" },
-          3.55
-        );
-
-        /* ── multi-phase-camera: gentle push-in that peaks, then eases to a stop ── */
-
-        const cam = document.getElementById("f04-cam");
-        const phase = { s: 1 };
-        // push runs under Scene 2 and peaks
-        tl.to(phase, { s: 1.07, duration: 1.8, ease: "power2.inOut" }, 1.6);
-        // eases to a stop — card HOLDS still for the tail
-        tl.to(phase, { s: 1.05, duration: 1.2, ease: "power2.out" }, 3.5);
-
-        // continuous micro-drift (Lissajous, deterministic) + phase scale
-        const drift = { p: 0 };
-        tl.to(
-          drift,
-          {
-            p: Math.PI * 2 * 1.4,
-            duration: DUR,
-            ease: "none",
-            onUpdate: () => {
-              const dx = Math.sin(drift.p) * 4;
-              const dy = Math.sin(drift.p * 1.3) * 2.5;
-              cam.style.transform =
-                "scale(" + phase.s + ") translate(" + dx + "px, " + dy + "px)";
-            },
-          },
-          0
+          { opacity: 1, scale: 1.07, duration: 0.9, ease: "power2.out" },
+          3.95
         );
 
         window.__timelines["04-weights"] = tl;

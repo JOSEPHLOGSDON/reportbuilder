@@ -81,7 +81,7 @@
         .f05-cam {
           position: absolute;
           inset: 0;
-          transform-origin: 50% 50%;
+          transform-origin: 38% 42%; /* biased toward the phone slot for the push */
           will-change: transform;
         }
 
@@ -520,8 +520,11 @@
 
         const cam = document.getElementById("f05-cam");
         const phase = { s: 1 };
-        tl.to(phase, { s: 1.045, duration: 2.0, ease: "power2.inOut" }, 1.4);
-        tl.to(phase, { s: 1.035, duration: 1.1, ease: "power2.out" }, 3.6);
+        // Continual push onto the ration screenshot so it reads clearly.
+        tl.to(phase, { s: 1.1, duration: 2.0, ease: "power1.inOut" }, 1.4);
+        tl.to(phase, { s: 1.24, duration: 1.35, ease: "power1.out" }, 3.4);
+        // page chrome retires as the camera closes in (keeps the keep-out clean)
+        tl.to("#f05-pagenum", { opacity: 0, duration: 0.4, ease: "power1.out" }, 2.6);
 
         // continuous deterministic micro-drift (Lissajous) + phase scale
         const drift = { p: 0 };

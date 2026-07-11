@@ -249,6 +249,15 @@
           0.08
         );
 
+        // Continuous camera push onto the screenshot: the phone keeps growing
+        // toward the lens for the whole frame so the app screen reads clearly.
+        tl.fromTo(
+          "#i03-phone",
+          { scale: 1 },
+          { scale: 1.26, y: -46, duration: 2.05, ease: "power1.inOut", transformOrigin: "50% 26%" },
+          0.9
+        );
+
         /* ============ Scene 2 (1.12–2.09) — wordmark reveals per word ============ */
 
         // dynamic-content-sequencing: staggered, index-derived token reveal of

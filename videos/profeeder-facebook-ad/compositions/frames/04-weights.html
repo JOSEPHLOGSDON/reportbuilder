@@ -419,14 +419,21 @@
 
         // Camera push — scale + counter-translate share duration AND ease.
         // Peak keeps the phone bottom above the caption keep-out (y < 896).
+        // Continual push: starts gently at t=0.15 and keeps closing on the
+        // gauge until the final hold, so the screenshot reads clearly.
         tl.to(
           "#f04-cam-outer",
-          { scale: 1.18, duration: 1.6, ease: "power2.inOut" },
+          { scale: 1.07, duration: 1.75, ease: "power1.inOut" },
+          0.15
+        );
+        tl.to(
+          "#f04-cam-outer",
+          { scale: 1.45, duration: 3.9, ease: "power1.inOut" },
           1.9
         );
         tl.to(
           "#f04-cam-inner",
-          { y: -8, duration: 1.6, ease: "power2.inOut" },
+          { y: -54, duration: 3.9, ease: "power1.inOut" },
           1.9
         );
 

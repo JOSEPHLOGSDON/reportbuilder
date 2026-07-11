@@ -9,3 +9,12 @@ Visual notes from the screenshot (for reference; no image files available):
 - Closing: dark navy, "Get ProFeeder. Win more banners." with App Store / Google Play badges and QR code.
 
 All app-screen visuals for the video must be recreated as styled HTML UI mockups (no screenshots available).
+
+## Real app screenshots (user-provided, 2026-07-11)
+
+Cropped (status bar removed), 720px wide PNG, staged in `assets/`:
+
+- `assets/screen-feeding-time.png` — Feeding Time screen: navy header, "PIG 4 OF 7 · Lucy", navy ration card (Per feeding · 2x/day · DRY chip, action icons), orange "HEALTH DUE SOON — Matrix, Due today" banner, ration line items (Show Pig 17.5 2 lbs, Curve 1 lbs, On Target 6 oz…), Back/Next buttons.
+- `assets/screen-pig-details-adg.png` — Pig Details screen: purple target card "McLean county fair — Target: 265 lbs — 25 days from last weight to show — 86% of target weight" with progress bar; "ADG Needed 1.44 lbs/day" stat card; "ADG vs Target" card; "Pace vs Target ADG" gauge (Hard push / On target / Hard hold with two weight markers); "Projected weight at show" rows; app tab bar.
+- `assets/screen-ration-nutrition.png` — Pig Details ration view: purple "Bean Dip Push" ration card with action icons; INGREDIENTS list (Show Pig 15 2 lbs, Warhorse 1.5 lbs, Barley Pop 1 lbs, DYNE 6 oz…); "BLENDED NUTRITION 13.9% Protein · 8.1% Fat · 1.02% Lysine · 5.4 lbs/day" summary; green "Log Weight" button; Weight History (14); tab bar.
+- `assets/screen-feed-products.png` — Feed → Products library: product cards (Auto Pilot, Barley Pop, Buttered Up, CHISELED, Curve) with brand, Supplement/In Use chips, nutrient percentages; tab bar.

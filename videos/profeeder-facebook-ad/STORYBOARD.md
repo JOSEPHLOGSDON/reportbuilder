@@ -84,11 +84,13 @@ narrativeRole: The turn. Product named by frame 3, promise landed: everything th
 keyMessage: One app runs the whole barn.
 
 - blueprint: device-surface-showcase (Adapt — static-tour variant)
+- focal: assets/screen-feeding-time.png
+- roles: screen-feeding-time = supporting (the phone's screen content — REAL app screenshot mounted inside an authored phone shell)
 - sfx: riser, pop-soft
 
-Adapt: keep the surface-as-hero + accent-shape-behind signature; single screen (Feeding Time checklist) instead of a multi-screen cycle — the intro only introduces; rows tick live instead of screens advancing.
-Scene 1 (0.0–1.5s): navy ink field. As the VO says "Meet ProFeeder," a phone mockup slides up from the lower edge and settles (`spring-pop-entrance`, smooth settle, no overshoot) center-right at ~55% canvas height; a large gold-tinted disc scales up behind it (`scale-swap-transition` restrained form) — asymmetric 60/40, 3 depth layers (disc / phone / type), phone face showing the "Feeding Time" checklist UI (recreated HTML: header, pen rows, ration chips).
-Scene 2 (1.5–2.8s): on "the whole barn," the wordmark "ProFeeder" reveals per-word (`dynamic-content-sequencing`) in cream display serif upper-left, with ".ag" in gold; two checklist rows on the phone tick complete with drawn gold checks (`svg-path-draw`).
+Adapt: keep the surface-as-hero + accent-shape-behind signature; single real screen (the actual Feeding Time screenshot) instead of a multi-screen cycle — the intro only introduces.
+Scene 1 (0.0–1.5s): navy ink field. As the VO says "Meet ProFeeder," a phone mockup (authored navy shell whose screen IS `assets/screen-feeding-time.png`, full-bleed inside the shell, top-aligned so the "Feeding Time" header and Lucy card read clearly) slides up from the lower edge and settles (`spring-pop-entrance`, smooth settle, no overshoot) center-right at ~58% canvas height; a large gold-tinted disc scales up behind it (`scale-swap-transition` restrained form) — asymmetric 60/40, 3 depth layers (disc / phone / type).
+Scene 2 (1.5–2.8s): on "the whole barn," the wordmark "ProFeeder" reveals per-word (`dynamic-content-sequencing`) in cream display serif upper-left, with ".ag" in gold.
 Scene 3 (2.8–4.0s): on "in your pocket," a small gold italic tagline "the whole barn, in your pocket." fades up under the wordmark; everything settles and HOLDS — at most subtle jitter on the phone (`sine-wave-loop`, low amplitude).
 
 
@@ -109,13 +111,15 @@ Scene 3 (2.8–4.0s): on "in your pocket," a small gold italic tagline "the whol
 narrativeRole: The hero feature — rate-of-gain math toward target show weight is the core magic. The count-up dramatizes certainty replacing guesswork.
 keyMessage: You always know where every pig stands.
 
-- blueprint: dataviz-countup (Adapt — hero-instrument count-up, no push-through)
+- blueprint: device-surface-showcase (Adapt — floating-window push-scroll feel on a real phone screen)
+- focal: assets/screen-pig-details-adg.png
+- roles: screen-pig-details-adg = focal cutout (REAL Pig Details screenshot mounted in an authored phone shell — the hero of the beat)
 - sfx: tick-count, chime-soft
 
-Adapt: keep the count-up + ring-fill signature landing as one beat; single hero pig-card instrument instead of a 2–3 instrument traversal (5s frame, one idea); camera limited to one gentle push-in that peaks and settles.
-Scene 1 (0.0–1.6s): cream canvas. On "track every pound of gain," a pig detail card (recreated HTML: "Bessie" header, weight readout) rises centered (`spring-pop-entrance`, smooth) — Centered, card ~60% of frame, upper-two-thirds; the weight counts up to 262 lbs in mono digits with font-size growing on the value (`counting-dynamic-scale`) while a gold progress ring sweeps toward target weight on the same ease (`stat-bars-and-fills`).
-Scene 2 (1.6–3.4s): on "exactly where every pig stands," a rate-of-gain stat chip "+1.52 /day" slides into the card and its mini bar fills (`stat-bars-and-fills`); a gold "on target" badge spring-pops beside the ring (`spring-pop-entrance` — the sanctioned accent pop); a gentle camera push-in runs (`multi-phase-camera`) and peaks.
-Scene 3 (3.4–5.0s): on "days out from the show," a navy chip "SHOW IN 21 DAYS" reveals under the card (`discrete-text-sequence`); glow blooms softly behind the card (`ambient-glow-bloom`); camera eases to a stop and the card HOLDS still.
+Adapt: keep the surface-as-hero signature with a camera that pushes IN on a target region; the real screenshot replaces the recreated card. The screenshot is TALL — the phone screen shows its top (target card) first, then the screen content scrolls up inside the shell to reveal the Pace-vs-Target gauge (screen-cycling per `3d-page-scroll`; clip at the shell, `data-layout-allow-overflow` on the scrolling layer).
+Scene 1 (0.0–1.8s): cream canvas. On "track every pound of gain," the phone (screen = `assets/screen-pig-details-adg.png`, top-aligned: the purple "McLean county fair — Target: 265 lbs" card visible) rises centered (`spring-pop-entrance`, smooth) — Centered, phone ~62% of frame height, upper-two-thirds; a gold callout chip "ADG needed · 1.44 lbs/day" fades in beside it pointing at the stat (`discrete-text-sequence`).
+Scene 2 (1.8–3.6s): on "exactly where every pig stands," the screen content scrolls up inside the shell (`3d-page-scroll`) landing the "Pace vs Target ADG" gauge centered; a gentle camera push-in runs toward the gauge (`multi-phase-camera` + `coordinate-target-zoom`) and peaks; a gold "on target" accent underlines the gauge's green zone (`css-marker-patterns`).
+Scene 3 (3.6–5.0s): on "days out from the show," a navy chip "25 DAYS TO SHOW" reveals beside the phone (`discrete-text-sequence`, echoing the screen's own copy); glow blooms softly behind the phone (`ambient-glow-bloom`); camera eases to a stop; HOLD still.
 
 
 ## Frame 5 — Rations & health
@@ -135,13 +139,15 @@ Scene 3 (3.4–5.0s): on "days out from the show," a navy chip "SHOW IN 21 DAYS"
 narrativeRole: Widens the value: feeding precision plus health protocols — the two chores with the highest stakes — handled in the same app.
 keyMessage: Rations and health protocols, handled.
 
-- blueprint: grid-card-assemble (Adapt — Key_Feature grid, two cards)
+- blueprint: grid-card-assemble (Adapt — two-up: real phone + authored health card)
+- focal: assets/screen-ration-nutrition.png
+- roles: screen-ration-nutrition = focal cutout (REAL ration/blended-nutrition screenshot in an authored phone shell, left slot); health card = supporting (authored HTML, right slot)
 - sfx: pop-soft, check-tick
 
-Adapt: keep the staggered assemble-into-slot signature; two large feature cards instead of a 6–9 tile grid — each card reveals ON its spoken cue rather than one opening cascade.
-Scene 1 (0.0–2.0s): cream canvas. On "blend custom rations on the fly," the RATIONS card fades + slides into the left slot (`center-outward-expansion`, direct-into-slot form) — split-screen two-up developing left→right, cards ~44% width each, upper-two-thirds; inside it, three feed-mix chips (corn / supplement / show feed) stagger in (`gsap-effects` stagger) and a gold blend bar fills (`stat-bars-and-fills`).
-Scene 2 (2.0–3.6s): on "health schedules," the HEALTH card assembles into the right slot the same way; two reminder rows ("Ivomec — due Sat", "Vaccine — done") appear, and on "never slip again" their checkmarks draw on in gold (`svg-path-draw`) with the done-row dimming by position.
-Scene 3 (3.6–4.5s): both cards settle level and HOLD; a single traveling gold glow sweeps once across the pair (`ambient-glow-bloom` traveling form) and dies out. Still to the end.
+Adapt: keep the staggered assemble-into-slot signature; left slot is a REAL phone (screen = `assets/screen-ration-nutrition.png`, positioned so INGREDIENTS + the purple BLENDED NUTRITION summary read clearly), right slot an authored health card — each reveals ON its spoken cue.
+Scene 1 (0.0–2.0s): cream canvas. On "blend custom rations on the fly," the phone fades + slides into the left slot (`center-outward-expansion`, direct-into-slot form) — split-screen two-up developing left→right, phone ~46% width, upper-two-thirds; a small gold callout "13.9% protein · blended live" fades in above it (`discrete-text-sequence`).
+Scene 2 (2.0–3.6s): on "health schedules," the authored HEALTH card assembles into the right slot the same way (brand system: navy on cream); two reminder rows ("Matrix — due today", "Wormer — done") appear, and on "never slip again" their checkmarks draw on in gold (`svg-path-draw`) with the done-row dimming by position.
+Scene 3 (3.6–4.5s): both settle level and HOLD; a single traveling gold glow sweeps once across the pair (`ambient-glow-bloom` traveling form) and dies out. Still to the end.
 
 
 ## Frame 6 — Show day, dialed in

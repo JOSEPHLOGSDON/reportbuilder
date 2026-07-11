@@ -1,5 +1,5 @@
 <template>
-  <div id="root" data-composition-id="02-pain" data-start="0" data-duration="4.496" data-width="1080" data-height="1080">
+  <div data-hf-id="hf-wewo" id="root" data-composition-id="02-pain" data-start="0" data-duration="4.496" data-width="1080" data-height="1080">
     <style>
       @font-face {
   font-family: 'Instrument Serif';
@@ -159,62 +159,51 @@
     </style>
 
     <!-- directional motion-blur filters (one per line, X-axis smear) -->
-    <svg width="0" height="0" aria-hidden="true" style="position: absolute">
-      <defs>
-        <filter id="p2-f1" x="-50%" y="-50%" width="200%" height="200%">
-          <feGaussianBlur id="p2-blur1" in="SourceGraphic" stdDeviation="0 0" />
+    <svg data-hf-id="hf-p3r6" width="0" height="0" aria-hidden="true" style="position: absolute">
+      <defs data-hf-id="hf-mh0t">
+        <filter data-hf-id="hf-92te" id="p2-f1" x="-50%" y="-50%" width="200%" height="200%">
+          <fegaussianblur data-hf-id="hf-tzg0" id="p2-blur1" in="SourceGraphic" stdDeviation="0 0" />
         </filter>
-        <filter id="p2-f2" x="-50%" y="-50%" width="200%" height="200%">
-          <feGaussianBlur id="p2-blur2" in="SourceGraphic" stdDeviation="12 0" />
+        <filter data-hf-id="hf-b6nr" id="p2-f2" x="-50%" y="-50%" width="200%" height="200%">
+          <fegaussianblur data-hf-id="hf-4f4o" id="p2-blur2" in="SourceGraphic" stdDeviation="12 0" />
         </filter>
-        <filter id="p2-f3" x="-50%" y="-50%" width="200%" height="200%">
-          <feGaussianBlur id="p2-blur3" in="SourceGraphic" stdDeviation="12 0" />
+        <filter data-hf-id="hf-ub54" id="p2-f3" x="-50%" y="-50%" width="200%" height="200%">
+          <fegaussianblur data-hf-id="hf-8ynz" id="p2-blur3" in="SourceGraphic" stdDeviation="12 0" />
         </filter>
       </defs>
     </svg>
 
-    <div id="p2-bg" class="clip" data-start="0" data-duration="4.096" data-track-index="0">
-      <div class="p2-sun-bloom"></div>
-      <div class="p2-ember-bloom"></div>
+    <div data-hf-id="hf-7wwj" id="p2-bg" class="clip" data-start="0" data-duration="4.096" data-track-index="0">
+      <div data-hf-id="hf-hyp5" class="p2-sun-bloom"></div>
+      <div data-hf-id="hf-yu4a" class="p2-ember-bloom"></div>
     </div>
 
-    <div id="p2-stage" class="clip" data-start="0" data-duration="4.096" data-track-index="1">
+    <div data-hf-id="hf-8ywx" id="p2-stage" class="clip" data-start="0" data-duration="4.096" data-track-index="1">
       <!-- Scene 1: pain line 1, per-word chunk reveal + gold scribble strike -->
-      <div class="p2-line" id="p2-line1" data-layout-allow-overlap>
-        <div>
-          <span class="p2-word p2-strike-wrap"
-            ><span>Scribbled</span>
-            <svg class="p2-strike-svg" viewBox="0 0 500 24" preserveAspectRatio="none">
-              <path
-                id="p2-strike-path"
-                d="M0,12 Q31,2 62,12 Q93,22 125,12 Q156,2 187,12 Q218,22 250,12 Q281,2 312,12 Q343,22 375,12 Q406,2 437,12 Q468,22 500,12"
-                fill="none"
-                stroke="#e8b64c"
-                stroke-width="7"
-                stroke-linecap="round"
-              /></svg
-          ></span>
-          <span class="p2-word">feed</span>
-          <span class="p2-word">notes.</span>
+      <div data-hf-id="hf-q1bl" class="p2-line" id="p2-line1" data-layout-allow-overlap="">
+        <div data-hf-id="hf-yeow">
+          <span data-hf-id="hf-luqq" class="p2-word p2-strike-wrap"><span data-hf-id="hf-t41z">Scribbled</span>
+            <svg data-hf-id="hf-92x1" class="p2-strike-svg" viewBox="0 0 500 24" preserveAspectRatio="none">
+              <path data-hf-id="hf-n78l" id="p2-strike-path" d="M0,12 Q31,2 62,12 Q93,22 125,12 Q156,2 187,12 Q218,22 250,12 Q281,2 312,12 Q343,22 375,12 Q406,2 437,12 Q468,22 500,12" fill="none" stroke="#e8b64c" stroke-width="7" stroke-linecap="round" /></svg></span>
+          <span data-hf-id="hf-p8uc" class="p2-word">feed</span>
+          <span data-hf-id="hf-y1xd" class="p2-word">notes.</span>
         </div>
       </div>
 
       <!-- Scene 2: pain line 2, motion-blur fly-in + gold hand-drawn circle -->
-      <div class="p2-line" id="p2-line2" data-layout-allow-overlap>
-        <div>
-          <span class="p2-circle-wrap"
-            ><span>Guessed</span>
-            <span class="p2-circle-ring" id="p2-ring"></span
-          ></span>
-          <span>weights.</span>
+      <div data-hf-id="hf-tzfm" class="p2-line" id="p2-line2" data-layout-allow-overlap="">
+        <div data-hf-id="hf-y7yw">
+          <span data-hf-id="hf-ujbt" class="p2-circle-wrap"><span data-hf-id="hf-hr9r">Guessed</span>
+            <span data-hf-id="hf-q1xu" class="p2-circle-ring" id="p2-ring"></span></span>
+          <span data-hf-id="hf-njro">weights.</span>
         </div>
       </div>
 
       <!-- Scene 3: final pain line, "that slipped." in ember, slipping down -->
-      <div class="p2-line" id="p2-line3" data-layout-allow-overlap>
-        <div class="p2-stack">
-          <span>A dewormer date</span>
-          <span class="p2-slip" id="p2-slip">that slipped.</span>
+      <div data-hf-id="hf-xxjn" class="p2-line" id="p2-line3" data-layout-allow-overlap="">
+        <div data-hf-id="hf-mvcx" class="p2-stack">
+          <span data-hf-id="hf-ro71">A dewormer date</span>
+          <span data-hf-id="hf-1hsz" class="p2-slip" id="p2-slip">that slipped.</span>
         </div>
       </div>
     </div>

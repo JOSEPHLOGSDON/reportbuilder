@@ -1,0 +1,258 @@
+
+  ⚠ [compositions/frames/02-pain.html] overlapping_gsap_tweens: GSAP tweens overlap on "dwell/hold" for v between 1.50s and 1.58s.
+    Fix: Shorten the earlier tween, move the later tween, or add `overwrite: "auto"`.
+  ⚠ [compositions/frames/02-pain.html] overlapping_gsap_tweens: GSAP tweens overlap on "dwell/hold" for v between 2.64s and 2.72s.
+    Fix: Shorten the earlier tween, move the later tween, or add `overwrite: "auto"`.
+  ⚠ [compositions/frames/03-intro.html] studio_missing_editable_id: <div class="i03-bg" data-start="0" data-track-index="0"> has no id, so Studio cannot use a stable edit target for its timeline and canvas controls.
+    Fix: Add a stable, human-readable id such as id="hero-title" or id="scene-1-card" to every timeline-visible element you want agents or Studio to edit.
+  ⚠ [compositions/frames/03-intro.html] studio_missing_editable_id: <div class="i03-stage" data-start="0" data-track-index="1"> has no id, so Studio cannot use a stable edit target for its timeline and canvas controls.
+    Fix: Add a stable, human-readable id such as id="hero-title" or id="scene-1-card" to every timeline-visible element you want agents or Studio to edit.
+  ⚠ [compositions/frames/04-weights.html] studio_missing_editable_id: <div class="f04-bg" data-start="0" data-track-index="0"> has no id, so Studio cannot use a stable edit target for its timeline and canvas controls.
+    Fix: Add a stable, human-readable id such as id="hero-title" or id="scene-1-card" to every timeline-visible element you want agents or Studio to edit.
+  ⚠ [compositions/frames/04-weights.html] studio_missing_editable_id: <div class="f04-stage" data-start="0" data-track-index="1"> has no id, so Studio cannot use a stable edit target for its timeline and canvas controls.
+    Fix: Add a stable, human-readable id such as id="hero-title" or id="scene-1-card" to every timeline-visible element you want agents or Studio to edit.
+  ⚠ [compositions/frames/05-rations-health.html] studio_missing_editable_id: <div class="f05-scene" data-start="0" data-track-index="0"> has no id, so Studio cannot use a stable edit target for its timeline and canvas controls.
+    Fix: Add a stable, human-readable id such as id="hero-title" or id="scene-1-card" to every timeline-visible element you want agents or Studio to edit.
+  ⚠ [compositions/frames/05-rations-health.html] overlapping_gsap_tweens: GSAP tweens overlap on "#f05-sweep" for opacity between 4.40s and 4.70s.
+    Fix: Shorten the earlier tween, move the later tween, or add `overwrite: "auto"`.
+  ⚠ [compositions/frames/07-price.html] studio_missing_editable_id: <div class="p7-ground" data-start="0" data-track-index="0"> has no id, so Studio cannot use a stable edit target for its timeline and canvas controls.
+    Fix: Add a stable, human-readable id such as id="hero-title" or id="scene-1-card" to every timeline-visible element you want agents or Studio to edit.
+  ⚠ [compositions/frames/07-price.html] studio_missing_editable_id: <div class="p7-stage" data-start="0" data-track-index="1"> has no id, so Studio cannot use a stable edit target for its timeline and canvas controls.
+    Fix: Add a stable, human-readable id such as id="hero-title" or id="scene-1-card" to every timeline-visible element you want agents or Studio to edit.
+  ⚠ [compositions/frames/08-cta.html] studio_missing_editable_id: <div class="cta08-bg" data-start="0" data-track-index="0"> has no id, so Studio cannot use a stable edit target for its timeline and canvas controls.
+    Fix: Add a stable, human-readable id such as id="hero-title" or id="scene-1-card" to every timeline-visible element you want agents or Studio to edit.
+  ⚠ [compositions/frames/08-cta.html] studio_missing_editable_id: <div class="cta08-stage" data-start="0" data-track-index="1"> has no id, so Studio cannot use a stable edit target for its timeline and canvas controls.
+    Fix: Add a stable, human-readable id such as id="hero-title" or id="scene-1-card" to every timeline-visible element you want agents or Studio to edit.
+  ⚠ [compositions/frames/08-cta.html] overlapping_gsap_tweens: GSAP tweens overlap on "#cta08-tail-left" for rotation, svgOrigin between 1.14s and 1.14s.
+    Fix: Shorten the earlier tween, move the later tween, or add `overwrite: "auto"`.
+  ⚠ [compositions/frames/08-cta.html] overlapping_gsap_tweens: GSAP tweens overlap on "#cta08-tail-right" for rotation, svgOrigin between 1.18s and 1.18s.
+    Fix: Shorten the earlier tween, move the later tween, or add `overwrite: "auto"`.
+
+T  hyperframes preview
+[?25l|
+o  Studio running
+[?25h
+
+  Project   profeeder-facebook-ad
+  Studio    http://localhost:4573
+
+  Edit with your AI agent — it has HyperFrames skills installed.
+  Changes reload automatically in the studio.
+
+  Press Ctrl+C to stop
+
+[INFO] [Compiler] Fetched 16 font face(s) for "Georgia" from Google Fonts (cached to /root/.cache/hyperframes/fonts/georgia)
+[INFO] [Compiler] Fetched 16 font face(s) for "Georgia" from Google Fonts (cached to /root/.cache/hyperframes/fonts/georgia)
+[INFO] [Compiler] Fetched 16 font face(s) for "Georgia" from Google Fonts (cached to /root/.cache/hyperframes/fonts/georgia)
+[INFO] [Compiler] Fetched 20 font face(s) for "Helvetica Neue" from Google Fonts (cached to /root/.cache/hyperframes/fonts/helvetica-neue)
+[INFO] [Compiler] Fetched 20 font face(s) for "Helvetica Neue" from Google Fonts (cached to /root/.cache/hyperframes/fonts/helvetica-neue)
+[INFO] [Compiler] Fetched 20 font face(s) for "Helvetica Neue" from Google Fonts (cached to /root/.cache/hyperframes/fonts/helvetica-neue)
+[INFO] [Compiler] Fetched 4 font face(s) for "Courier New" from Google Fonts (cached to /root/.cache/hyperframes/fonts/courier-new)
+[INFO] [Compiler] Injected deterministic @font-face rules for 4 requested font families
+[INFO] [Compiler] Fetched 4 font face(s) for "Courier New" from Google Fonts (cached to /root/.cache/hyperframes/fonts/courier-new)
+[INFO] [Compiler] Injected deterministic @font-face rules for 4 requested font families
+[INFO] [Compiler] Fetched 4 font face(s) for "Courier New" from Google Fonts (cached to /root/.cache/hyperframes/fonts/courier-new)
+[INFO] [Compiler] Injected deterministic @font-face rules for 4 requested font families
+[INFO] [Compiler] Fetched 16 font face(s) for "Georgia" from Google Fonts (cached to /root/.cache/hyperframes/fonts/georgia)
+[INFO] [Compiler] Fetched 20 font face(s) for "Helvetica Neue" from Google Fonts (cached to /root/.cache/hyperframes/fonts/helvetica-neue)
+[INFO] [Compiler] Fetched 4 font face(s) for "Courier New" from Google Fonts (cached to /root/.cache/hyperframes/fonts/courier-new)
+[INFO] [Compiler] Injected deterministic @font-face rules for 4 requested font families
+[BrowserManager] Browser launched (HeadlessChrome/152.0.7928.2, screenshot, gl=--use-gl=angle --use-angle=swiftshader, headlessShell=true, platform=linux)
+[INFO] [Compiler] Fetched 16 font face(s) for "Georgia" from Google Fonts (cached to /root/.cache/hyperframes/fonts/georgia)
+[INFO] [Compiler] Fetched 20 font face(s) for "Helvetica Neue" from Google Fonts (cached to /root/.cache/hyperframes/fonts/helvetica-neue)
+[INFO] [Compiler] Fetched 4 font face(s) for "Courier New" from Google Fonts (cached to /root/.cache/hyperframes/fonts/courier-new)
+[INFO] [Compiler] Injected deterministic @font-face rules for 4 requested font families
+[INFO] [Compiler] Fetched 16 font face(s) for "Georgia" from Google Fonts (cached to /root/.cache/hyperframes/fonts/georgia)
+[INFO] [Compiler] Fetched 20 font face(s) for "Helvetica Neue" from Google Fonts (cached to /root/.cache/hyperframes/fonts/helvetica-neue)
+[INFO] [Compiler] Fetched 4 font face(s) for "Courier New" from Google Fonts (cached to /root/.cache/hyperframes/fonts/courier-new)
+[INFO] [Compiler] Injected deterministic @font-face rules for 4 requested font families
+[INFO] [Compiler] Fetched 16 font face(s) for "Georgia" from Google Fonts (cached to /root/.cache/hyperframes/fonts/georgia)
+[INFO] [Compiler] Fetched 20 font face(s) for "Helvetica Neue" from Google Fonts (cached to /root/.cache/hyperframes/fonts/helvetica-neue)
+[INFO] [Compiler] Fetched 4 font face(s) for "Courier New" from Google Fonts (cached to /root/.cache/hyperframes/fonts/courier-new)
+[INFO] [Compiler] Injected deterministic @font-face rules for 4 requested font families
+[INFO] [Compiler] Fetched 16 font face(s) for "Georgia" from Google Fonts (cached to /root/.cache/hyperframes/fonts/georgia)
+[INFO] [Compiler] Fetched 20 font face(s) for "Helvetica Neue" from Google Fonts (cached to /root/.cache/hyperframes/fonts/helvetica-neue)
+[INFO] [Compiler] Fetched 4 font face(s) for "Courier New" from Google Fonts (cached to /root/.cache/hyperframes/fonts/courier-new)
+[INFO] [Compiler] Injected deterministic @font-face rules for 4 requested font families
+[INFO] [Compiler] Fetched 16 font face(s) for "Georgia" from Google Fonts (cached to /root/.cache/hyperframes/fonts/georgia)
+[INFO] [Compiler] Fetched 20 font face(s) for "Helvetica Neue" from Google Fonts (cached to /root/.cache/hyperframes/fonts/helvetica-neue)
+[INFO] [Compiler] Fetched 4 font face(s) for "Courier New" from Google Fonts (cached to /root/.cache/hyperframes/fonts/courier-new)
+[INFO] [Compiler] Injected deterministic @font-face rules for 4 requested font families
+[INFO] [Compiler] Fetched 16 font face(s) for "Georgia" from Google Fonts (cached to /root/.cache/hyperframes/fonts/georgia)
+[INFO] [Compiler] Fetched 20 font face(s) for "Helvetica Neue" from Google Fonts (cached to /root/.cache/hyperframes/fonts/helvetica-neue)
+[INFO] [Compiler] Fetched 4 font face(s) for "Courier New" from Google Fonts (cached to /root/.cache/hyperframes/fonts/courier-new)
+[INFO] [Compiler] Injected deterministic @font-face rules for 4 requested font families
+[INFO] [Compiler] Fetched 16 font face(s) for "Georgia" from Google Fonts (cached to /root/.cache/hyperframes/fonts/georgia)
+[INFO] [Compiler] Fetched 20 font face(s) for "Helvetica Neue" from Google Fonts (cached to /root/.cache/hyperframes/fonts/helvetica-neue)
+[INFO] [Compiler] Fetched 4 font face(s) for "Courier New" from Google Fonts (cached to /root/.cache/hyperframes/fonts/courier-new)
+[INFO] [Compiler] Injected deterministic @font-face rules for 4 requested font families
+[INFO] [Compiler] Fetched 16 font face(s) for "Georgia" from Google Fonts (cached to /root/.cache/hyperframes/fonts/georgia)
+[INFO] [Compiler] Fetched 20 font face(s) for "Helvetica Neue" from Google Fonts (cached to /root/.cache/hyperframes/fonts/helvetica-neue)
+[INFO] [Compiler] Fetched 4 font face(s) for "Courier New" from Google Fonts (cached to /root/.cache/hyperframes/fonts/courier-new)
+[INFO] [Compiler] Injected deterministic @font-face rules for 4 requested font families
+[INFO] [Compiler] Fetched 16 font face(s) for "Georgia" from Google Fonts (cached to /root/.cache/hyperframes/fonts/georgia)
+[INFO] [Compiler] Fetched 20 font face(s) for "Helvetica Neue" from Google Fonts (cached to /root/.cache/hyperframes/fonts/helvetica-neue)
+[INFO] [Compiler] Fetched 4 font face(s) for "Courier New" from Google Fonts (cached to /root/.cache/hyperframes/fonts/courier-new)
+[INFO] [Compiler] Injected deterministic @font-face rules for 4 requested font families
+[INFO] [Compiler] Fetched 16 font face(s) for "Georgia" from Google Fonts (cached to /root/.cache/hyperframes/fonts/georgia)
+[INFO] [Compiler] Fetched 20 font face(s) for "Helvetica Neue" from Google Fonts (cached to /root/.cache/hyperframes/fonts/helvetica-neue)
+[INFO] [Compiler] Fetched 4 font face(s) for "Courier New" from Google Fonts (cached to /root/.cache/hyperframes/fonts/courier-new)
+[INFO] [Compiler] Injected deterministic @font-face rules for 4 requested font families
+[INFO] [Compiler] Fetched 16 font face(s) for "Georgia" from Google Fonts (cached to /root/.cache/hyperframes/fonts/georgia)
+[INFO] [Compiler] Fetched 20 font face(s) for "Helvetica Neue" from Google Fonts (cached to /root/.cache/hyperframes/fonts/helvetica-neue)
+[INFO] [Compiler] Fetched 4 font face(s) for "Courier New" from Google Fonts (cached to /root/.cache/hyperframes/fonts/courier-new)
+[INFO] [Compiler] Injected deterministic @font-face rules for 4 requested font families
+[INFO] [Compiler] Fetched 16 font face(s) for "Georgia" from Google Fonts (cached to /root/.cache/hyperframes/fonts/georgia)
+[INFO] [Compiler] Fetched 20 font face(s) for "Helvetica Neue" from Google Fonts (cached to /root/.cache/hyperframes/fonts/helvetica-neue)
+[INFO] [Compiler] Fetched 4 font face(s) for "Courier New" from Google Fonts (cached to /root/.cache/hyperframes/fonts/courier-new)
+[INFO] [Compiler] Injected deterministic @font-face rules for 4 requested font families
+[INFO] [Compiler] Fetched 16 font face(s) for "Georgia" from Google Fonts (cached to /root/.cache/hyperframes/fonts/georgia)
+[INFO] [Compiler] Fetched 20 font face(s) for "Helvetica Neue" from Google Fonts (cached to /root/.cache/hyperframes/fonts/helvetica-neue)
+[INFO] [Compiler] Fetched 4 font face(s) for "Courier New" from Google Fonts (cached to /root/.cache/hyperframes/fonts/courier-new)
+[INFO] [Compiler] Injected deterministic @font-face rules for 4 requested font families
+[INFO] [Compiler] Fetched 16 font face(s) for "Georgia" from Google Fonts (cached to /root/.cache/hyperframes/fonts/georgia)
+[INFO] [Compiler] Fetched 20 font face(s) for "Helvetica Neue" from Google Fonts (cached to /root/.cache/hyperframes/fonts/helvetica-neue)
+[INFO] [Compiler] Fetched 4 font face(s) for "Courier New" from Google Fonts (cached to /root/.cache/hyperframes/fonts/courier-new)
+[INFO] [Compiler] Injected deterministic @font-face rules for 4 requested font families
+[INFO] [Compiler] Fetched 16 font face(s) for "Georgia" from Google Fonts (cached to /root/.cache/hyperframes/fonts/georgia)
+[INFO] [Compiler] Fetched 20 font face(s) for "Helvetica Neue" from Google Fonts (cached to /root/.cache/hyperframes/fonts/helvetica-neue)
+[INFO] [Compiler] Fetched 4 font face(s) for "Courier New" from Google Fonts (cached to /root/.cache/hyperframes/fonts/courier-new)
+[INFO] [Compiler] Injected deterministic @font-face rules for 4 requested font families
+[INFO] [Compiler] Fetched 16 font face(s) for "Georgia" from Google Fonts (cached to /root/.cache/hyperframes/fonts/georgia)
+[INFO] [Compiler] Fetched 20 font face(s) for "Helvetica Neue" from Google Fonts (cached to /root/.cache/hyperframes/fonts/helvetica-neue)
+[INFO] [Compiler] Fetched 4 font face(s) for "Courier New" from Google Fonts (cached to /root/.cache/hyperframes/fonts/courier-new)
+[INFO] [Compiler] Injected deterministic @font-face rules for 4 requested font families
+[INFO] [Compiler] Fetched 16 font face(s) for "Georgia" from Google Fonts (cached to /root/.cache/hyperframes/fonts/georgia)
+[INFO] [Compiler] Fetched 20 font face(s) for "Helvetica Neue" from Google Fonts (cached to /root/.cache/hyperframes/fonts/helvetica-neue)
+[INFO] [Compiler] Fetched 4 font face(s) for "Courier New" from Google Fonts (cached to /root/.cache/hyperframes/fonts/courier-new)
+[INFO] [Compiler] Injected deterministic @font-face rules for 4 requested font families
+[INFO] [Compiler] Fetched 16 font face(s) for "Georgia" from Google Fonts (cached to /root/.cache/hyperframes/fonts/georgia)
+[INFO] [Compiler] Fetched 20 font face(s) for "Helvetica Neue" from Google Fonts (cached to /root/.cache/hyperframes/fonts/helvetica-neue)
+[INFO] [Compiler] Fetched 4 font face(s) for "Courier New" from Google Fonts (cached to /root/.cache/hyperframes/fonts/courier-new)
+[INFO] [Compiler] Injected deterministic @font-face rules for 4 requested font families
+[INFO] [Compiler] Fetched 16 font face(s) for "Georgia" from Google Fonts (cached to /root/.cache/hyperframes/fonts/georgia)
+[INFO] [Compiler] Fetched 20 font face(s) for "Helvetica Neue" from Google Fonts (cached to /root/.cache/hyperframes/fonts/helvetica-neue)
+[INFO] [Compiler] Fetched 4 font face(s) for "Courier New" from Google Fonts (cached to /root/.cache/hyperframes/fonts/courier-new)
+[INFO] [Compiler] Injected deterministic @font-face rules for 4 requested font families
+[INFO] [Compiler] Fetched 16 font face(s) for "Georgia" from Google Fonts (cached to /root/.cache/hyperframes/fonts/georgia)
+[INFO] [Compiler] Fetched 20 font face(s) for "Helvetica Neue" from Google Fonts (cached to /root/.cache/hyperframes/fonts/helvetica-neue)
+[INFO] [Compiler] Fetched 4 font face(s) for "Courier New" from Google Fonts (cached to /root/.cache/hyperframes/fonts/courier-new)
+[INFO] [Compiler] Injected deterministic @font-face rules for 4 requested font families
+[INFO] [Compiler] Fetched 16 font face(s) for "Georgia" from Google Fonts (cached to /root/.cache/hyperframes/fonts/georgia)
+[INFO] [Compiler] Fetched 20 font face(s) for "Helvetica Neue" from Google Fonts (cached to /root/.cache/hyperframes/fonts/helvetica-neue)
+[INFO] [Compiler] Fetched 4 font face(s) for "Courier New" from Google Fonts (cached to /root/.cache/hyperframes/fonts/courier-new)
+[INFO] [Compiler] Injected deterministic @font-face rules for 4 requested font families
+[INFO] [Compiler] Fetched 16 font face(s) for "Georgia" from Google Fonts (cached to /root/.cache/hyperframes/fonts/georgia)
+[INFO] [Compiler] Fetched 20 font face(s) for "Helvetica Neue" from Google Fonts (cached to /root/.cache/hyperframes/fonts/helvetica-neue)
+[INFO] [Compiler] Fetched 4 font face(s) for "Courier New" from Google Fonts (cached to /root/.cache/hyperframes/fonts/courier-new)
+[INFO] [Compiler] Injected deterministic @font-face rules for 4 requested font families
+[INFO] [Compiler] Fetched 16 font face(s) for "Georgia" from Google Fonts (cached to /root/.cache/hyperframes/fonts/georgia)
+[INFO] [Compiler] Fetched 20 font face(s) for "Helvetica Neue" from Google Fonts (cached to /root/.cache/hyperframes/fonts/helvetica-neue)
+[INFO] [Compiler] Fetched 4 font face(s) for "Courier New" from Google Fonts (cached to /root/.cache/hyperframes/fonts/courier-new)
+[INFO] [Compiler] Injected deterministic @font-face rules for 4 requested font families
+[INFO] [Compiler] Fetched 16 font face(s) for "Georgia" from Google Fonts (cached to /root/.cache/hyperframes/fonts/georgia)
+[INFO] [Compiler] Fetched 20 font face(s) for "Helvetica Neue" from Google Fonts (cached to /root/.cache/hyperframes/fonts/helvetica-neue)
+[INFO] [Compiler] Fetched 4 font face(s) for "Courier New" from Google Fonts (cached to /root/.cache/hyperframes/fonts/courier-new)
+[INFO] [Compiler] Injected deterministic @font-face rules for 4 requested font families
+[INFO] [Compiler] Fetched 16 font face(s) for "Georgia" from Google Fonts (cached to /root/.cache/hyperframes/fonts/georgia)
+[INFO] [Compiler] Fetched 20 font face(s) for "Helvetica Neue" from Google Fonts (cached to /root/.cache/hyperframes/fonts/helvetica-neue)
+[INFO] [Compiler] Fetched 4 font face(s) for "Courier New" from Google Fonts (cached to /root/.cache/hyperframes/fonts/courier-new)
+[INFO] [Compiler] Injected deterministic @font-face rules for 4 requested font families
+[INFO] [Compiler] Fetched 16 font face(s) for "Georgia" from Google Fonts (cached to /root/.cache/hyperframes/fonts/georgia)
+[INFO] [Compiler] Fetched 20 font face(s) for "Helvetica Neue" from Google Fonts (cached to /root/.cache/hyperframes/fonts/helvetica-neue)
+[INFO] [Compiler] Fetched 4 font face(s) for "Courier New" from Google Fonts (cached to /root/.cache/hyperframes/fonts/courier-new)
+[INFO] [Compiler] Injected deterministic @font-face rules for 4 requested font families
+[INFO] [Compiler] Fetched 16 font face(s) for "Georgia" from Google Fonts (cached to /root/.cache/hyperframes/fonts/georgia)
+[INFO] [Compiler] Fetched 20 font face(s) for "Helvetica Neue" from Google Fonts (cached to /root/.cache/hyperframes/fonts/helvetica-neue)
+[INFO] [Compiler] Fetched 4 font face(s) for "Courier New" from Google Fonts (cached to /root/.cache/hyperframes/fonts/courier-new)
+[INFO] [Compiler] Injected deterministic @font-face rules for 4 requested font families
+[INFO] [Compiler] Fetched 16 font face(s) for "Georgia" from Google Fonts (cached to /root/.cache/hyperframes/fonts/georgia)
+[INFO] [Compiler] Fetched 20 font face(s) for "Helvetica Neue" from Google Fonts (cached to /root/.cache/hyperframes/fonts/helvetica-neue)
+[INFO] [Compiler] Fetched 4 font face(s) for "Courier New" from Google Fonts (cached to /root/.cache/hyperframes/fonts/courier-new)
+[INFO] [Compiler] Injected deterministic @font-face rules for 4 requested font families
+[INFO] [Compiler] Fetched 16 font face(s) for "Georgia" from Google Fonts (cached to /root/.cache/hyperframes/fonts/georgia)
+[INFO] [Compiler] Fetched 20 font face(s) for "Helvetica Neue" from Google Fonts (cached to /root/.cache/hyperframes/fonts/helvetica-neue)
+[INFO] [Compiler] Fetched 4 font face(s) for "Courier New" from Google Fonts (cached to /root/.cache/hyperframes/fonts/courier-new)
+[INFO] [Compiler] Injected deterministic @font-face rules for 4 requested font families
+[INFO] [Compiler] Fetched 16 font face(s) for "Georgia" from Google Fonts (cached to /root/.cache/hyperframes/fonts/georgia)
+[INFO] [Compiler] Fetched 20 font face(s) for "Helvetica Neue" from Google Fonts (cached to /root/.cache/hyperframes/fonts/helvetica-neue)
+[INFO] [Compiler] Fetched 4 font face(s) for "Courier New" from Google Fonts (cached to /root/.cache/hyperframes/fonts/courier-new)
+[INFO] [Compiler] Injected deterministic @font-face rules for 4 requested font families
+[INFO] [Compiler] Fetched 16 font face(s) for "Georgia" from Google Fonts (cached to /root/.cache/hyperframes/fonts/georgia)
+[INFO] [Compiler] Fetched 20 font face(s) for "Helvetica Neue" from Google Fonts (cached to /root/.cache/hyperframes/fonts/helvetica-neue)
+[INFO] [Compiler] Fetched 4 font face(s) for "Courier New" from Google Fonts (cached to /root/.cache/hyperframes/fonts/courier-new)
+[INFO] [Compiler] Injected deterministic @font-face rules for 4 requested font families
+[INFO] [Compiler] Fetched 16 font face(s) for "Georgia" from Google Fonts (cached to /root/.cache/hyperframes/fonts/georgia)
+[INFO] [Compiler] Fetched 20 font face(s) for "Helvetica Neue" from Google Fonts (cached to /root/.cache/hyperframes/fonts/helvetica-neue)
+[INFO] [Compiler] Fetched 4 font face(s) for "Courier New" from Google Fonts (cached to /root/.cache/hyperframes/fonts/courier-new)
+[INFO] [Compiler] Injected deterministic @font-face rules for 4 requested font families
+[INFO] [Compiler] Fetched 16 font face(s) for "Georgia" from Google Fonts (cached to /root/.cache/hyperframes/fonts/georgia)
+[INFO] [Compiler] Fetched 20 font face(s) for "Helvetica Neue" from Google Fonts (cached to /root/.cache/hyperframes/fonts/helvetica-neue)
+[INFO] [Compiler] Fetched 4 font face(s) for "Courier New" from Google Fonts (cached to /root/.cache/hyperframes/fonts/courier-new)
+[INFO] [Compiler] Injected deterministic @font-face rules for 4 requested font families
+[INFO] [Compiler] Fetched 16 font face(s) for "Georgia" from Google Fonts (cached to /root/.cache/hyperframes/fonts/georgia)
+[INFO] [Compiler] Fetched 20 font face(s) for "Helvetica Neue" from Google Fonts (cached to /root/.cache/hyperframes/fonts/helvetica-neue)
+[INFO] [Compiler] Fetched 4 font face(s) for "Courier New" from Google Fonts (cached to /root/.cache/hyperframes/fonts/courier-new)
+[INFO] [Compiler] Injected deterministic @font-face rules for 4 requested font families
+[INFO] [Compiler] Fetched 16 font face(s) for "Georgia" from Google Fonts (cached to /root/.cache/hyperframes/fonts/georgia)
+[INFO] [Compiler] Fetched 20 font face(s) for "Helvetica Neue" from Google Fonts (cached to /root/.cache/hyperframes/fonts/helvetica-neue)
+[INFO] [Compiler] Fetched 4 font face(s) for "Courier New" from Google Fonts (cached to /root/.cache/hyperframes/fonts/courier-new)
+[INFO] [Compiler] Injected deterministic @font-face rules for 4 requested font families
+[INFO] [Compiler] Fetched 16 font face(s) for "Georgia" from Google Fonts (cached to /root/.cache/hyperframes/fonts/georgia)
+[INFO] [Compiler] Fetched 20 font face(s) for "Helvetica Neue" from Google Fonts (cached to /root/.cache/hyperframes/fonts/helvetica-neue)
+[INFO] [Compiler] Fetched 4 font face(s) for "Courier New" from Google Fonts (cached to /root/.cache/hyperframes/fonts/courier-new)
+[INFO] [Compiler] Injected deterministic @font-face rules for 4 requested font families
+[INFO] [Compiler] Fetched 16 font face(s) for "Georgia" from Google Fonts (cached to /root/.cache/hyperframes/fonts/georgia)
+[INFO] [Compiler] Fetched 20 font face(s) for "Helvetica Neue" from Google Fonts (cached to /root/.cache/hyperframes/fonts/helvetica-neue)
+[INFO] [Compiler] Fetched 4 font face(s) for "Courier New" from Google Fonts (cached to /root/.cache/hyperframes/fonts/courier-new)
+[INFO] [Compiler] Injected deterministic @font-face rules for 4 requested font families
+[INFO] [Compiler] Fetched 16 font face(s) for "Georgia" from Google Fonts (cached to /root/.cache/hyperframes/fonts/georgia)
+[INFO] [Compiler] Fetched 20 font face(s) for "Helvetica Neue" from Google Fonts (cached to /root/.cache/hyperframes/fonts/helvetica-neue)
+[INFO] [Compiler] Fetched 4 font face(s) for "Courier New" from Google Fonts (cached to /root/.cache/hyperframes/fonts/courier-new)
+[INFO] [Compiler] Injected deterministic @font-face rules for 4 requested font families
+[INFO] [Compiler] Fetched 16 font face(s) for "Georgia" from Google Fonts (cached to /root/.cache/hyperframes/fonts/georgia)
+[INFO] [Compiler] Fetched 20 font face(s) for "Helvetica Neue" from Google Fonts (cached to /root/.cache/hyperframes/fonts/helvetica-neue)
+[INFO] [Compiler] Fetched 4 font face(s) for "Courier New" from Google Fonts (cached to /root/.cache/hyperframes/fonts/courier-new)
+[INFO] [Compiler] Injected deterministic @font-face rules for 4 requested font families
+[INFO] [Compiler] Fetched 16 font face(s) for "Georgia" from Google Fonts (cached to /root/.cache/hyperframes/fonts/georgia)
+[INFO] [Compiler] Fetched 20 font face(s) for "Helvetica Neue" from Google Fonts (cached to /root/.cache/hyperframes/fonts/helvetica-neue)
+[INFO] [Compiler] Fetched 4 font face(s) for "Courier New" from Google Fonts (cached to /root/.cache/hyperframes/fonts/courier-new)
+[INFO] [Compiler] Injected deterministic @font-face rules for 4 requested font families
+[INFO] [Compiler] Fetched 16 font face(s) for "Georgia" from Google Fonts (cached to /root/.cache/hyperframes/fonts/georgia)
+[INFO] [Compiler] Fetched 20 font face(s) for "Helvetica Neue" from Google Fonts (cached to /root/.cache/hyperframes/fonts/helvetica-neue)
+[INFO] [Compiler] Fetched 4 font face(s) for "Courier New" from Google Fonts (cached to /root/.cache/hyperframes/fonts/courier-new)
+[INFO] [Compiler] Injected deterministic @font-face rules for 4 requested font families
+[INFO] [Compiler] Fetched 16 font face(s) for "Georgia" from Google Fonts (cached to /root/.cache/hyperframes/fonts/georgia)
+[INFO] [Compiler] Fetched 16 font face(s) for "Georgia" from Google Fonts (cached to /root/.cache/hyperframes/fonts/georgia)
+[INFO] [Compiler] Fetched 20 font face(s) for "Helvetica Neue" from Google Fonts (cached to /root/.cache/hyperframes/fonts/helvetica-neue)
+[INFO] [Compiler] Fetched 20 font face(s) for "Helvetica Neue" from Google Fonts (cached to /root/.cache/hyperframes/fonts/helvetica-neue)
+[INFO] [Compiler] Fetched 4 font face(s) for "Courier New" from Google Fonts (cached to /root/.cache/hyperframes/fonts/courier-new)
+[INFO] [Compiler] Injected deterministic @font-face rules for 4 requested font families
+[INFO] [Compiler] Fetched 4 font face(s) for "Courier New" from Google Fonts (cached to /root/.cache/hyperframes/fonts/courier-new)
+[INFO] [Compiler] Injected deterministic @font-face rules for 4 requested font families
+[INFO] [Compiler] Fetched 16 font face(s) for "Georgia" from Google Fonts (cached to /root/.cache/hyperframes/fonts/georgia)
+[INFO] [Compiler] Fetched 20 font face(s) for "Helvetica Neue" from Google Fonts (cached to /root/.cache/hyperframes/fonts/helvetica-neue)
+[INFO] [Compiler] Fetched 4 font face(s) for "Courier New" from Google Fonts (cached to /root/.cache/hyperframes/fonts/courier-new)
+[INFO] [Compiler] Injected deterministic @font-face rules for 4 requested font families
+[INFO] [Compiler] Fetched 16 font face(s) for "Georgia" from Google Fonts (cached to /root/.cache/hyperframes/fonts/georgia)
+[INFO] [Compiler] Fetched 20 font face(s) for "Helvetica Neue" from Google Fonts (cached to /root/.cache/hyperframes/fonts/helvetica-neue)
+[INFO] [Compiler] Fetched 4 font face(s) for "Courier New" from Google Fonts (cached to /root/.cache/hyperframes/fonts/courier-new)
+[INFO] [Compiler] Injected deterministic @font-face rules for 4 requested font families
+[INFO] [Compiler] Fetched 16 font face(s) for "Georgia" from Google Fonts (cached to /root/.cache/hyperframes/fonts/georgia)
+[INFO] [Compiler] Fetched 20 font face(s) for "Helvetica Neue" from Google Fonts (cached to /root/.cache/hyperframes/fonts/helvetica-neue)
+[INFO] [Compiler] Fetched 4 font face(s) for "Courier New" from Google Fonts (cached to /root/.cache/hyperframes/fonts/courier-new)
+[INFO] [Compiler] Injected deterministic @font-face rules for 4 requested font families
+[INFO] [Compiler] Fetched 16 font face(s) for "Georgia" from Google Fonts (cached to /root/.cache/hyperframes/fonts/georgia)
+[INFO] [Compiler] Fetched 20 font face(s) for "Helvetica Neue" from Google Fonts (cached to /root/.cache/hyperframes/fonts/helvetica-neue)
+[INFO] [Compiler] Fetched 4 font face(s) for "Courier New" from Google Fonts (cached to /root/.cache/hyperframes/fonts/courier-new)
+[INFO] [Compiler] Injected deterministic @font-face rules for 4 requested font families
+[INFO] [Compiler] Fetched 16 font face(s) for "Georgia" from Google Fonts (cached to /root/.cache/hyperframes/fonts/georgia)
+[INFO] [Compiler] Fetched 20 font face(s) for "Helvetica Neue" from Google Fonts (cached to /root/.cache/hyperframes/fonts/helvetica-neue)
+[INFO] [Compiler] Fetched 4 font face(s) for "Courier New" from Google Fonts (cached to /root/.cache/hyperframes/fonts/courier-new)
+[INFO] [Compiler] Injected deterministic @font-face rules for 4 requested font families
+[INFO] [Compiler] Fetched 16 font face(s) for "Georgia" from Google Fonts (cached to /root/.cache/hyperframes/fonts/georgia)
+[INFO] [Compiler] Fetched 20 font face(s) for "Helvetica Neue" from Google Fonts (cached to /root/.cache/hyperframes/fonts/helvetica-neue)
+[INFO] [Compiler] Fetched 4 font face(s) for "Courier New" from Google Fonts (cached to /root/.cache/hyperframes/fonts/courier-new)
+[INFO] [Compiler] Injected deterministic @font-face rules for 4 requested font families
+
+  Shutting down studio...

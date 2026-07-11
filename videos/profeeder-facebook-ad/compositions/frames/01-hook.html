@@ -1,284 +1,305 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <!-- Frame 1 — Won at chore time (hook, kinetic-type-beats sub-shape A: fixed-line token swap) -->
-  </head>
-  <body>
-    <template>
-      <style>
-        @font-face {
-  font-family: 'Instrument Serif';
-  font-style: italic;
-  font-weight: 400;
-  font-display: swap;
-  src: url(assets/fonts/InstrumentSerif-italic-0.woff2) format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-@font-face {
-  font-family: 'Instrument Serif';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url(assets/fonts/InstrumentSerif-1.woff2) format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-@font-face {
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 400 800;
-  font-display: swap;
-  src: url(assets/fonts/Inter-2.woff2) format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-@font-face {
-  font-family: 'JetBrains Mono';
-  font-style: normal;
-  font-weight: 400 700;
-  font-display: swap;
-  src: url(assets/fonts/JetBrainsMono-3.woff2) format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
+<template>
+  <div id="root" data-composition-id="01-hook" data-start="0" data-duration="4.169" data-width="1080" data-height="1080">
+    <style>
+      @font-face {
+        font-family: 'Instrument Serif';
+        font-style: italic;
+        font-weight: 400;
+        font-display: swap;
+        src: url(assets/fonts/InstrumentSerif-italic-0.woff2) format('woff2');
+      }
+      @font-face {
+        font-family: 'Instrument Serif';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url(assets/fonts/InstrumentSerif-1.woff2) format('woff2');
+      }
 
-        #root {
-          position: absolute;
-          inset: 0;
-          width: 1080px;
-          height: 1080px;
-          overflow: hidden;
-          container-type: size;
-          font-family: "Instrument Serif", serif;
-        }
+      #root {
+        position: relative;
+        width: 1080px;
+        height: 1080px;
+        overflow: hidden;
+        container-type: size;
+      }
 
-        /* Full-bleed navy ink field — dedicated clip layer, never on the root */
-        .f1-bg {
-          position: absolute;
-          inset: 0;
-          background: #0d1b2e;
-        }
+      #h1-bg {
+        position: absolute;
+        inset: 0;
+        background: #0d1b2e;
+      }
+      #h1-bg .h1-glow {
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          circle at 50% 46%,
+          rgba(232, 182, 76, 0.14) 0%,
+          rgba(232, 182, 76, 0.06) 34%,
+          rgba(13, 27, 46, 0) 60%
+        );
+      }
+      #h1-gold {
+        position: absolute;
+        inset: 0;
+        background: #e8b64c;
+        opacity: 0;
+        visibility: hidden;
+      }
 
-        /* Subtle gold bloom — the frame's one atmospheric depth layer */
-        .f1-bloom {
-          position: absolute;
-          left: 50%;
-          top: 40%;
-          width: 980px;
-          height: 980px;
-          margin-left: -490px;
-          margin-top: -490px;
-          background: radial-gradient(
-            circle at center,
-            rgba(232, 182, 76, 0.16) 0%,
-            rgba(217, 164, 65, 0.07) 42%,
-            rgba(13, 27, 46, 0) 70%
-          );
-          opacity: 0;
-        }
+      #h1-stage {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 184px;
+        overflow: hidden;
+      }
+      .h1-beat {
+        position: absolute;
+        inset: 0;
+        display: grid;
+        place-items: center;
+        text-align: center;
+        font-family: "Instrument Serif", serif;
+        font-weight: 400;
+        color: #faf6ec;
+        white-space: nowrap;
+      }
 
-        /* Content sits inside the top ~83% band (bottom 184px kept clear) */
-        .f1-stage {
-          position: absolute;
-          inset: 0 0 184px 0;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
+      #h1-word1 {
+        font-size: 196px;
+        line-height: 1;
+        letter-spacing: 0.02em;
+        will-change: transform, opacity;
+      }
+      #h1-burst {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 0;
+        height: 0;
+      }
+      .h1-ray {
+        position: absolute;
+        left: 0;
+        top: 0;
+        transform-origin: 0 50%;
+      }
+      .h1-ray i {
+        display: block;
+        width: 150px;
+        height: 7px;
+        border-radius: 4px;
+        background: #e8b64c;
+        transform-origin: 0 50%;
+        will-change: transform, opacity;
+      }
 
-        .f1-headline {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          text-align: center;
-        }
+      #h1-beat2 {
+        color: #0d1b2e;
+        will-change: transform, opacity;
+      }
+      #h1-b2a {
+        display: block;
+        font-size: 152px;
+        line-height: 1;
+        overflow: hidden;
+      }
+      #h1-b2a b {
+        display: block;
+        font-weight: 400;
+        will-change: transform;
+      }
+      #h1-b2b {
+        display: block;
+        margin-top: 22px;
+        font-size: 76px;
+        line-height: 1;
+        letter-spacing: 0.02em;
+        transform-origin: 50% 50%;
+        will-change: transform, opacity;
+      }
 
-        .f1-line1 {
-          font-size: 92px;
-          font-weight: 400;
-          line-height: 1.06;
-          letter-spacing: -0.005em;
-          color: #faf6ec;
-          white-space: nowrap;
-        }
+      #h1-final {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 34px;
+      }
+      #h1-b3 {
+        font-size: 164px;
+        line-height: 1;
+        letter-spacing: -0.005em;
+        color: #faf6ec;
+        white-space: nowrap;
+        will-change: transform, opacity;
+      }
+      #h1-payoff-wrap {
+        position: relative;
+      }
+      #h1-payoff {
+        position: relative;
+        z-index: 2;
+        font-style: italic;
+        font-size: 148px;
+        line-height: 1;
+        color: #e8b64c;
+        white-space: nowrap;
+        transform-origin: 50% 50%;
+        will-change: transform, opacity;
+      }
+      .h1-mote {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 14px;
+        height: 14px;
+        margin: -7px 0 0 -7px;
+        border-radius: 50%;
+        background: #e8b64c;
+        will-change: transform, opacity;
+      }
+    </style>
 
-        .f1-line1 .f1-w {
-          display: inline-block;
-        }
+    <div id="h1-bg" class="clip" data-start="0" data-duration="3.669" data-track-index="0">
+      <div class="h1-glow"></div>
+      <div id="h1-gold"></div>
+    </div>
 
-        /* Line 2 — the variable slot. Both variants stack in the same cell. */
-        .f1-line2 {
-          position: relative;
-          margin-top: 26px;
-          width: 100%;
-          height: 150px;
-        }
-
-        .f1-slot {
-          position: absolute;
-          inset: 0;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
-
-        .f1-slot-inner {
-          display: inline-block;
-          white-space: nowrap;
-        }
-
-        .f1-slot-a .f1-slot-text {
-          font-size: 92px;
-          font-weight: 400;
-          line-height: 1.06;
-          letter-spacing: -0.005em;
-          color: #faf6ec;
-        }
-
-        .f1-slot-a .f1-slot-text .f1-w {
-          display: inline-block;
-        }
-
-        .f1-slot-b {
-          opacity: 0;
-          visibility: hidden;
-        }
-
-        .f1-slot-b .f1-slot-text {
-          font-size: 104px;
-          font-style: italic;
-          font-weight: 400;
-          line-height: 1.06;
-          letter-spacing: -0.005em;
-          color: #e8b64c;
-        }
-
-        /* Drawn gold underline — 1px-family hairline scaled up for display weight */
-        .f1-rule {
-          display: block;
-          height: 5px;
-          margin-top: 16px;
-          background: #e8b64c;
-          transform-origin: left center;
-        }
-
-        .f1-rule-a {
-          transform: scaleX(0);
-        }
-      </style>
-
-      <div
-        id="root"
-        data-composition-id="01-hook"
-        data-width="1080"
-        data-height="1080"
-      >
-        <div
-          class="clip f1-bg"
-          id="f1-bg"
-          data-start="0"
-          data-duration="3.669"
-          data-track-index="0"
-        >
-          <div class="f1-bloom" id="f1-bloom"></div>
+    <div id="h1-stage" class="clip" data-start="0" data-duration="3.669" data-track-index="1" data-layout-allow-overlap>
+      <div class="h1-beat" id="h1-beat1" data-layout-allow-overlap>
+        <div id="h1-burst" aria-hidden="true">
+          <span class="h1-ray" style="transform: rotate(0deg)"><i></i></span>
+          <span class="h1-ray" style="transform: rotate(30deg)"><i></i></span>
+          <span class="h1-ray" style="transform: rotate(60deg)"><i></i></span>
+          <span class="h1-ray" style="transform: rotate(90deg)"><i></i></span>
+          <span class="h1-ray" style="transform: rotate(120deg)"><i></i></span>
+          <span class="h1-ray" style="transform: rotate(150deg)"><i></i></span>
+          <span class="h1-ray" style="transform: rotate(180deg)"><i></i></span>
+          <span class="h1-ray" style="transform: rotate(210deg)"><i></i></span>
+          <span class="h1-ray" style="transform: rotate(240deg)"><i></i></span>
+          <span class="h1-ray" style="transform: rotate(270deg)"><i></i></span>
+          <span class="h1-ray" style="transform: rotate(300deg)"><i></i></span>
+          <span class="h1-ray" style="transform: rotate(330deg)"><i></i></span>
         </div>
+        <div id="h1-word1">BANNERS</div>
+      </div>
 
-        <div
-          class="clip f1-stage"
-          id="f1-stage"
-          data-start="0"
-          data-duration="3.669"
-          data-track-index="1"
-        >
-          <div class="f1-headline">
-            <div class="f1-line1" id="f1-line1"
-              ><span class="f1-w">Banners</span>&nbsp;<span class="f1-w">aren&rsquo;t</span>&nbsp;<span class="f1-w">won</span></div
-            >
-            <div class="f1-line2">
-              <!-- Variant A: "on show day." -->
-              <div class="f1-slot f1-slot-a" id="f1-slot-a">
-                <span class="f1-slot-inner">
-                  <span class="f1-slot-text" id="f1-slot-a-text"
-                    ><span class="f1-w">on</span>&nbsp;<span class="f1-w">show</span>&nbsp;<span class="f1-w">day.</span></span
-                  >
-                  <span class="f1-rule f1-rule-a" id="f1-rule-a"></span>
-                </span>
-              </div>
-              <!-- Variant B: "at chore time." — gold italic, slightly larger -->
-              <div class="f1-slot f1-slot-b" id="f1-slot-b">
-                <span class="f1-slot-inner">
-                  <span class="f1-slot-text">at chore time.</span>
-                  <span class="f1-rule" id="f1-rule-b"></span>
-                </span>
-              </div>
-            </div>
-          </div>
+      <div class="h1-beat" id="h1-beat2" data-layout-allow-overlap>
+        <div>
+          <span id="h1-b2a"><b>aren&rsquo;t won</b></span>
+          <span id="h1-b2b">on show day.</span>
         </div>
       </div>
 
-      <script src="assets/vendor/gsap.min.js"></script>
-      <script>
-        window.__timelines = window.__timelines || {};
-        const tl = gsap.timeline({ paused: true });
+      <div class="h1-beat" id="h1-beat3" data-layout-allow-overlap>
+        <div id="h1-final">
+          <div id="h1-b3">They&rsquo;re won</div>
+          <div id="h1-payoff-wrap">
+            <span class="h1-mote" data-i="0" aria-hidden="true"></span>
+            <span class="h1-mote" data-i="1" aria-hidden="true"></span>
+            <span class="h1-mote" data-i="2" aria-hidden="true"></span>
+            <span class="h1-mote" data-i="3" aria-hidden="true"></span>
+            <span class="h1-mote" data-i="4" aria-hidden="true"></span>
+            <span class="h1-mote" data-i="5" aria-hidden="true"></span>
+            <span class="h1-mote" data-i="6" aria-hidden="true"></span>
+            <span class="h1-mote" data-i="7" aria-hidden="true"></span>
+            <div id="h1-payoff">at chore time.</div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-        /* ---- Scene 1 (0.0–1.4s) — "Banners aren't won" per-word staggered
-           reveal (dynamic-content-sequencing / per-word fade+blur), smooth
-           long-tail power3 settle. Hero visible by ~0.15s. ---- */
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+
+      gsap.set("#h1-beat2", { autoAlpha: 0 });
+      gsap.set("#h1-beat3", { autoAlpha: 0 });
+      gsap.set("#h1-b3", { x: -340, autoAlpha: 0 });
+      gsap.set("#h1-payoff", { scale: 0, opacity: 0 });
+      gsap.set(".h1-mote", { opacity: 0 });
+
+      /* Scene 1 (0.0-0.9s): BANNERS slam + gold ray burst */
+      tl.fromTo(
+        "#h1-word1",
+        { scale: 2.8, opacity: 0 },
+        { scale: 1, opacity: 1, duration: 0.38, ease: "power4.out", transformOrigin: "50% 50%" },
+        0.02
+      );
+      tl.fromTo(
+        ".h1-ray i",
+        { scaleX: 0, x: 40, opacity: 0.95 },
+        { scaleX: 1, x: 150, opacity: 0, duration: 0.5, ease: "power2.out", stagger: 0.012 },
+        0.1
+      );
+      tl.set(".h1-ray i", { opacity: 0 }, 0.9);
+
+      /* FLIP 1 at 0.9s: navy -> gold (timeline-driven hard cut) */
+      tl.set("#h1-gold", { autoAlpha: 1 }, 0.9);
+      tl.set("#h1-beat1", { autoAlpha: 0 }, 0.9);
+      tl.set("#h1-beat2", { autoAlpha: 1 }, 0.9);
+
+      /* Scene 2 (0.9-1.7s) */
+      tl.fromTo(
+        "#h1-b2a b",
+        { yPercent: 112 },
+        { yPercent: 0, duration: 0.42, ease: "expo.out" },
+        0.92
+      );
+      tl.fromTo(
+        "#h1-b2b",
+        { scaleX: 1.42, opacity: 0 },
+        { scaleX: 1, opacity: 1, duration: 0.34, ease: "power3.out" },
+        1.32
+      );
+
+      /* seam: beat 2 zooms past the camera as the field flips back */
+      tl.to("#h1-beat2", { scale: 3.4, duration: 0.3, ease: "power3.in", transformOrigin: "50% 50%" }, 1.64);
+      tl.to("#h1-beat2", { autoAlpha: 0, duration: 0.16, ease: "none" }, 1.68);
+
+      /* FLIP 2 at 1.7s: gold -> navy */
+      tl.set("#h1-gold", { autoAlpha: 0 }, 1.85);
+      tl.set("#h1-beat3", { autoAlpha: 1 }, 1.85);
+
+      /* Scene 3 (1.7-2.6s): "They're won" flies in */
+      tl.fromTo(
+        "#h1-b3",
+        { x: -340, autoAlpha: 0.25 },
+        { x: 0, autoAlpha: 1, duration: 0.42, ease: "expo.out" },
+        1.88
+      );
+
+      /* Scene 4 (2.6s-end): gold spring-pop payoff + finite mote drift; hold */
+      tl.fromTo(
+        "#h1-payoff",
+        { scale: 0, opacity: 0 },
+        { scale: 1, opacity: 1, duration: 0.55, ease: "back.out(1.8)" },
+        2.62
+      );
+      const motes = gsap.utils.toArray(".h1-mote");
+      motes.forEach((m) => {
+        const i = Number(m.dataset.i);
+        const ang = (i / motes.length) * Math.PI * 2 + 0.4;
+        const r = 190 + (i % 3) * 46;
         tl.fromTo(
-          "#f1-line1 .f1-w",
-          { opacity: 0, y: 34, filter: "blur(8px)" },
+          m,
+          { x: 0, y: 0, opacity: 0.9, scale: 1 },
           {
-            opacity: 1,
-            y: 0,
-            filter: "blur(0px)",
+            x: Math.cos(ang) * r,
+            y: Math.sin(ang) * r * 0.72,
+            opacity: 0,
+            scale: 0.35,
             duration: 0.85,
-            ease: "power3.out",
-            stagger: 0.16,
+            ease: "power2.out",
           },
-          0.1,
+          2.7 + (i % 4) * 0.03
         );
+      });
 
-        /* Gold bloom breathes in underneath — atmosphere, camera stays locked */
-        tl.fromTo(
-          "#f1-bloom",
-          { opacity: 0 },
-          { opacity: 1, duration: 1.1, ease: "power2.out" },
-          0.2,
-        );
-
-        /* ---- Scene 2 (1.4–2.2s) — the phrase completes: "on show day."
-           lands in the variable slot, per-word; a drawn gold underline
-           sweeps left→right beneath it (css-marker-patterns highlight). ---- */
-        tl.fromTo(
-          "#f1-slot-a-text .f1-w",
-          { opacity: 0, y: 26, filter: "blur(6px)" },
-          {
-            opacity: 1,
-            y: 0,
-            filter: "blur(0px)",
-            duration: 0.55,
-            ease: "power3.out",
-            stagger: 0.09,
-          },
-          1.4,
-        );
-
-        tl.fromTo(
-          "#f1-rule-a",
-          { scaleX: 0 },
-          { scaleX: 1, duration: 0.48, ease: "power2.out" },
-          1.66,
-        );
-
-        /* ---- Scene 3 (2.2–3.669s) — the signature move: the slot
-           hard-cuts in place (discrete-text-sequence). "on show day." →
-           "at chore time." in gold italic, slightly larger; the underline
-           snaps to the new width in the same instant. Then dead still. ---- */
-        const T_SWAP = 2.24;
-        tl.set("#f1-slot-a", { autoAlpha: 0 }, T_SWAP);
-        tl.set("#f1-slot-b", { autoAlpha: 1 }, T_SWAP);
-        /* From the swap to the end of the frame: dead still (per storyboard). */
-
-        window.__timelines["01-hook"] = tl;
-      </script>
-    </template>
-  </body>
-</html>
+      window.__timelines["01-hook"] = tl;
+    </script>
+  </div>
+</template>
